@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.10.20)  22 OCT 2025 19:47
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.10.20)  4 NOV 2025 17:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2042,9 +2042,35 @@ LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
 
 ]
 Capítulo 1.
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
+(Font)              scaled to size 9.0pt on input line 129.
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
+(Font)              scaled to size 5.0pt on input line 129.
+! Illegal parameter number in definition of \Hy@tempa.
+<to be read again> 
+                   s
+l.129 ...ps://europe.alsea.net/alsea#somos-alsea}}
+                                                  
+? 
+! Illegal parameter number in definition of \Hy@tempa.
+<to be read again> 
+                   s
+l.129 ...ps://europe.alsea.net/alsea#somos-alsea}}
+                                                  
+? 
+! Illegal parameter number in definition of \Hy@gtemp.
+<to be read again> 
+                   s
+l.129 ...ps://europe.alsea.net/alsea#somos-alsea}}
+                                                  
+? 
+LaTeX Font Info:    Font shape `TU/LinLibertine(5)/m/n' will be
+(Font)              scaled to size 9.0pt on input line 129.
 
-Underfull \hbox (badness 10000) in paragraph at lines 129--130
-
+Underfull \hbox (badness 2564) in paragraph at lines 129--129
+[][][]\TU/LinLibertine(0)/m/n/9 Fuente: página web oficial de ALSEA, disponible
+ en [][]$[][][][][] [] [] [] [][][][][][] [] [][][][][] [] [][][] [] [][][][][]
+ []
  []
 
 File: img/presencia_internacional.png Graphic file (type bmp)
@@ -2081,16 +2107,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 144--145
 [3]
 Capítulo 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 168--169
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 170--171
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 172--173
 
  []
@@ -2101,11 +2117,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 174--175
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 176--177
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--179
+
+ []
+
+
 
 [4
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 176--177
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
 
  []
 
@@ -2113,18 +2139,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 176--177
 
 [5]
 LaTeX Font Info:    Font shape `TU/LinLibertine(5)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 208.
+(Font)              scaled to size 10.95pt on input line 212.
 
 
 [6]
 Capítulo 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 224--225
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
 
  []
 
 
-Overfull \hbox (2.19092pt too wide) in paragraph at lines 229--230
+Overfull \hbox (2.19092pt too wide) in paragraph at lines 236--237
 []\TU/LinLibertine(0)/b/n/10.95 Iterativo e incremental\TU/LinLibertine(0)/m/n/
 10.95 : cada conjunto de cambios (feature/refactor/fix/chore) se abor-
  []
@@ -2134,7 +2160,7 @@ Overfull \hbox (2.19092pt too wide) in paragraph at lines 229--230
 [7
 
 ]
-Overfull \hbox (46.50189pt too wide) in paragraph at lines 262--263
+Overfull \hbox (46.50189pt too wide) in paragraph at lines 269--270
 []\TU/LinLibertine(0)/b/n/10.95 Base de datos\TU/LinLibertine(0)/m/n/10.95 : DB
 eaver (inspección de PostgreSQL; verificación del esquema \TU/LinLibertine(5)/m
 /n/10.95 alsea_reports
@@ -2146,7 +2172,7 @@ eaver (inspección de PostgreSQL; verificación del esquema \TU/LinLibertine(5)/
 File: img/horas_pormes.jpg Graphic file (type bmp)
 <img/horas_pormes.jpg>
 
-Underfull \hbox (badness 10000) in paragraph at lines 286--287
+Underfull \hbox (badness 10000) in paragraph at lines 293--294
 
  []
 
@@ -2165,29 +2191,29 @@ Capítulo 4.
 [12]
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 446--447
+Underfull \hbox (badness 10000) in paragraph at lines 457--458
 
  []
 
 
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 448--449
+Underfull \hbox (badness 10000) in paragraph at lines 459--460
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 450--451
+Underfull \hbox (badness 10000) in paragraph at lines 461--462
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 452--453
+Underfull \hbox (badness 10000) in paragraph at lines 463--464
 
  []
 
 
-Overfull \hbox (25.92245pt too wide) in paragraph at lines 456--457
+Overfull \hbox (25.92245pt too wide) in paragraph at lines 467--468
 []\TU/LinLibertine(0)/m/n/10.95 El almacenamiento de informes se realiza en la 
 tabla \TU/LinLibertine(5)/m/n/10.95 report \TU/LinLibertine(0)/m/n/10.95 del es
 quema \TU/LinLibertine(5)/m/n/10.95 alsea_reports\TU/LinLibertine(0)/m/n/10.95 
@@ -2195,61 +2221,61 @@ quema \TU/LinLibertine(5)/m/n/10.95 alsea_reports\TU/LinLibertine(0)/m/n/10.95
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 456--457
+Underfull \hbox (badness 10000) in paragraph at lines 467--468
 
  []
 
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/it' will be
-(Font)              scaled to size 12.0pt on input line 458.
+(Font)              scaled to size 12.0pt on input line 469.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
-(Font)              scaled to size 10.0pt on input line 472.
+(Font)              scaled to size 10.0pt on input line 483.
 
-Overfull \hbox (35.99997pt too wide) in alignment at lines 466--477
+Overfull \hbox (35.99997pt too wide) in alignment at lines 477--488
  [] [] [] [] 
  []
 
 
-Overfull \hbox (35.99997pt too wide) in alignment at lines 477--487
+Overfull \hbox (35.99997pt too wide) in alignment at lines 488--498
  [] [] [] [] 
  []
 
 
-Overfull \hbox (35.99997pt too wide) in alignment at lines 487--491
+Overfull \hbox (35.99997pt too wide) in alignment at lines 498--502
  [] [] [] [] 
  []
 
 
-Overfull \hbox (35.99997pt too wide) in alignment at lines 491--494
+Overfull \hbox (35.99997pt too wide) in alignment at lines 502--505
  [] [] [] [] 
  []
 
 LaTeX Font Info:    Font shape `TU/LinLibertine(5)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 496.
+(Font)              scaled to size 10.0pt on input line 507.
 
-Overfull \hbox (5.23521pt too wide) in paragraph at lines 499--499
+Overfull \hbox (5.23521pt too wide) in paragraph at lines 510--510
 []|\TU/LinLibertine(5)/m/n/10 report_category| 
  []
 
 
-Underfull \hbox (badness 1067) in paragraph at lines 499--500
+Underfull \hbox (badness 1067) in paragraph at lines 510--511
 []|\TU/LinLibertine(0)/m/n/10 Categoría de proceso: \TU/LinLibertine(5)/m/n/10 
 INNOVATION \TU/LinLibertine(0)/m/n/10 o
  []
 
 
-Underfull \hbox (badness 1092) in paragraph at lines 503--504
+Underfull \hbox (badness 1092) in paragraph at lines 514--515
 []|\TU/LinLibertine(0)/m/n/10 Franquicia(s) seleccionadas; se almacena
  []
 
 
-Overfull \hbox (35.99997pt too wide) in alignment at lines 494--507
+Overfull \hbox (35.99997pt too wide) in alignment at lines 505--518
  [] [] [] [] 
  []
 
 
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 518--519
+Underfull \hbox (badness 10000) in paragraph at lines 529--530
 
  []
 
@@ -2264,17 +2290,17 @@ Capítulo 5.
 ]
 Capítulo 6.
 
-Underfull \hbox (badness 10000) in paragraph at lines 531--532
+Underfull \hbox (badness 10000) in paragraph at lines 550--551
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 537--538
+Underfull \hbox (badness 10000) in paragraph at lines 556--557
 
  []
 
 
-Overfull \hbox (10.94455pt too wide) in paragraph at lines 542--543
+Overfull \hbox (10.94455pt too wide) in paragraph at lines 561--562
 \TU/LinLibertine(0)/m/n/10.95 configuró \TU/LinLibertine(0)/m/it/10.95 Yarn \TU
 /LinLibertine(0)/m/n/10.95 como gestor único en los archivos \TU/LinLibertine(5
 )/m/n/10.95 angular.json \TU/LinLibertine(0)/m/n/10.95 y \TU/LinLibertine(5)/m/
@@ -2287,9 +2313,9 @@ n/10.95 package.json\TU/LinLibertine(0)/m/n/10.95 ,
 
 ]
 LaTeX Font Info:    Font shape `TU/LinLibertine(5)/b/n' will be
-(Font)              scaled to size 10.95pt on input line 544.
+(Font)              scaled to size 10.95pt on input line 563.
 
-Underfull \hbox (badness 10000) in paragraph at lines 547--548
+Underfull \hbox (badness 10000) in paragraph at lines 566--567
 
  []
 
@@ -2298,12 +2324,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 547--548
 [19]
 Capítulo 7.
 
-Underfull \hbox (badness 10000) in paragraph at lines 564--565
+Underfull \hbox (badness 10000) in paragraph at lines 587--588
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 579--580
+Underfull \hbox (badness 10000) in paragraph at lines 602--603
 
  []
 
@@ -2312,7 +2338,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 579--580
 [20
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 581--582
+Underfull \hbox (badness 10000) in paragraph at lines 604--605
 
  []
 
@@ -2335,7 +2361,7 @@ File: img/historial.png Graphic file (type bmp)
 [24]
 Capítulo 8.
 
-Underfull \hbox (badness 10000) in paragraph at lines 645--646
+Underfull \hbox (badness 10000) in paragraph at lines 672--673
 
  []
 
@@ -2344,26 +2370,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 645--646
 [25
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 663--664
+Underfull \hbox (badness 10000) in paragraph at lines 690--691
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 665--666
+Underfull \hbox (badness 10000) in paragraph at lines 692--693
 
  []
 
 
 
 [26]
-Overfull \hbox (9.6488pt too wide) in paragraph at lines 681--682
+Overfull \hbox (9.6488pt too wide) in paragraph at lines 708--709
 []\TU/LinLibertine(0)/m/n/10.95 Reducir los avisos de incompatibilidad que actu
 almente genera el uso de \TU/LinLibertine(5)/m/n/10.95 resolutions\TU/LinLibert
 ine(0)/m/n/10.95 . 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 692--693
+Underfull \hbox (badness 10000) in paragraph at lines 719--720
 
  []
 
@@ -2380,7 +2406,7 @@ File: img/emergente_borrar.png Graphic file (type bmp)
 
 [29]
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 24.88pt on input line 756.
+(Font)              scaled to size 24.88pt on input line 783.
 
 
 [30
@@ -2407,10 +2433,7 @@ Package lettrine.sty Info: Targeted height = 21.55566pt
 
 ]
 
-[32]
-No file memoria_tfg.acr.
-No file memoria_tfg.gls.
-(memoria_tfg.bbl
+[32] (memoria_tfg.acr) (memoria_tfg.gls) (memoria_tfg.bbl
 
 [33
 
@@ -2432,11 +2455,11 @@ Package rerunfilecheck Info: File `memoria_tfg.out' has not changed.
 (rerunfilecheck)             Checksum: D88B59AE60D87AF58B553157D3C8E99D;7611.
  ) 
 Here is how much of TeX's memory you used:
- 38052 strings out of 403197
- 787491 string characters out of 5455936
- 1225941 words of memory out of 5000000
- 66057 multiletter control sequences out of 15000+600000
- 637680 words of font info for 126 fonts, out of 8000000 for 9000
+ 39229 strings out of 403197
+ 805951 string characters out of 5455936
+ 1234416 words of memory out of 5000000
+ 67217 multiletter control sequences out of 15000+600000
+ 640220 words of font info for 140 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  98i,12n,145p,2518b,651s stack positions out of 10000i,1000n,20000p,200000b,200000s
 

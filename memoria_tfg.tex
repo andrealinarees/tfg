@@ -8,7 +8,7 @@
 \def\lingua{esp} 
 \def\nome{Andrea Liñares Castro}                             
 \def\nomedirectorA{Fernando Silva Coira}             
-%\def\nomedirectorB{Outro Nome Completo}             % duplica esta liña máis veces se o precisas, cambiando
+\def\nomedirectorB{Ángel Fernández Formoso}             % duplica esta liña máis veces se o precisas, cambiando
                                                      % a letra final (A, B, C, D...): úsanse na portada.tex
 \def\titulo{Modernización del módulo Report Service en la plataforma BIC para el cliente ALSEA} 
 \def\titulacion{gei}
@@ -119,14 +119,14 @@ Within the scope of business process management and automatic generation of exec
  \setcounter{page}{1}
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- % Capítulos                            %
+ % Capítulo   1                         %
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Introducción}
 
 \section{Motivación}
 
-ALSEA, S.A.B. de C.V., es una empresa multinacional mexicana dedicada a la operación de marcas de restauración franquiciadas. Con presencia en América Latina y Europa, se ha consolidado como uno de los principales operadores del sector, gestionando cadenas tan conocidas como Starbucks, Burger King, Domino’s Pizza, Vips o Foster’s Hollywood. En España, su actividad se articula a través de Food Service Project, que engloba establecimientos de restauración rápida, cafeterías y restaurantes de comida casual \href{https://www.alsea.com.mx/}{(fuente: página web oficial de ALSEA)}..\\
+ALSEA, S.A.B. de C.V., es una empresa multinacional mexicana dedicada a la operación de marcas de restauración franquiciadas. Con presencia en América Latina y Europa, se ha consolidado como uno de los principales operadores del sector, gestionando cadenas tan conocidas como Starbucks, Burger King, Domino’s Pizza, Vips o Foster’s Hollywood. En España, su actividad se articula a través de Food Service Project, que engloba establecimientos de restauración rápida, cafeterías y restaurantes de comida casual .\footnote{Fuente: página web oficial de ALSEA, disponible en \url{https://europe.alsea.net/alsea#somos-alsea}}
 
 \begin{figure}[H]
   \centering
@@ -160,6 +160,10 @@ El presente Trabajo de Fin de Grado documenta, analiza y evalúa las mejoras int
 \end{itemize}
 
 Con ello, se pretende transformar el Report Service en una solución completa que cubra tanto la generación como la gestión del ciclo de vida completo de los informes ejecutivos.
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % Capítulo   2                         %
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Fundamentos tecnológicos}
 
@@ -216,6 +220,9 @@ El desarrollo del Report Service se apoyó en un conjunto de tecnologías que ab
     \item \textbf{Git}: sistema de control de versiones empleado en combinación con ramas de funcionalidad y \textit{Pull Requests}, asegurando trazabilidad y revisiones de código antes de su integración.
 \end{itemize}
 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % Capítulo   3                         %
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Metodología y planificación}
 
@@ -328,6 +335,10 @@ La planificación se estructuró en etapas en lugar de Sprints formales, manteni
       \item Recopilación de evidencias (PRs, capturas, pruebas).
     \end{itemize}
 \end{itemize}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % Capítulo   4                         %
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Análisis}
 
@@ -517,12 +528,20 @@ El almacenamiento de informes se realiza en la tabla \texttt{report} del esquema
 
 TODO: Insertar aquí imagen de ejemplo de la tabla de report en dbeaver\\
 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % Capítulo   5                         %
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \chapter{Diseño}
 \section{Arquitectura tecnológica del sistema}
 \section{Diseño de la aplicación}
 \subsection{Cliente}
 \subsection{Servidor}
 \subsection{Interacción cliente – servidor}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % Capítulo   6                         %
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Implementación y pruebas}
 
@@ -557,6 +576,10 @@ El \textit{frontend} presentaba inicialmente múltiples vulnerabilidades (\texti
 \subsection{Testing unitario}
 \subsection{Testing de integración}
 \subsection{Pruebas manuales nosotras (QA)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % Capítulo   7                         %
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Solución desarrollada}
 \section{Introducción}
@@ -637,6 +660,10 @@ El diseño de la tabla de historial prioriza la claridad y la facilidad de uso. 
   \caption{Vista de la página de historial de informes generados.}
   \label{fig:historial}
 \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % Capítulo   8                         %
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Conclusión y trabajo futuro}
 
