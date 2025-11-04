@@ -1,0 +1,769 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Preámbulo                                                                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,titlepage,oneside]{report}
+
+%%% RELACIÓN DE VARIABLES A PERSONALIZAR %%%
+\def\lingua{esp} 
+\def\nome{Andrea Liñares Castro}                             
+\def\nomedirectorA{Fernando Silva Coira}             
+%\def\nomedirectorB{Outro Nome Completo}             % duplica esta liña máis veces se o precisas, cambiando
+                                                     % a letra final (A, B, C, D...): úsanse na portada.tex
+\def\titulo{Modernización del módulo Report Service en la plataforma BIC para el cliente ALSEA} 
+\def\titulacion{gei}
+\def\mencion{SISTEMAS DE INFORMACIÓN}
+
+%\def\renomearcadros{si} % descomenta esta liña se redactas a memoria en español e prefires que
+                         % os "cuadros" e o "índice de cuadros" se renomeen
+                         % a "tablas" e "índice de tablas" respectivamente
+
+\usepackage{estilo_tfg}
+\usepackage{enumitem}
+
+% Lista de paquetes potencialmente interesantes (uso baixo demanda)
+
+% \usepackage{alltt}       % proporciona o entorno alltt, semellante a verbatim pero que respecta comandos
+% \usepackage{enumitem}    % permite personalizar os entornos de lista
+% \usepackage{eurofont}    % proporciona o comando \euro
+\usepackage{float}       % permite máis opcións para controlar obxectos flotantes (táboas, figuras)
+% \usepackage{hhline}      % permite personalizar as liñas horizontais en arrays e táboas
+  \usepackage{longtable}   % permite construir táboas que ocupan máis dunha páxina
+% \usepackage{lscape}      % permite colocar partes do documento en orientación apaisada
+% \usepackage{moreverb}    % permite personalizar o entorno verbatim
+% \usepackage{multirow}    % permite crear celdas que ocupan varias filas da mesma táboa
+% \usepackage{pdfpages}    % permite insertar ficheiros en PDF no documento
+% \usepackage{rotating}    % permite diferentes tipos de rotacións para figuras e táboas
+% \usepackage{subcaption}  % permite a inclusión de varias subfiguras nunha figura
+% \usepackage{tabu}        % permite táboas flexibles
+\usepackage{tabularx}    % permite táboas con columnas de anchura determinada
+\usepackage{graphicx}
+\usepackage{booktabs}
+\graphicspath{{img/}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Corpo                                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % Preliminares do documento            %
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \include{portada/portada}
+ \dedicatoria{Dedicatoria} 
+ \paxinaenbranco
+ \begin{agradecementos}
+ \blindtext                % substitúe este comando polo teu texto de agradecementos
+ \end{agradecementos}
+ \begin{center}
+    \section*{Resumen}
+\end{center}
+
+\justifying
+En el contexto de la gestión de procesos empresariales y la generación automática de informes ejecutivos, este Trabajo de Fin de Grado presenta la modernización del módulo Report Service para ALSEA, desarrollado por GBTEC Software AG. El proyecto aborda la optimización del flujo de generación de informes en formato Excel, mediante la incorporación de almacenamiento histórico, procesamiento asíncrono, control de duplicidad y mejoras en la experiencia de usuario. Para ello, se aplicó una metodología ágil iterativa e incremental, utilizando tecnologías como Spring Batch, Flyway, PostgreSQL, Elasticsearch y Angular. Las mejoras contribuyen a aumentar la escalabilidad, robustez y calidad del servicio, alineándose con las necesidades operativas y analíticas de ALSEA.
+
+\vspace{1cm}
+
+\begin{center}
+    \section*{Abstract}
+\end{center}
+
+\justifying
+Within the scope of business process management and automatic generation of executive reports, this undergraduate thesis presents the modernization of the Report Service module for ALSEA, developed by GBTEC Software AG. The project focuses on optimizing the report generation workflow in Excel format by incorporating historical storage, asynchronous processing, duplication control, and user experience improvements. An iterative and incremental agile methodology was applied, employing technologies such as Spring Batch, Flyway, PostgreSQL, Elasticsearch, and Angular. These enhancements contribute to increased scalability, robustness, and service quality, aligning with ALSEA's operational and analytical needs.
+
+\vspace{1cm}
+
+\noindent
+\begin{minipage}[t]{0.45\textwidth}
+\textbf{Palabras clave:}
+\begin{itemize}[leftmargin=*]
+    \item Generación automática de informes
+    \item Procesamiento asíncrono
+    \item Metodología ágil
+    \item Spring Batch
+    \item PostgreSQL
+    \item Elasticsearch
+    \item Angular
+    \item Control de duplicidad
+    \item Migraciones de base de datos
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\textbf{Keywords:}
+\begin{itemize}[leftmargin=*]
+    \item Automatic report generation
+    \item Asynchronous processing
+    \item Agile methodology
+    \item Spring Batch
+    \item PostgreSQL
+    \item Elasticsearch
+    \item Angular
+    \item Duplication control
+    \item Database migrations
+\end{itemize}
+\end{minipage}
+
+ \pagenumbering{roman}
+ \setcounter{page}{1}
+ \bstctlcite{IEEEexample:BSTcontrol}
+
+ \tableofcontents
+ \listoffigures
+ \listoftables
+ \clearpage
+ 
+ \pagenumbering{arabic}
+ \setcounter{page}{1}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % Capítulos                            %
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Introducción}
+
+\section{Motivación}
+
+ALSEA, S.A.B. de C.V., es una empresa multinacional mexicana dedicada a la operación de marcas de restauración franquiciadas. Con presencia en América Latina y Europa, se ha consolidado como uno de los principales operadores del sector, gestionando cadenas tan conocidas como Starbucks, Burger King, Domino’s Pizza, Vips o Foster’s Hollywood. En España, su actividad se articula a través de Food Service Project, que engloba establecimientos de restauración rápida, cafeterías y restaurantes de comida casual \href{https://www.alsea.com.mx/}{(fuente: página web oficial de ALSEA)}..\\
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{img/presencia_internacional.png}
+  \caption{Mapa de presencia internacional de ALSEA (Food Service Project).}
+  \label{fig:presencia-internacional}
+\end{figure}
+
+La magnitud de esta operación internacional hace que ALSEA maneje diariamente un volumen muy elevado de información relativa a ventas, operaciones, proyectos de innovación, indicadores de desempeño y actividades internas. En este contexto, disponer de datos fiables, centralizados y fácilmente accesibles resulta fundamental para evaluar el rendimiento de las franquicias, identificar posibles desviaciones y tomar decisiones estratégicas fundamentadas. Sin herramientas de análisis adecuadas, la gestión de este conocimiento se vuelve compleja y poco eficiente.\\
+
+Para dar respuesta a esta necesidad, GBTEC Software AG, compañía alemana especializada en soluciones de gestión de procesos de negocio (BPM), arquitectura empresarial (EAM) y gobierno, riesgo y cumplimiento (GRC), ofrece la \textit{BIC Platform}, un ecosistema de software que permite modelar, ejecutar y analizar procesos empresariales. Dentro de este marco, se desarrolló para ALSEA un módulo específico denominado \textit{Report Service}, cuya finalidad es transformar los datos de la plataforma de Process Execution en informes ejecutivos descargables en formato Excel.\\
+
+La \textit{BIC Platform} se despliega habitualmente en modalidad cloud (BIC Cloud) y está compuesta por varios módulos que cubren el ciclo de vida de los procesos: \textit{Process Design} para modelar procesos mediante diagramas BPMN, y \textit{Process Execution} para ejecutar y automatizar esos procesos, gestionando instancias, tareas y persistencia de variables. El \textit{Report Service} extrae información de \textit{Process Execution} (combinada con consultas a \textit{Elasticsearch}) para componer informes Excel con KPIs, retroplannings, heatmaps y otras métricas solicitadas por ALSEA.\\
+
+El Report Service original ofrecía una solución sencilla y funcional: la interfaz permitía seleccionar el tipo de informe (KPI o Producto), la categoría (Innovación o Alternativa), una o varias franquicias y un rango de fechas. Con esta información, el backend recuperaba los datos correspondientes, generaba un libro de Excel con múltiples hojas y lo devolvía al usuario para su descarga local.\\
+
+Sin embargo, con el paso del tiempo surgieron limitaciones notables. El sistema carecía de un almacenamiento histórico de informes, lo que obligaba a los usuarios a regenerarlos cada vez que deseaban acceder a información pasada. Además, se detectaron problemas de duplicación de código en el backend, ausencia de procesamiento asíncrono (lo que generaba bloqueos en la interfaz durante la creación de los informes) y una experiencia de usuario que no reflejaba plenamente las necesidades de la organización. Estas carencias constituyeron la motivación principal para emprender un proceso de mejora y modernización del Report Service.
+
+\section{Objetivos}
+
+El presente Trabajo de Fin de Grado documenta, analiza y evalúa las mejoras introducidas en el Report Service de ALSEA durante mis prácticas en GBTEC. En concreto, se plantearon los siguientes objetivos:
+
+\begin{itemize}
+    \item Ampliar la funcionalidad del servicio con almacenamiento histórico en base de datos.
+    \item Incrementar la mantenibilidad y calidad del código, reduciendo duplicaciones y aumentando la cobertura de pruebas.
+    \item Optimizar la experiencia de usuario en la interfaz de generación de informes y acceso al historial.
+    \item Introducir procesamiento asíncrono con Spring Batch, evitando bloqueos en la interfaz.
+    \item Registrar métricas de ejecución y tiempos de creación de informes.
+    \item Añadir control de duplicidad para evitar regeneraciones innecesarias.
+    \item Permitir la re-descarga de informes desde el historial.
+\end{itemize}
+
+Con ello, se pretende transformar el Report Service en una solución completa que cubra tanto la generación como la gestión del ciclo de vida completo de los informes ejecutivos.
+
+\chapter{Fundamentos tecnológicos}
+
+\section{Estado del arte}
+
+Para la elaboración del estado del arte se han analizado distintas soluciones disponibles en el mercado relacionadas con la generación de informes empresariales y cuadros de mando, evaluando sus ventajas y limitaciones. El objetivo de este análisis es comprender cómo se abordan actualmente estas necesidades en el sector y en qué medida las herramientas existentes inspiran o contrastan con el desarrollo del módulo Report Service en ALSEA.\\
+
+\textbf{Microsoft Power BI} es una de las plataformas líderes en el ámbito de la inteligencia de negocio. Destaca por su capacidad de conexión a múltiples fuentes de datos y por ofrecer cuadros de mando interactivos y actualizados en tiempo real. Su principal fortaleza es la flexibilidad de visualización y la posibilidad de integrar gráficos avanzados sin conocimientos de programación. No obstante, entre sus limitaciones se encuentra la complejidad de configuración inicial y la necesidad de licencias específicas para acceder a todas las funcionalidades.\\
+
+\textbf{Tableau} constituye otra herramienta ampliamente utilizada. Su punto fuerte es la facilidad con la que permite generar visualizaciones intuitivas y estéticamente atractivas. Además, ofrece opciones de colaboración entre equipos y una buena integración con entornos corporativos. Sin embargo, su curva de aprendizaje puede ser elevada para usuarios sin experiencia previa, y su enfoque está más orientado a cuadros de mando interactivos que a informes exportables en formatos tradicionales como Excel.\\
+
+\textbf{Qlik Sense} se centra en la exploración de datos y en la creación de dashboards personalizados. Su motor asociativo facilita el análisis de relaciones entre diferentes conjuntos de datos, permitiendo descubrir patrones de forma ágil. Entre sus limitaciones destaca que, al igual que en el caso de Tableau, no siempre resulta la herramienta más adecuada para informes ejecutivos estandarizados en Excel, que siguen siendo demandados en muchos entornos corporativos.\\
+
+Por otro lado, existen soluciones especializadas en automatización de informes Excel con plantillas predefinidas, aunque suelen carecer de personalización avanzada o integración con flujos de datos en tiempo real.\\
+
+El módulo Report Service de ALSEA surge para cubrir este hueco: generar de forma sencilla y automatizada informes Excel ajustados a requisitos específicos de negocio (retroplanning, heatmaps, KPIs de innovación y alternativas), combinando la estandarización documental con la integración directa de datos de ejecución de procesos.
+
+\section{Tecnologías utilizadas}
+
+El desarrollo del Report Service se apoyó en un conjunto de tecnologías que abarcan tanto el cliente web como el servidor y la base de datos, junto con utilidades complementarias para despliegue, monitorización y calidad.
+
+\subsection{Web server}
+
+\begin{itemize}
+    \item \textbf{Spring Boot}: framework de desarrollo en Java que permite crear aplicaciones web y microservicios de forma rápida y estructurada. Aporta configuración automática, inyección de dependencias y un ecosistema rico de librerías.
+    \item \textbf{Spring Batch}: módulo de Spring orientado al procesamiento por lotes. Se utilizó para implementar la generación asíncrona de informes, gestionando \textit{jobs} y \textit{steps} de manera controlada.
+    \item \textbf{Hibernate / JPA}: framework de mapeo objeto-relacional que simplifica el acceso a la base de datos mediante entidades Java, evitando tener que escribir consultas SQL manuales.
+    \item \textbf{Aspose Cells}: librería de generación y manipulación de Excel utilizada para dar formato, estilos y estructura a los informes.
+    \item \textbf{Elasticsearch}: motor de búsqueda utilizado como fuente de datos adicional, especialmente para recuperar información de instancias de procesos con consultas JSON flexibles.
+    \item \textbf{Maven}: herramienta de gestión y automatización de proyectos Java, empleada para manejar dependencias, construir el proyecto y ejecutar tareas comunes.
+\end{itemize}
+
+\subsection{Web client}
+
+\begin{itemize}
+    \item \textbf{Angular}: framework de desarrollo basado en TypeScript utilizado para construir la interfaz del usuario. Permite crear componentes modulares, mantener un enrutamiento dinámico y gestionar formularios y servicios de forma escalable.
+    \item \textbf{Yarn}: gestor de dependencias para proyectos JavaScript que garantiza instalaciones reproducibles y seguras. Fue la herramienta principal para administrar librerías del frontend y realizar auditorías de seguridad.
+    \item \textbf{Node.js}: entorno de ejecución necesario para compilar y ejecutar Angular en local, así como para el servidor de desarrollo.
+    \item \textbf{TypeScript}: lenguaje de programación que extiende JavaScript con tipado estático y características avanzadas, facilitando el desarrollo de aplicaciones robustas y mantenibles.
+\end{itemize}
+
+\subsection{Database}
+
+\begin{itemize}
+    \item \textbf{PostgreSQL}: sistema de gestión de bases de datos relacional, robusto y de código abierto, empleado para almacenar tanto la información de procesos como los informes generados.
+    \item \textbf{Flyway}: herramienta de migraciones que asegura el versionado y la coherencia del esquema de base de datos en todos los entornos (desarrollo, pruebas y producción). Se utilizó para crear y mantener el esquema \texttt{alsea\_reports} y su tabla principal \texttt{report}.
+    \item \textbf{Testcontainers}: framework de testing que permite levantar contenedores ligeros de PostgreSQL en memoria durante la ejecución de pruebas, garantizando un entorno controlado y reproducible.
+\end{itemize}
+
+\subsection{Infraestructura y Despliegue}
+
+\begin{itemize}
+    \item \textbf{Docker}: plataforma de contenedores utilizada para empaquetar tanto el backend como el frontend y garantizar despliegues reproducibles en diferentes entornos.
+    \item \textbf{Git}: sistema de control de versiones empleado en combinación con ramas de funcionalidad y \textit{Pull Requests}, asegurando trazabilidad y revisiones de código antes de su integración.
+\end{itemize}
+
+
+\chapter{Metodología y planificación}
+
+\section{Metodología de desarrollo}
+
+El proyecto se llevó a cabo siguiendo una metodología ágil ligera basada en iteraciones cortas y gestión Kanban en Jira. Este enfoque resultó adecuado por la naturaleza incremental de las mejoras del Report Service, la necesidad de integrar cambios en backend y frontend con validación continua, y la conveniencia de priorizar asuntos operativos (bugs y chores) junto con funcionalidades nuevas.\\
+
+Las características principales del enfoque fueron:
+
+\begin{itemize}
+  \item \textbf{Iterativo e incremental}: cada conjunto de cambios (feature/refactor/fix/chore) se abordó como una tarjeta en el tablero, produciendo un incremento funcional verificable (código, tests y PR).
+  \item \textbf{Retroalimentación continua}: dailies diarias con el equipo para sincronizar prioridades, desbloquear tareas y validar entregables; revisión de PRs con comentarios técnicos.
+  \item \textbf{Flexibilidad}: replanificación rápida en función de prioridades del EPIC y de incidencias detectadas (p.\,ej., compatibilidad de datos, fechas nulas, duplicidades de informe).
+  \item \textbf{Calidad integrada}: pruebas unitarias e integradas, migraciones controladas con Flyway, y verificación manual desde Postman/Chrome antes de integrar los cambios en el frontend.
+\end{itemize}
+
+\subsection{Adaptación al proyecto}
+
+La incorporación al proyecto siguió una fase breve de formación, alineada con las tecnologías clave:
+
+\begin{itemize}
+  \item \textbf{Formación inicial}: cursos introductorios de Spring Batch, Docker, Patrones de Diseño en Java y Angular (priorizando primero backend) proporcionados por la suscripción mediante la empresa de la entidad emisora Udemy.
+  \item \textbf{Aterrizaje en Jira}: asignación al EPIC “Improvements for ALSEA Project in 2025 Q3 \& Q4”, con tareas tipificadas como Story, Task o Bug, cada una con subtareas y prioridad.
+  \item \textbf{Flujo de trabajo}:
+    \begin{itemize}
+      \item Rama por tarea (feature/fix branch) en Git.
+      \item Commits atómicos y descriptivos.
+      \item Pull Request hacia \texttt{development}, con code review y checks automáticos de SonarCloud y build de pull/push.
+      \item Cierre de la tarea al completar PR + validación.
+    \end{itemize}
+\end{itemize}
+
+El orden de adaptación técnica fue: backend → datos → frontend, permitiendo una integración progresiva.
+
+\subsection{Herramientas de apoyo}
+
+\begin{itemize}
+  \item \textbf{Gestión de trabajo}: Jira (tablero Kanban; EPIC con sus historias de usuario, subtareas, prioridades y estados \texttt{To Do} → \texttt{Task Breakdown} → \texttt{In Progress} → \texttt{Ready for QA/PR} → \texttt{QA/PR OK} → \texttt{Done}).
+  \item \textbf{Control de versiones}: Git.
+  \item \textbf{Entornos de desarrollo}: IntelliJ IDEA (backend) y VSCode (frontend).
+  \item \textbf{Navegador y pruebas manuales}: Google Chrome (localhost) con ansible levantado mediante AWX.
+  \item \textbf{Pruebas de API}: Postman (validación de endpoints antes de integrar UI).
+  \item \textbf{Build \& dependencias}: Maven (backend) y Yarn (frontend).
+  \item \textbf{Base de datos}: DBeaver (inspección de PostgreSQL; verificación del esquema \texttt{alsea\_reports} y tabla \texttt{report}).
+  \item \textbf{Contenedores}: Docker.
+  \item \textbf{Calidad}: SonarCloud.
+\end{itemize}
+
+\section{Planificación y seguimiento}
+
+El trabajo se desarrolló durante tres meses de prácticas:
+
+\begin{itemize}
+  \item Julio: 7 h/día, 5 días/semana.
+  \item Agosto: 7 h/día, 5 días/semana.
+  \item Septiembre: 6 h/día, 5 días/semana.
+\end{itemize}
+
+La dedicación horaria total del proyecto se muestra en la figura siguiente:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{img/horas_pormes.jpg}
+  \caption{Distribución de horas trabajadas por mes durante el proyecto.}
+  \label{fig:horas-mes}
+\end{figure}
+
+Como se observa en la figura~\ref{fig:horas-mes}, la distribución del esfuerzo fue relativamente equilibrada a lo largo de los tres meses. Julio y agosto concentraron 7 horas diarias, mientras que en septiembre la dedicación se redujo a 6 horas diarias debido a las normativas de la organización de las prácticas, al tener que compaginar con el inicio del curso universitario.\\
+
+La planificación se estructuró en etapas en lugar de Sprints formales, manteniendo la dinámica ágil con dailies y tablero Kanban:
+
+\begin{itemize}
+  \item \textbf{Onboarding y formación dirigida (principios de julio)}
+    \begin{itemize}
+      \item Cursos: Spring Batch, Docker.
+      \item Puesta a punto de entorno local y perfiles.
+    \end{itemize}
+
+  \item \textbf{Limpieza y refactors (chores) (julio)}
+    \begin{itemize}
+      \item Reducción de duplicidad de código (utils de Excel, fechas, estilos).
+      \item Reorganización de paquetes y utilidades comunes.
+      \item Mejora de tests unitarios en servicios clave y aumento del coverage del proyecto para llegar a los checks mínimos de la empresa en SonarCloud.
+    \end{itemize}
+
+    De esta manera, empezando con tareas de menor complejidad, se fue ganando confianza en el código base y las herramientas, preparando el terreno para las funcionalidades principales.
+
+  \item \textbf{Evolución backend (núcleo) (final de julio y agosto)}
+    \begin{itemize}
+      \item Flyway: adición de esquema \texttt{alsea\_reports} y tabla \texttt{report}.
+      \item Persistencia de informes y endpoints de consulta/descarga.
+      \item Spring Batch: implementación de la generación asíncrona de informes.
+      \item Probe de duplicidad: comprobación del bloqueo de informes idénticos en menos de 5 min.
+      \item Métricas de tiempos: registro para soporte y monitorización.
+      \item Pruebas durante todo el desarrollo.
+    \end{itemize}
+
+  \item \textbf{Formación Angular + integración frontend (principios de septiembre)}
+    \begin{itemize}
+      \item Curso breve de Angular.
+      \item Implementación de la página de Historial con re-descarga de informes.
+      \item Ajustes en la página del generador con las validaciones pertinentes en cada comprobación.
+      \item Paginación/navegación y metadatos (categoría, tipo, franquicias, fechas).
+    \end{itemize}
+
+  \item \textbf{Cierre, release y documentación (última semana de septiembre)}
+    \begin{itemize}
+      \item Preparación de release: rama de release candidate, builds, version bump y validaciones básicas.
+      \item Actualización de README (frontend/back) y guía de uso.
+      \item Recopilación de evidencias (PRs, capturas, pruebas).
+    \end{itemize}
+\end{itemize}
+
+\chapter{Análisis}
+
+\section{Requisitos}
+
+\subsection{Actores}
+En el sistema intervienen distintos actores y componentes que participan en la generación, almacenamiento y consulta de los informes ejecutivos:
+
+\begin{itemize}
+    \item \textbf{Usuario ALSEA}: empleado o analista encargado de generar y consultar los informes a través de la interfaz web. Puede lanzar nuevas generaciones, visualizar el historial y volver a descargar informes anteriores.
+    \item \textbf{Aplicación web (Web Client)}: cliente desarrollado en Angular que permite la interacción del usuario con el sistema. Presenta formularios, mensajes de estado y botones de acción.
+    \item \textbf{Servicio de reportes (Web Server)}: aplicación de servidor desarrollada con Spring Boot. Gestiona la lógica de negocio, coordina la generación asíncrona de informes, controla la duplicidad y persiste los resultados.
+    \item \textbf{Origen de datos de procesos}: base de datos de ejecución de procesos de BIC (BIC Process Execution) y fuentes adicionales en \textit{Elasticsearch}, de donde se obtienen las variables necesarias para la composición de los informes.
+    \item \textbf{Base de datos de informes}: sistema PostgreSQL donde se almacenan los informes generados, junto con sus metadatos (categoría, tipo, fechas, franquicias, tamaño, tiempo de ejecución, etc.).
+\end{itemize}
+
+\subsection{Requisitos funcionales}
+Los requisitos funcionales definen el comportamiento observable del sistema y las acciones que el usuario puede realizar:
+
+\begin{enumerate}
+    \item \textbf{Generación de informes}:
+    \begin{itemize}
+        \item El sistema debe permitir la generación de informes en formato Excel, ofreciendo la posibilidad de seleccionar los siguientes parámetros: \textit{tipo} (KPI o Producto), \textit{categoría} (Innovación o Alternativa), \textit{franquicia(s)} —una, varias o todas— y \textit{rango de fechas} (opcional), que por defecto abarcará desde el inicio de la disponibilidad de datos.
+        \item La generación se debe realizar de forma \textbf{asíncrona}, sin bloquear la interfaz.
+        \item La aplicación debe mostrar mensajes informativos del estado de la generación: \textit{“Comprobando solicitud”}, \textit{“Generando informe”}, \textit{“Descarga iniciada”}, \textit{“Error de red”} o \textit{“Informe reciente disponible en la pestaña Historial”}.
+    \end{itemize}
+
+    \item \textbf{Control de duplicidad}:
+    \begin{itemize}
+        \item Antes de generar un nuevo informe, el sistema debe comprobar si existe un informe idéntico generado recientemente (p. ej., en los últimos 5 minutos).
+        \item En caso afirmativo, se debe bloquear la nueva generación y notificar al usuario que el informe ya está disponible en el historial.
+        \item Para realizar esta comprobación, se genera una \textbf{firma única} basada en los parámetros de entrada.
+    \end{itemize}
+
+    \item \textbf{Descarga y re-descarga de informes}:
+    \begin{itemize}
+        \item Al finalizar una generación válida, el informe debe descargarse automáticamente en el navegador del usuario.
+        \item El informe debe almacenarse en la base de datos para su consulta futura.
+        \item El usuario podrá volver a descargar cualquier informe desde la pestaña \textit{Historial}.
+    \end{itemize}
+
+    \item \textbf{Historial de informes}:
+    \begin{itemize}
+        \item El sistema debe disponer de una página de \textit{Historial} que muestre todos los informes generados, junto con sus metadatos: fecha de creación, categoría de proceso, tipo de informe, franquicias a las que hace referencia (marcas) y rango de fechas.
+        \item El historial debe estar ordenado de forma descendente (más recientes primero).
+        \item Debe implementarse paginación mediante botones \textit{“5 anteriores”} y \textit{“5 siguientes”}.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Requisitos no funcionales}
+Los requisitos no funcionales garantizan la calidad y las propiedades del sistema:
+
+\begin{itemize}
+    \item \textbf{Usabilidad}: interfaz simple e intuitiva, con botones y mensajes claros que guíen al usuario en todo momento.
+    \item \textbf{Rendimiento}: la ejecución de informes no debe bloquear la aplicación; la respuesta del historial debe ser inmediata.
+    \item \textbf{Confiabilidad}: almacenamiento persistente en base de datos; control de duplicidad para evitar sobrecarga.
+    \item \textbf{Mantenibilidad}: estructura modular en capas (controladores, servicios, utilidades) y cobertura de pruebas unitarias e integradas.
+    \item \textbf{Escalabilidad}: posibilidad de ejecutar múltiples trabajos de generación en paralelo mediante Spring Batch y Docker.
+    \item \textbf{Seguridad}: control de acceso a endpoints y protección del contenido de los informes.
+    \item \textbf{Observabilidad}: registro de métricas, logs estructurados y seguimiento de procesos.
+    \item \textbf{Compatibilidad}: funcionamiento correcto en navegadores modernos y exportación a formatos Excel estándar.
+\end{itemize}
+
+\subsection{Historias de usuario}
+A continuación se detallan las principales historias de usuario definidas para el proyecto:
+
+\begin{itemize}
+    \item \textbf{HU01 – Generar informe}: 
+    Como usuario, quiero seleccionar los parámetros de tipo, categoría, franquicias y rango de fechas para generar un informe Excel personalizado.
+    
+    \item \textbf{HU02 – Visualizar estados de generación}: 
+    Como usuario, quiero recibir notificaciones sobre el estado del informe (comprobando, generando, completado, error, duplicado) para conocer el progreso.
+
+    \item \textbf{HU03 – Control de duplicidad}: 
+    Como usuario, quiero que el sistema detecte y bloquee la generación de informes idénticos para evitar duplicidades innecesarias.
+
+    \item \textbf{HU04 – Descarga automática}: 
+    Como usuario, quiero que el informe se descargue automáticamente una vez generado.
+
+    \item \textbf{HU05 – Historial de informes}: 
+    Como usuario, quiero poder consultar un listado con todos los informes generados, ver su información.
+
+    \item \textbf{HU06 – Re-descarga}: 
+    Como usuario, quiero volver a descargar un informe anterior sin tener que generarlo de nuevo.
+\end{itemize}
+
+\section{Arquitectura del sistema}
+La aplicación sigue una arquitectura \textbf{cliente-servidor} basada en servicios web REST y procesamiento asíncrono.
+
+\subsection{Cliente (Angular)}
+El cliente web, desarrollado en Angular, gestiona la interacción del usuario y las peticiones al servidor:
+\begin{itemize}
+    \item Página principal: módulo \textit{Report Generator}, donde se configuran los parámetros y se lanza la generación.
+    \item Página secundaria: módulo \textit{Report History}, donde se visualizan y descargan los informes existentes.
+    \item Comunicación con el servidor mediante servicios HTTP, con notificaciones de estado y validaciones de entrada.
+\end{itemize}
+
+\subsection{Servidor (Spring Boot y Spring Batch)}
+El servidor gestiona la lógica principal:
+\begin{itemize}
+    \item Controladores REST que reciben solicitudes de generación.
+    \item Servicio de duplicidad (\textit{Probe}) que calcula una firma única de parámetros.
+    \item Ejecución asíncrona mediante \textbf{Spring Batch}, con jobs y steps configurables.
+    \item Persistencia de resultados y metadatos en \textbf{PostgreSQL}.
+    \item Generación de ficheros Excel con \textbf{Aspose Cells}.
+\end{itemize}
+
+\subsection{Capa de datos}
+\begin{itemize}
+    \item Fuentes de información: \textbf{BIC Process Execution} y \textbf{Elasticsearch}, de las que se extraen las variables necesarias.
+    \item Almacenamiento: \textbf{PostgreSQL} con migraciones controladas por \textbf{Flyway}.
+\end{itemize}
+
+\section{Interfaz de usuario}
+
+La interfaz de usuario original del Report Service presentaba un diseño sencillo y funcional, pero con limitaciones evidentes desde el punto de vista de la experiencia de usuario. Se trataba de una única página web donde el usuario podía configurar los parámetros básicos del informe: tipo (KPI o Producto), categoría (Innovación o Alternativa), selección de franquicias y un rango de fechas opcional.\\
+
+Una vez configurados estos parámetros, el usuario podía solicitar la generación del informe mediante un botón de descarga. El sistema procesaba la solicitud de forma síncrona, bloqueando la interfaz durante todo el proceso de generación, lo que podía resultar en tiempos de espera prolongados sin retroalimentación clara sobre el estado del proceso. Al finalizar, el informe Excel se descargaba directamente al navegador del usuario.\\
+
+El diseño inicial, aunque funcional, presentaba carencias de usabilidad y no incluía historial ni procesamiento asíncrono. Las principales limitaciones eran: ausencia de historial, falta de retroalimentación durante la generación, procesamiento síncrono que bloqueaba la interfaz, diseño anticuado y ausencia de control de duplicidad. Estas carencias motivaron el desarrollo de una nueva interfaz modernizada (capítulo 7).\\
+
+TODO: Insertar aquí imagen de la interfaz antigua\\
+
+\section{Modelo conceptual de datos}
+
+El almacenamiento de informes se realiza en la tabla \texttt{report} del esquema \texttt{alsea\_reports}, creada y versionada mediante migraciones de \textit{Flyway}. El modelo se centra en una única entidad persistente, \textbf{Report} (\texttt{ReportEntity}), que encapsula tanto los metadatos como el contenido binario del fichero Excel. Esta entidad se diseñó para cumplir con los requisitos funcionales y no funcionales del sistema, garantizando la trazabilidad, control de duplicidad y capacidad de re-descarga.\\
+
+\subsection*{Entidad principal: \textit{Report} (\textit{ReportEntity})}
+
+\setlength{\tabcolsep}{6pt}%
+\renewcommand{\arraystretch}{1.15}%
+
+{\small
+\rowcolors{3}{udcgray!08}{white}
+
+\begin{longtable}{@{} p{0.22\textwidth} p{0.28\textwidth} p{0.08\textwidth} p{0.42\textwidth} @{}}
+\caption{Atributos de la entidad \textit{Report} en \textit{alsea\_reports.report}.}
+\label{tab:modelo-informe}\\
+
+\toprule
+\rowcolor{udcpink!20}
+\textbf{Campo (columna)} &
+\textbf{Tipo lógico (Java / SQL)} &
+\textbf{Nulo} &
+\textbf{Descripción} \\
+\midrule
+\endfirsthead
+
+\multicolumn{4}{r}{\small\itshape (continúa de la página anterior)}\\
+\toprule
+\rowcolor{udcpink!20}
+\textbf{Campo (columna)} &
+\textbf{Tipo lógico (Java / SQL)} &
+\textbf{Nulo} &
+\textbf{Descripción} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{4}{r}{\small\itshape (continúa en la siguiente página)}\\
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+\texttt{id} & UUID / UUID & No & Identificador único del informe (clave primaria).\\
+\texttt{file\_name} & String / varchar(512) & No & Nombre del fichero Excel generado (incluye extensión).\\
+\texttt{report\_type} & enum ReportType / varchar & No & Tipo de informe: \texttt{KPI} o \texttt{PRODUCT}.\\
+\texttt{report\_category} & enum ReportCategory / varchar & No & Categoría de proceso: \texttt{INNOVATION} o \texttt{ALTERNATIVE}.\\
+\texttt{created\_at} & LocalDateTime / timestamp & No & Fecha y hora de creación del informe.\\
+\texttt{start\_date} & LocalDate / date & Sí & Fecha de inicio del rango temporal (opcional).\\
+\texttt{end\_date} & LocalDate / date & Sí & Fecha de fin del rango temporal (opcional).\\
+\texttt{franchises} & String / text & No & Franquicia(s) seleccionadas; se almacena como cadena (p.\,ej., lista separada por comas).\\
+\texttt{file\_size} & Long / bigint & No & Tamaño del fichero Excel en bytes (útil para diagnóstico y control).\\
+\texttt{content} & byte[] / bytea & No & Contenido binario del Excel (workbook).\\
+
+\end{longtable}
+\rowcolors{2}{}{}
+}
+
+\paragraph{Observaciones de diseño:}
+\begin{itemize}
+  \item Los \textbf{tipos} \texttt{report\_type} y \texttt{report\_category} se almacenan como \texttt{varchar} (\texttt{@Enumerated(EnumType.STRING)}) para mantener legibilidad y evitar dependencia de ordinales.
+  \item El \textbf{control de duplicidad} (``probe'') se implementa en la lógica de dominio antes de persistir; no existe un campo dedicado en la tabla. La detección se realiza calculando una firma a partir de \textit{tipo, categoría, franquicias y fechas} y verificando ventanas temporales (e.g., 5 minutos).
+  \item El \textbf{historial} se soporta directamente gracias al almacenamiento del \texttt{content} y metadatos, es decir, la re-descarga no requiere regeneración.
+\end{itemize}
+
+TODO: Insertar aquí imagen de ejemplo de la tabla de report en dbeaver\\
+
+\chapter{Diseño}
+\section{Arquitectura tecnológica del sistema}
+\section{Diseño de la aplicación}
+\subsection{Cliente}
+\subsection{Servidor}
+\subsection{Interacción cliente – servidor}
+
+\chapter{Implementación y pruebas}
+
+\section{Tareas de mejora}
+
+Durante el desarrollo del proyecto, se abordaron diversas tareas de mejora que no solo añadieron nuevas funcionalidades, sino que también optimizaron la calidad, seguridad y mantenibilidad del código existente. Estas tareas se clasificaron en diferentes categorías según su naturaleza y prioridad, y se gestionaron a través del sistema de seguimiento Jira como parte del EPIC "Improvements for ALSEA Project in 2025 Q3 \& Q4".\\
+
+Las tareas de mejora se distribuyeron a lo largo de los tres meses de prácticas, abordando aspectos críticos como la seguridad de las dependencias, la cobertura de pruebas, la refactorización del código y la eliminación de duplicaciones. A continuación, se describen en detalle las principales categorías de tareas de mejora abordadas durante el proyecto.
+
+\subsection{Vulnerabilidades}
+
+El \textit{frontend} presentaba inicialmente múltiples vulnerabilidades (\textit{CVEs}) asociadas a sus dependencias. En un primer momento, el origen del problema se debía en parte a la coexistencia de los gestores de paquetes \textit{npm} y \textit{Yarn}, lo que generaba inconsistencias en el árbol de dependencias y diferentes resoluciones de versiones según el gestor empleado. Una vez unificada la gestión en \textit{Yarn}, las vulnerabilidades no desaparecieron por completo, ya que la versión de \textit{Angular} utilizada (15) era considerablemente anterior, lo que limitaba el acceso a versiones parcheadas de algunas librerías, tal y como se recoge en la documentación técnica.\\
+
+\textbf{Estrategia adoptada}: 
+
+\begin{enumerate}
+    \item \textbf{Estandarización en Yarn}: se eliminaron los ficheros \texttt{package-lock.json}, se configuró \textit{Yarn} como gestor único en los archivos \texttt{angular.json} y \texttt{package.json}, y se realizó un proceso de deduplicación con \texttt{yarn-deduplicate} seguido de una reinstalación completa de dependencias. Esta medida permitió estabilizar el entorno de desarrollo y homogeneizar la instalación en local y en CI.
+    
+    \item \textbf{Mitigación mediante \texttt{resolutions}}: dado que la actualización a \textit{Angular 16+} quedaba fuera del alcance del proyecto, se optó por emplear el bloque \texttt{resolutions} de \textit{Yarn} para forzar versiones parcheadas de dependencias transitivas, sobrescribiendo las versiones vulnerables solicitadas por los paquetes padre. Esta técnica permitió corregir gran parte de los avisos de seguridad sin alterar el núcleo del framework.
+\end{enumerate}
+
+\textbf{Vulnerabilidades mitigadas}: \texttt{webpack-dev-middleware} (HIGH, Path Traversal), \texttt{path-to-regexp} (HIGH), \texttt{webpack}, \texttt{postcss}, \texttt{@babel/runtime} (MODERATE) y \texttt{tmp} (LOW).\\
+
+\textbf{Situación final}: tras la estandarización y las \texttt{resolutions}, el número de vulnerabilidades se redujo significativamente, quedando solo tres \textit{CVEs} menores vinculadas a dependencias del tooling de \textit{Angular}. Dado que su impacto era limitado y no afectaba al entorno de ejecución, se decidió priorizar la integración funcional completa entre el \textit{frontend} y el \textit{backend} actualizado con las nuevas funcionalidades anteriormente comentadas. Como trabajo futuro se plantea la actualización del proyecto a \textit{Angular 16+}, lo que permitiría eliminar el bloque de \texttt{resolutions} y resolver de forma nativa las vulnerabilidades remanentes.
+
+
+\subsection{Coverage}
+\subsection{Refactorización}
+\subsection{Duplicación}
+\section{Spring Batch discussion dificultades técnicas}
+\section{Pruebas}
+\subsection{Testing unitario}
+\subsection{Testing de integración}
+\subsection{Pruebas manuales nosotras (QA)}
+
+\chapter{Solución desarrollada}
+\section{Introducción}
+
+En este capítulo se describe la solución desarrollada durante el proyecto, enfocada en la modernización y mejora de la interfaz de usuario del Report Service. A diferencia del sistema original, que ofrecía únicamente una pantalla básica de generación de informes, la nueva solución incorpora funcionalidades avanzadas que mejoran significativamente la experiencia del usuario y las capacidades del sistema.\\
+
+Las principales mejoras implementadas incluyen:
+
+\begin{itemize}
+    \item Una interfaz renovada para el generador de informes con retroalimentación en tiempo real sobre el estado del proceso.
+    \item Un módulo completamente nuevo de historial que permite consultar y re-descargar informes previamente generados.
+    \item Validaciones mejoradas y mensajes informativos que guían al usuario durante todo el flujo de trabajo.
+    \item Control de duplicidad integrado que evita la regeneración innecesaria de informes idénticos.
+\end{itemize}
+
+A continuación, se detallan cada una de las páginas que componen la solución desarrollada.
+
+\section{Página de Generar}
+
+La página de generación de informes constituye el núcleo de la interfaz de usuario. Esta pantalla permite al usuario configurar todos los parámetros necesarios para crear un informe personalizado y recibir retroalimentación inmediata sobre el proceso.\\
+
+En una primera fase de diseño, se había planteado la existencia de tres interfaces principales: una pantalla inicial a modo de menú de inicio desde la que el usuario podría acceder tanto al historial de informes como a la página de generación. Sin embargo, tras una discusión dentro del equipo, se concluyó que dicha estructura añadía una capa innecesaria de navegación y no aportaba valor real al flujo de uso. Se decidió, por tanto, simplificar la experiencia del usuario manteniendo únicamente dos interfaces —\textit{Generar informe} e \textit{Historial}—, siendo la primera la principal y punto de entrada de la aplicación.\\
+
+\subsection{Funcionalidad}
+
+\begin{itemize}
+  \item Permite configurar los parámetros del informe.
+  \item Muestra notificaciones en tiempo real del estado de la generación.
+  \item Descarga automática del informe al finalizar.
+  \item Incluye un botón para navegar al historial.
+\end{itemize}
+
+\subsection{Diseño de la interfaz}
+
+La interfaz del generador se ha diseñado para minimizar la incertidumbre del usuario: los controles relevantes se deshabilitan mientras una generación está en curso, se muestran mensajes claros sobre el estado del proceso y se ofrece ayuda contextual para elegir parámetros. Se incorporan también medidas de accesibilidad y opciones de reintento o cancelación en caso de fallos transitorios. Cuando el sistema detecta un informe idéntico reciente, la UI sugiere al usuario re-descargar desde Historial en lugar de volver a generar, respetando la política de control de duplicidad del backend.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{generador.png}
+  \caption{Interfaz principal del módulo de generación de informes.}
+  \label{fig:generador}
+\end{figure}
+
+\subsection{Flujo de interacción}
+
+El flujo de trabajo implementado en la página de generación garantiza una experiencia coherente y eficiente. El siguiente diagrama ilustra el proceso completo desde que el usuario accede a la página hasta que puede re-descargar el informe desde el historial.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{img/diagrama_docu.jpg}
+  \caption{Diagrama de flujo del proceso de generación de informes.}
+  \label{fig:flujo-generador}
+\end{figure}
+
+Como se observa en la figura~\ref{fig:flujo-generador}, el proceso comienza cuando el usuario selecciona los parámetros del informe y pulsa el botón \textit{Generar}. En ese momento, el sistema realiza una comprobación de duplicidad para verificar si existe un informe idéntico generado en los últimos 5 minutos. Si se detecta un duplicado, el sistema muestra un aviso informando al usuario de que el informe ya está disponible en el historial, evitando así una regeneración innecesaria. En caso contrario, el proceso continúa con la descarga local del Excel generado y el almacenamiento del informe en la base de datos. Finalmente, el usuario puede acceder en cualquier momento a la página de historial para re-descargar el informe sin necesidad de volver a generarlo.
+
+\section{Página de Historial}
+
+La página de historial es una funcionalidad completamente nueva desarrollada en este proyecto. Antes de esta mejora, el sistema no contaba con ningún mecanismo para consultar informes previamente generados, obligando a los usuarios a regenerarlos cada vez que necesitaban acceder a información pasada.
+
+\subsection{Funcionalidad}
+
+\begin{itemize}
+  \item Presenta una tabla con todos los informes generados.
+  \item Cada fila incluye columnas de descarga, fecha de creación, tipo, categoría, franquicia(s), fechas y tamaño.
+  \item Implementa paginación (\textit{5 anteriores} / \textit{5 siguientes}).
+  \item Los informes se ordenan de los más recientes a los más antiguos.
+  \item Permite la re-descarga directa de cualquier informe almacenado.
+\end{itemize}
+
+\subsection{Diseño de la interfaz}
+
+El diseño de la tabla de historial prioriza la claridad y la facilidad de uso. Cada informe muestra toda la información relevante de forma estructurada, permitiendo al usuario identificar rápidamente el documento que necesita. El botón de descarga en cada fila facilita el acceso inmediato al contenido sin necesidad de regenerar el informe.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{historial.png}
+  \caption{Vista de la página de historial de informes generados.}
+  \label{fig:historial}
+\end{figure}
+
+\chapter{Conclusión y trabajo futuro}
+
+\section{Conclusiones}
+
+Este Trabajo de Fin de Grado documenta la modernización del módulo Report Service en la plataforma BIC para ALSEA, desarrollado durante tres meses de prácticas en GBTEC Software AG. Los objetivos se cumplieron satisfactoriamente, transformando una herramienta funcional pero limitada en un sistema moderno y eficiente.\\
+
+Entre los logros más significativos del proyecto destacan:
+
+\begin{itemize}
+    \item \textbf{Implementación de almacenamiento histórico}: se desarrolló un sistema completo de persistencia de informes en PostgreSQL, utilizando Flyway para el versionado del esquema de base de datos. Esto ha eliminado la necesidad de regenerar informes cada vez que se requiere consultar información pasada, mejorando significativamente la eficiencia operativa.
+    
+    \item \textbf{Procesamiento asíncrono con Spring Batch}: la introducción de generación asíncrona mediante Spring Batch ha resuelto el problema de bloqueo de la interfaz, permitiendo que los usuarios continúen interactuando con la aplicación mientras se generan los informes. Esto ha mejorado notablemente la experiencia de usuario, especialmente en informes de gran tamaño.
+    
+    \item \textbf{Control de duplicidad}: el sistema de verificación de duplicados basado en firmas únicas ha demostrado ser efectivo para evitar la generación redundante de informes idénticos en ventanas temporales cortas, reduciendo la carga del servidor y optimizando el uso de recursos.
+    
+    \item \textbf{Interfaz de usuario modernizada}: el desarrollo de una nueva interfaz con retroalimentación en tiempo real y una página de historial completamente nueva ha transformado la experiencia de usuario, pasando de una interfaz anticuada y sin funcionalidades avanzadas a una herramienta moderna e intuitiva.
+    
+    \item \textbf{Mejora de la calidad del código}: las tareas de refactorización, reducción de duplicidad y aumento de cobertura de pruebas han mejorado sustancialmente la mantenibilidad del código, facilitando futuras evoluciones del sistema.
+    
+    \item \textbf{Gestión de vulnerabilidades}: se logró reducir significativamente el número de vulnerabilidades de seguridad en el frontend mediante la estandarización en Yarn y el uso estratégico de \texttt{resolutions}, equilibrando seguridad con estabilidad del sistema.
+\end{itemize}
+
+Desde el punto de vista del aprendizaje personal, este proyecto ha proporcionado una experiencia invaluable en el desarrollo de software empresarial real, permitiendo aplicar conocimientos teóricos de la titulación en un contexto profesional. La metodología ágil empleada, las revisiones de código, la gestión de tareas en Jira y el trabajo con tecnologías modernas como Spring Batch, Angular, PostgreSQL y Elasticsearch han enriquecido significativamente la formación práctica.\\
+
+Además, el proyecto ha puesto de manifiesto la importancia de equilibrar diferentes aspectos del desarrollo de software: funcionalidad, seguridad, rendimiento, mantenibilidad y experiencia de usuario. Las decisiones tomadas durante el proyecto, como priorizar la funcionalidad sobre la resolución de vulnerabilidades menores, ilustran el tipo de compromisos que se deben gestionar en entornos de desarrollo reales con limitaciones de tiempo y recursos.\\
+
+En conclusión, el Report Service modernizado representa una mejora sustancial sobre el sistema original, proporcionando a ALSEA una herramienta más potente, fiable y escalable para la generación y gestión de informes ejecutivos. El proyecto ha cumplido sus objetivos técnicos y formativos, dejando una base sólida para futuras ampliaciones y mejoras del sistema.
+
+\section{Posibles ampliaciones futuras}
+
+Aunque el proyecto ha logrado cumplir con los objetivos planteados, existen diversas líneas de trabajo que podrían abordarse en el futuro para seguir mejorando el Report Service. Estas ampliaciones se han identificado durante el desarrollo del proyecto y representan oportunidades para aumentar la funcionalidad, seguridad y usabilidad del sistema.
+
+\subsection{Actualización de la versión mayor de Angular}
+
+Como se mencionó en el apartado de vulnerabilidades, una de las principales mejoras pendientes es la actualización de Angular de la versión 15 a una versión más reciente. Esta actualización permitiría:
+
+\begin{itemize}
+    \item Eliminar el bloque de \texttt{resolutions} del \texttt{package.json}, permitiendo que las dependencias se actualicen automáticamente a versiones seguras.
+    \item Resolver las tres vulnerabilidades restantes que no pudieron mitigarse sin cambiar de versión mayor.
+    \item Aprovechar las nuevas funcionalidades y mejoras de rendimiento de versiones más recientes de Angular.
+    \item Reducir los avisos de incompatibilidad que actualmente genera el uso de \texttt{resolutions}.
+\end{itemize}
+
+Sin embargo, esta actualización requiere un proceso de migración cuidadoso, siguiendo las guías oficiales de Angular para cada versión mayor, lo que implica una dedicación considerable de tiempo y pruebas exhaustivas.
+
+\subsection{Mejoras en la gestión del historial}
+
+Una de las funcionalidades más solicitadas para futuras versiones es la ampliación de las capacidades de gestión del historial de informes. Específicamente, se ha identificado la necesidad de implementar:
+
+\subsubsection{Eliminación de informes}
+
+Actualmente, todos los informes generados se almacenan indefinidamente en la base de datos. Sería deseable permitir a los usuarios eliminar informes que ya no necesiten, liberando espacio de almacenamiento y facilitando la gestión del historial.\\
+
+El diseño preliminar de esta funcionalidad incluiría:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{img/historial_borrar.png}
+  \caption{Mockup de la interfaz de historial con funcionalidad de eliminación de informes.}
+  \label{fig:historial-borrar}
+\end{figure}
+
+Como se observa en la figura~\ref{fig:historial-borrar}, se añadiría una columna adicional con botones de eliminación para cada informe. Al pulsar el botón de borrar, aparecería un diálogo de confirmación para evitar eliminaciones accidentales.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{img/emergente_borrar.png}
+  \caption{Diálogo de confirmación para la eliminación de informes.}
+  \label{fig:emergente-borrar}
+\end{figure}
+
+La figura~\ref{fig:emergente-borrar} muestra el diseño del diálogo de confirmación que solicitaría al usuario verificar la acción antes de eliminar permanentemente un informe del sistema.
+
+\subsubsection{Otras mejoras planificadas para el historial}
+
+Además de la funcionalidad de eliminación, se han identificado otras mejoras deseables:
+
+\begin{itemize}
+    \item \textbf{Selección múltiple}: implementar checkboxes para seleccionar varios informes y realizar acciones en lote (eliminar múltiples informes, descargar varios informes simultáneamente).
+    \item \textbf{Filtros avanzados}: añadir filtros por categoría, tipo, franquicia, rango de fechas, etc., para facilitar la búsqueda de informes específicos en historiales extensos.
+    \item \textbf{Ordenación personalizable}: permitir ordenar la tabla por diferentes columnas (fecha, tamaño, tipo, categoría).
+    \item \textbf{Exportación del listado}: posibilidad de exportar el listado del historial a CSV o Excel para auditorías o análisis externos.
+\end{itemize}
+
+\subsection{Refactorización adicional del código backend}
+
+Aunque se realizaron importantes tareas de refactorización durante el proyecto que hicieron que se mejorara las métricas de calidad del código, siempre existe margen para mejorar. Las áreas identificadas para futuras mejoras incluyen:
+
+\begin{itemize}
+    \item Mayor modularización de utilidades comunes.
+    \item Ampliación de la cobertura de pruebas unitarias e integradas.
+    \item Optimización de consultas a la base de datos.
+    \item Implementación de patrones de diseño adicionales para mejorar la mantenibilidad.
+\end{itemize}
+
+\subsection{Funcionalidades avanzadas}
+
+Mirando más allá de las mejoras inmediatas, se podrían considerar funcionalidades más ambiciosas:
+
+\begin{itemize}
+    \item \textbf{Programación de informes}: permitir a los usuarios programar la generación automática de informes periódicos.
+    \item \textbf{Notificaciones}: enviar notificaciones cuando un informe esté listo.
+    \item \textbf{Plantillas personalizables}: permitir a los usuarios definir plantillas de informe con métricas específicas.
+    \item \textbf{Dashboard analítico}: crear visualizaciones interactivas de las métricas de los informes sin necesidad de descargar Excel.
+    \item \textbf{Control de acceso granular}: implementar permisos específicos por usuario o rol para la generación y consulta de informes.
+\end{itemize}
+
+Estas ampliaciones futuras representan oportunidades para seguir evolucionando el Report Service hacia una herramienta cada vez más completa y alineada con las necesidades cambiantes de ALSEA.
+
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % Apéndices, glosarios e bibliografía  %
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \appendix
+ \appendixpage
+ \include{anexos/adicional}
+%\include{anexos/...}
+
+ \printglossary[type=\acronymtype,title=\nomeglosarioacronimos]
+ \printglossary[title=\nomeglosariotermos]
+
+ \bibliographystyle{IEEEtranN}
+ \bibliography{\bibconfig,bibliografia/bibliografia}
+ \clearpage
+ 
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

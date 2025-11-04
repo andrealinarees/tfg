@@ -1,0 +1,66 @@
+\xpg@aux {}{spanish}
+\contentsline {chapter}{\numberline {1}Introducción}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motivación}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Objetivos}{3}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Fundamentos tecnológicos}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Estado del arte}{4}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Tecnologías utilizadas}{5}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Web server}{5}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Web client}{6}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Database}{6}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Infraestructura y Despliegue}{6}{subsection.2.2.4}%
+\contentsline {chapter}{\numberline {3}Metodología y planificación}{7}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Metodología de desarrollo}{7}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Adaptación al proyecto}{7}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Herramientas de apoyo}{8}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Planificación y seguimiento}{9}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Análisis}{11}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Requisitos}{11}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Actores}{11}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Requisitos funcionales}{12}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Requisitos no funcionales}{13}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Historias de usuario}{13}{subsection.4.1.4}%
+\contentsline {section}{\numberline {4.2}Arquitectura del sistema}{14}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Cliente (Angular)}{14}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Servidor (Spring Boot y Spring Batch)}{14}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Capa de datos}{14}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Interfaz de usuario}{15}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Modelo conceptual de datos}{15}{section.4.4}%
+\contentsline {paragraph}{Observaciones de diseño:}{16}{paragraph*.6}%
+\contentsline {chapter}{\numberline {5}Diseño}{17}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Arquitectura tecnológica del sistema}{17}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Diseño de la aplicación}{17}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Cliente}{17}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Servidor}{17}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Interacción cliente – servidor}{17}{subsection.5.2.3}%
+\contentsline {chapter}{\numberline {6}Implementación y pruebas}{18}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Tareas de mejora}{18}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Vulnerabilidades}{18}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Coverage}{19}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Refactorización}{19}{subsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.1.4}Duplicación}{19}{subsection.6.1.4}%
+\contentsline {section}{\numberline {6.2}Spring Batch discussion dificultades técnicas}{19}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Pruebas}{19}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Testing unitario}{19}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Testing de integración}{19}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}Pruebas manuales nosotras (QA)}{19}{subsection.6.3.3}%
+\contentsline {chapter}{\numberline {7}Solución desarrollada}{20}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Introducción}{20}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Página de Generar}{20}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Funcionalidad}{21}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Diseño de la interfaz}{21}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.3}Flujo de interacción}{22}{subsection.7.2.3}%
+\contentsline {section}{\numberline {7.3}Página de Historial}{23}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Funcionalidad}{23}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Diseño de la interfaz}{23}{subsection.7.3.2}%
+\contentsline {chapter}{\numberline {8}Conclusión y trabajo futuro}{25}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Conclusiones}{25}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Posibles ampliaciones futuras}{26}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Actualización de la versión mayor de Angular}{27}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}Mejoras en la gestión del historial}{27}{subsection.8.2.2}%
+\contentsline {subsubsection}{Eliminación de informes}{27}{subsubsection*.10}%
+\contentsline {subsubsection}{Otras mejoras planificadas para el historial}{28}{subsubsection*.13}%
+\contentsline {subsection}{\numberline {8.2.3}Refactorización adicional del código backend}{29}{subsection.8.2.3}%
+\contentsline {subsection}{\numberline {8.2.4}Funcionalidades avanzadas}{29}{subsection.8.2.4}%
+\contentsline {chapter}{\numberline {A}Material adicional}{31}{appendix.A}%
+\contentsline {chapter}{Bibliografía}{34}{appendix*.14}%
