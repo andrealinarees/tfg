@@ -1,15 +1,27 @@
-Imágenes:
-2. Diagrama resumen de la BIC Platform (alto nivel) -> arquitectura de la plataforma
-3. Diagrama de los módulos de BIC
-4. Modelo de proceso Simple dentro de design de un BPMN
-5. Diagrama de componentes detallado -> cliente, API, batch,  BD, elasticsearch...
-8. Ejemplo de hoja de reporte (heatmap y retroplanning)
-9. Gráfica de tiempos de ejecución de jobs (?) crear un histograma p.e
-10. Gráfico de sonarCloud -> coverage + duplicidad antes /después.
+********COMANDOS EJECUCION********:
+    1. xelatex memoria_tfg
+    2. makeglossaries memoria_tfg
+    3. bibtex memoria_tfg
+    4. xelatex memoria_tfg
+    5. xelatex memoria_tfg
 
--> Esquema de la tabla report (captura del dbeaver o del create table)
--> Captura de la interfaz vieja para la parte del análisis (preguntarle a ANA)
--> Resovler comentarios de implementación de glosario, bilbiografía, acrónimos etc...
+Cosas que faltan:
+-> Diagrama resumen de la BIC Platform (alto nivel) -> arquitectura de la plataforma
+-> Diagrama de los módulos de BIC
+-> Modelo de proceso Simple dentro de design de un BPMN
+-> Diagrama de componentes detallado -> cliente, API, batch,  BD, elasticsearch...
+-> Gráfica de tiempos de ejecución de jobs (?) crear un histograma p.e
+-> Gráfico de sonarCloud -> coverage + duplicidad antes /después.
+-> Para la última parte fase de rc de alsea
+-> Explicación del entorno de prueba del ansible para QA
+-> Herramientas: jira, GitHub, quay, jfrog artifactory, elasticsearch(log server on premise system), awx, gitflow workflow, github actions, sonarqube
+-> Añadir las citas de los gloasarios y acronimos que faltan que están comentados
+-> Ver que la captura de la tabla de report esté bonita
+-> Resolver comentarios del pdf suyo.
+
+Esperando respuesta:
+-> Ejemplo de hoja de reporte: añadirlo como anexo ????
+-> Arreglar los números rotos de los links a los acrónimos y a los glosarios
 
 *Idea principal para el apartado 5:*
 

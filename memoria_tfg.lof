@@ -4,13 +4,15 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Distribución de horas trabajadas por mes durante el proyecto.}}{9}{figure.caption.5}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Interfaz original del Report Service antes de su modernización.}}{15}{figure.caption.6}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Ejemplo de registros almacenados en la tabla \textit {report} visualizados en DBeaver.}}{17}{figure.caption.8}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Interfaz principal del módulo de generación de informes.}}{22}{figure.caption.7}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Diagrama de flujo del proceso de generación de informes.}}{22}{figure.caption.8}%
-\contentsline {figure}{\numberline {7.3}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Vista de la página de historial de informes generados.}}{24}{figure.caption.9}%
+\contentsline {figure}{\numberline {7.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Interfaz principal del módulo de generación de informes.}}{23}{figure.caption.9}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Diagrama de flujo del proceso de generación de informes.}}{23}{figure.caption.10}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Vista de la página de historial de informes generados.}}{25}{figure.caption.11}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Mockup de la interfaz de historial con funcionalidad de eliminación de informes.}}{28}{figure.caption.11}%
-\contentsline {figure}{\numberline {8.2}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Diálogo de confirmación para la eliminación de informes.}}{28}{figure.caption.12}%
+\contentsline {figure}{\numberline {8.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Mockup de la interfaz de historial con funcionalidad de eliminación de informes.}}{29}{figure.caption.13}%
+\contentsline {figure}{\numberline {8.2}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Diálogo de confirmación para la eliminación de informes.}}{29}{figure.caption.14}%
 \addvspace {10\p@ }

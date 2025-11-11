@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.10.20)  4 NOV 2025 17:03
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.10.20)  11 NOV 2025 18:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1761,29 +1761,46 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count446
 \@thisrulewidth=\dimen340
 )
+(C:\Users\andre\AppData\Local\Programs\MiKTeX\tex/latex/ragged2e\ragged2e.sty
+Package: ragged2e 2023/06/22 v3.6 ragged2e Package
+\CenteringLeftskip=\skip93
+\RaggedLeftLeftskip=\skip94
+\RaggedRightLeftskip=\skip95
+\CenteringRightskip=\skip96
+\RaggedLeftRightskip=\skip97
+\RaggedRightRightskip=\skip98
+\CenteringParfillskip=\skip99
+\RaggedLeftParfillskip=\skip100
+\RaggedRightParfillskip=\skip101
+\JustifyingParfillskip=\skip102
+\CenteringParindent=\skip103
+\RaggedLeftParindent=\skip104
+\RaggedRightParindent=\skip105
+\JustifyingParindent=\skip106
+)
 (memoria_tfg.aux (portada/portada.aux) (anexos/adicional.aux))
 \openout1 = `memoria_tfg.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
 
 Package fontspec Info: 
 (fontspec)             Adjusting the maths setup (use [no-math] to avoid
@@ -1791,67 +1808,67 @@ Package fontspec Info:
 
 \symlegacymaths=\mathgroup7
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 48.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 48.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 48.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 48.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 48.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 48.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 48.
-LaTeX Font Info:    Redeclaring math accent \check on input line 48.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 48.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 48.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 48.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 48.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 48.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 48.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 48.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 48.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 48.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 48.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 48.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 48.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 48.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 48.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 48.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 48.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 52.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 52.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 52.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 52.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 52.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 52.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 52.
+LaTeX Font Info:    Redeclaring math accent \check on input line 52.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 52.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 52.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 52.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 52.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 52.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 52.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 52.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 52.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 52.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 52.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 52.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 52.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 52.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 52.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 52.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 52.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 48.
+(Font)              `operators' in the math version `normal' on input line 52.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/LinLibertine(0)/m/n on input line 48
+(Font)                  OT1/cmr/m/n --> TU/LinLibertine(0)/m/n on input line 52
 .
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 48.
+(Font)              `operators' in the math version `bold' on input line 52.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/LinLibertine(0)/m/n on input line 4
-8.
+(Font)                  OT1/cmr/bx/n --> TU/LinLibertine(0)/m/n on input line 5
+2.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  TU/LinLibertine(0)/m/n --> TU/LinLibertine(0)/m/n on in
-put line 48.
+put line 52.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 (Font)                  OT1/cmr/m/it --> TU/LinLibertine(0)/m/it on input line 
-48.
+52.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/LinLibertine(0)/b/n on input line 4
-8.
+(Font)                  OT1/cmr/bx/n --> TU/LinLibertine(0)/b/n on input line 5
+2.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/LinBiolinum(0)/m/n on input line 48
+(Font)                  OT1/cmss/m/n --> TU/LinBiolinum(0)/m/n on input line 52
 .
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/LinLibertine(5)/m/n on input line 4
-8.
+(Font)                  OT1/cmtt/m/n --> TU/LinLibertine(5)/m/n on input line 5
+2.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  TU/LinLibertine(0)/m/n --> TU/LinLibertine(0)/b/n on in
-put line 48.
+put line 52.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> TU/LinLibertine(0)/b/it on input line
- 48.
+ 52.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/LinBiolinum(0)/b/n on input line 4
-8.
+(Font)                  OT1/cmss/bx/n --> TU/LinBiolinum(0)/b/n on input line 5
+2.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/LinLibertine(5)/b/n on input line 4
-8.
+(Font)                  OT1/cmtt/m/n --> TU/LinLibertine(5)/b/n on input line 5
+2.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1897,7 +1914,7 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: supertabular package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 48.
+Package hyperref Info: Link coloring ON on input line 52.
 
 (memoria_tfg.out) (memoria_tfg.out)
 \@outlinefile=\write6
@@ -1959,7 +1976,7 @@ LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
 
 ])
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/it' will be
-(Font)              scaled to size 10.95pt on input line 55.
+(Font)              scaled to size 10.95pt on input line 59.
 
 
 [1
@@ -1967,51 +1984,33 @@ LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/it' will be
 
 ]
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
-(Font)              scaled to size 10.95pt on input line 57.
+(Font)              scaled to size 10.95pt on input line 61.
 
 
 [2
 
 ]
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 61.
+(Font)              scaled to size 14.4pt on input line 65.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
-(Font)              scaled to size 14.4pt on input line 61.
-
-Underfull \hbox (badness 10000) in paragraph at lines 61--61
-[]\TU/LinLibertine(0)/b/n/14.4 Resumen|
- []
-
-! Undefined control sequence.
-l.64 \justifying
-                
-? 
-
-Underfull \hbox (badness 10000) in paragraph at lines 70--70
-[]\TU/LinLibertine(0)/b/n/14.4 Abstract|
- []
-
-! Undefined control sequence.
-l.73 \justifying
-                
-? 
+(Font)              scaled to size 14.4pt on input line 65.
 
 
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 113.
+(Font)              scaled to size 10.0pt on input line 112.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/sl' in size <10> not avail
 able
 (Font)              Font shape `TU/LinLibertine(0)/m/it' tried instead on input
- line 113.
+ line 112.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/it' will be
-(Font)              scaled to size 10.0pt on input line 113.
+(Font)              scaled to size 10.0pt on input line 112.
 [1
 
 ]
 
 [2]
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
-(Font)              scaled to size 24.88pt on input line 113.
+(Font)              scaled to size 24.88pt on input line 112.
  (memoria_tfg.toc
 
 [3
@@ -2043,40 +2042,13 @@ LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
 ]
 Capítulo 1.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 9.0pt on input line 129.
+(Font)              scaled to size 9.0pt on input line 128.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 129.
-! Illegal parameter number in definition of \Hy@tempa.
-<to be read again> 
-                   s
-l.129 ...ps://europe.alsea.net/alsea#somos-alsea}}
-                                                  
-? 
-! Illegal parameter number in definition of \Hy@tempa.
-<to be read again> 
-                   s
-l.129 ...ps://europe.alsea.net/alsea#somos-alsea}}
-                                                  
-? 
-! Illegal parameter number in definition of \Hy@gtemp.
-<to be read again> 
-                   s
-l.129 ...ps://europe.alsea.net/alsea#somos-alsea}}
-                                                  
-? 
-LaTeX Font Info:    Font shape `TU/LinLibertine(5)/m/n' will be
-(Font)              scaled to size 9.0pt on input line 129.
-
-Underfull \hbox (badness 2564) in paragraph at lines 129--129
-[][][]\TU/LinLibertine(0)/m/n/9 Fuente: página web oficial de ALSEA, disponible
- en [][]$[][][][][] [] [] [] [][][][][][] [] [][][][][] [] [][][] [] [][][][][]
- []
- []
-
+(Font)              scaled to size 5.0pt on input line 128.
 File: img/presencia_internacional.png Graphic file (type bmp)
 <img/presencia_internacional.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 138--139
+Underfull \hbox (badness 10000) in paragraph at lines 137--138
 
  []
 
@@ -2086,17 +2058,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 138--139
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 140--141
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 142--143
+Underfull \hbox (badness 10000) in paragraph at lines 141--142
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--145
+Underfull \hbox (badness 10000) in paragraph at lines 143--144
 
  []
 
@@ -2107,22 +2079,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 144--145
 [3]
 Capítulo 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--173
+Underfull \hbox (badness 10000) in paragraph at lines 171--172
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 174--175
+Underfull \hbox (badness 10000) in paragraph at lines 173--174
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 176--177
+Underfull \hbox (badness 10000) in paragraph at lines 175--176
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--179
+Underfull \hbox (badness 10000) in paragraph at lines 177--178
 
  []
 
@@ -2131,7 +2103,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 178--179
 [4
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
+Underfull \hbox (badness 10000) in paragraph at lines 179--180
 
  []
 
@@ -2139,18 +2111,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 180--181
 
 [5]
 LaTeX Font Info:    Font shape `TU/LinLibertine(5)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 212.
+(Font)              scaled to size 10.95pt on input line 211.
 
 
 [6]
 Capítulo 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--232
+Underfull \hbox (badness 10000) in paragraph at lines 230--231
 
  []
 
 
-Overfull \hbox (2.19092pt too wide) in paragraph at lines 236--237
+Overfull \hbox (2.19092pt too wide) in paragraph at lines 235--236
 []\TU/LinLibertine(0)/b/n/10.95 Iterativo e incremental\TU/LinLibertine(0)/m/n/
 10.95 : cada conjunto de cambios (feature/refactor/fix/chore) se abor-
  []
@@ -2160,7 +2132,7 @@ Overfull \hbox (2.19092pt too wide) in paragraph at lines 236--237
 [7
 
 ]
-Overfull \hbox (46.50189pt too wide) in paragraph at lines 269--270
+Overfull \hbox (46.50189pt too wide) in paragraph at lines 268--269
 []\TU/LinLibertine(0)/b/n/10.95 Base de datos\TU/LinLibertine(0)/m/n/10.95 : DB
 eaver (inspección de PostgreSQL; verificación del esquema \TU/LinLibertine(5)/m
 /n/10.95 alsea_reports
@@ -2172,7 +2144,7 @@ eaver (inspección de PostgreSQL; verificación del esquema \TU/LinLibertine(5)/
 File: img/horas_pormes.jpg Graphic file (type bmp)
 <img/horas_pormes.jpg>
 
-Underfull \hbox (badness 10000) in paragraph at lines 293--294
+Underfull \hbox (badness 10000) in paragraph at lines 292--293
 
  []
 
@@ -2191,29 +2163,26 @@ Capítulo 4.
 [12]
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 457--458
+Underfull \hbox (badness 10000) in paragraph at lines 456--457
 
  []
 
 
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 459--460
+Underfull \hbox (badness 10000) in paragraph at lines 458--459
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 461--462
+Underfull \hbox (badness 10000) in paragraph at lines 460--461
 
  []
 
+File: img/oldui.png Graphic file (type bmp)
+<img/oldui.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 463--464
-
- []
-
-
-Overfull \hbox (25.92245pt too wide) in paragraph at lines 467--468
+Overfull \hbox (25.92245pt too wide) in paragraph at lines 471--472
 []\TU/LinLibertine(0)/m/n/10.95 El almacenamiento de informes se realiza en la 
 tabla \TU/LinLibertine(5)/m/n/10.95 report \TU/LinLibertine(0)/m/n/10.95 del es
 quema \TU/LinLibertine(5)/m/n/10.95 alsea_reports\TU/LinLibertine(0)/m/n/10.95 
@@ -2221,86 +2190,92 @@ quema \TU/LinLibertine(5)/m/n/10.95 alsea_reports\TU/LinLibertine(0)/m/n/10.95
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 467--468
+Underfull \hbox (badness 10000) in paragraph at lines 471--472
 
- []
-
-LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/it' will be
-(Font)              scaled to size 12.0pt on input line 469.
-LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
-(Font)              scaled to size 10.0pt on input line 483.
-
-Overfull \hbox (35.99997pt too wide) in alignment at lines 477--488
- [] [] [] [] 
- []
-
-
-Overfull \hbox (35.99997pt too wide) in alignment at lines 488--498
- [] [] [] [] 
- []
-
-
-Overfull \hbox (35.99997pt too wide) in alignment at lines 498--502
- [] [] [] [] 
- []
-
-
-Overfull \hbox (35.99997pt too wide) in alignment at lines 502--505
- [] [] [] [] 
- []
-
-LaTeX Font Info:    Font shape `TU/LinLibertine(5)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 507.
-
-Overfull \hbox (5.23521pt too wide) in paragraph at lines 510--510
-[]|\TU/LinLibertine(5)/m/n/10 report_category| 
- []
-
-
-Underfull \hbox (badness 1067) in paragraph at lines 510--511
-[]|\TU/LinLibertine(0)/m/n/10 Categoría de proceso: \TU/LinLibertine(5)/m/n/10 
-INNOVATION \TU/LinLibertine(0)/m/n/10 o
- []
-
-
-Underfull \hbox (badness 1092) in paragraph at lines 514--515
-[]|\TU/LinLibertine(0)/m/n/10 Franquicia(s) seleccionadas; se almacena
- []
-
-
-Overfull \hbox (35.99997pt too wide) in alignment at lines 505--518
- [] [] [] [] 
  []
 
 
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 529--530
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/it' will be
+(Font)              scaled to size 12.0pt on input line 473.
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
+(Font)              scaled to size 10.0pt on input line 487.
 
+Overfull \hbox (35.99997pt too wide) in alignment at lines 481--492
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (35.99997pt too wide) in alignment at lines 492--502
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (35.99997pt too wide) in alignment at lines 502--506
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (35.99997pt too wide) in alignment at lines 506--509
+ [] [] [] [] 
+ []
+
+LaTeX Font Info:    Font shape `TU/LinLibertine(5)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 511.
+
+Overfull \hbox (5.23521pt too wide) in paragraph at lines 514--514
+[]|\TU/LinLibertine(5)/m/n/10 report_category| 
+ []
+
+
+Underfull \hbox (badness 1067) in paragraph at lines 514--515
+[]|\TU/LinLibertine(0)/m/n/10 Categoría de proceso: \TU/LinLibertine(5)/m/n/10 
+INNOVATION \TU/LinLibertine(0)/m/n/10 o
+ []
+
+
+Underfull \hbox (badness 1092) in paragraph at lines 518--519
+[]|\TU/LinLibertine(0)/m/n/10 Franquicia(s) seleccionadas; se almacena
+ []
+
+
+Overfull \hbox (35.99997pt too wide) in alignment at lines 509--522
+ [] [] [] [] 
  []
 
 
 
 [16]
+File: img/tabla_dbeaver.jpg Graphic file (type bmp)
+<img/tabla_dbeaver.jpg>
+
+Overfull \hbox (103.14124pt too wide) in paragraph at lines 535--536
+ [][] 
+ []
+
+
+
+[17]
 Capítulo 5.
 
 
-[17
+[18
 
 ]
 Capítulo 6.
 
-Underfull \hbox (badness 10000) in paragraph at lines 550--551
+Underfull \hbox (badness 10000) in paragraph at lines 561--562
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 556--557
+Underfull \hbox (badness 10000) in paragraph at lines 567--568
 
  []
 
 
-Overfull \hbox (10.94455pt too wide) in paragraph at lines 561--562
+Overfull \hbox (10.94455pt too wide) in paragraph at lines 572--573
 \TU/LinLibertine(0)/m/n/10.95 configuró \TU/LinLibertine(0)/m/it/10.95 Yarn \TU
 /LinLibertine(0)/m/n/10.95 como gestor único en los archivos \TU/LinLibertine(5
 )/m/n/10.95 angular.json \TU/LinLibertine(0)/m/n/10.95 y \TU/LinLibertine(5)/m/
@@ -2309,36 +2284,36 @@ n/10.95 package.json\TU/LinLibertine(0)/m/n/10.95 ,
 
 
 
-[18
+[19
 
 ]
 LaTeX Font Info:    Font shape `TU/LinLibertine(5)/b/n' will be
-(Font)              scaled to size 10.95pt on input line 563.
+(Font)              scaled to size 10.95pt on input line 574.
 
-Underfull \hbox (badness 10000) in paragraph at lines 566--567
+Underfull \hbox (badness 10000) in paragraph at lines 577--578
 
  []
 
 
 
-[19]
+[20]
 Capítulo 7.
 
-Underfull \hbox (badness 10000) in paragraph at lines 587--588
+Underfull \hbox (badness 10000) in paragraph at lines 598--599
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 602--603
+Underfull \hbox (badness 10000) in paragraph at lines 613--614
 
  []
 
 
 
-[20
+[21
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 604--605
+Underfull \hbox (badness 10000) in paragraph at lines 615--616
 
  []
 
@@ -2346,50 +2321,50 @@ File: img/generador.png Graphic file (type bmp)
 <img/generador.png>
 
 
-[21]
+[22]
 File: img/diagrama_docu.jpg Graphic file (type bmp)
 <img/diagrama_docu.jpg>
 
 
-[22]
+[23]
 File: img/historial.png Graphic file (type bmp)
 <img/historial.png>
 
 
-[23]
-
 [24]
+
+[25]
 Capítulo 8.
 
-Underfull \hbox (badness 10000) in paragraph at lines 672--673
+Underfull \hbox (badness 10000) in paragraph at lines 683--684
 
  []
 
 
 
-[25
+[26
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 690--691
+Underfull \hbox (badness 10000) in paragraph at lines 701--702
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 692--693
+Underfull \hbox (badness 10000) in paragraph at lines 703--704
 
  []
 
 
 
-[26]
-Overfull \hbox (9.6488pt too wide) in paragraph at lines 708--709
+[27]
+Overfull \hbox (9.6488pt too wide) in paragraph at lines 719--720
 []\TU/LinLibertine(0)/m/n/10.95 Reducir los avisos de incompatibilidad que actu
 almente genera el uso de \TU/LinLibertine(5)/m/n/10.95 resolutions\TU/LinLibert
 ine(0)/m/n/10.95 . 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 719--720
+Underfull \hbox (badness 10000) in paragraph at lines 730--731
 
  []
 
@@ -2397,19 +2372,19 @@ File: img/historial_borrar.png Graphic file (type bmp)
 <img/historial_borrar.png>
 
 
-[27]
+[28]
 File: img/emergente_borrar.png Graphic file (type bmp)
 <img/emergente_borrar.png>
 
 
-[28]
-
 [29]
+
+[30]
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 24.88pt on input line 783.
+(Font)              scaled to size 24.88pt on input line 794.
 
 
-[30
+[31
 
 ]
 \openout2 = `anexos/adicional.aux'.
@@ -2428,23 +2403,32 @@ Package lettrine.sty Info: Targeted height = 21.55566pt
 (lettrine.sty)             reported on input line 4.
 )
 
-[31
+[32
 
 
 ]
 
-[32] (memoria_tfg.acr) (memoria_tfg.gls) (memoria_tfg.bbl
+[33] (memoria_tfg.acr) (memoria_tfg.gls
 
-[33
+[34
+
+
 
 
 ]
+
+[35
+
+
+]) (memoria_tfg.bbl
+
+[36]
 
 Package natbib Warning: Empty `thebibliography' environment on input line 25.
 
 )
 
-[34
+[37
 
 ] (memoria_tfg.aux (portada/portada.aux) (anexos/adicional.aux))
  ***********
@@ -2452,15 +2436,15 @@ LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
 Package rerunfilecheck Info: File `memoria_tfg.out' has not changed.
-(rerunfilecheck)             Checksum: D88B59AE60D87AF58B553157D3C8E99D;7611.
+(rerunfilecheck)             Checksum: 2BC45D398107949E2A6962EDBEC7412C;7802.
  ) 
 Here is how much of TeX's memory you used:
- 39229 strings out of 403197
- 805951 string characters out of 5455936
- 1234416 words of memory out of 5000000
- 67217 multiletter control sequences out of 15000+600000
- 640220 words of font info for 140 fonts, out of 8000000 for 9000
+ 39273 strings out of 403197
+ 807996 string characters out of 5455936
+ 1237598 words of memory out of 5000000
+ 67257 multiletter control sequences out of 15000+600000
+ 640212 words of font info for 139 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 98i,12n,145p,2518b,651s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,12n,145p,2518b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on memoria_tfg.pdf (44 pages).
+Output written on memoria_tfg.pdf (47 pages).

@@ -39,7 +39,11 @@
 \usepackage{tabularx}    % permite táboas con columnas de anchura determinada
 \usepackage{graphicx}
 \usepackage{booktabs}
+\usepackage{ragged2e}
 \graphicspath{{img/}}
+
+\usepackage[acronym]{glossaries}
+\makeglossaries
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Corpo                                                                        %
@@ -57,19 +61,14 @@
  \begin{agradecementos}
  \blindtext                % substitúe este comando polo teu texto de agradecementos
  \end{agradecementos}
- \begin{center}
-    \section*{Resumen}
-\end{center}
 
+\section*{Resumen}
 \justifying
 En el contexto de la gestión de procesos empresariales y la generación automática de informes ejecutivos, este Trabajo de Fin de Grado presenta la modernización del módulo Report Service para ALSEA, desarrollado por GBTEC Software AG. El proyecto aborda la optimización del flujo de generación de informes en formato Excel, mediante la incorporación de almacenamiento histórico, procesamiento asíncrono, control de duplicidad y mejoras en la experiencia de usuario. Para ello, se aplicó una metodología ágil iterativa e incremental, utilizando tecnologías como Spring Batch, Flyway, PostgreSQL, Elasticsearch y Angular. Las mejoras contribuyen a aumentar la escalabilidad, robustez y calidad del servicio, alineándose con las necesidades operativas y analíticas de ALSEA.
 
 \vspace{1cm}
 
-\begin{center}
-    \section*{Abstract}
-\end{center}
-
+\section*{Abstract}
 \justifying
 Within the scope of business process management and automatic generation of executive reports, this undergraduate thesis presents the modernization of the Report Service module for ALSEA, developed by GBTEC Software AG. The project focuses on optimizing the report generation workflow in Excel format by incorporating historical storage, asynchronous processing, duplication control, and user experience improvements. An iterative and incremental agile methodology was applied, employing technologies such as Spring Batch, Flyway, PostgreSQL, Elasticsearch, and Angular. These enhancements contribute to increased scalability, robustness, and service quality, aligning with ALSEA's operational and analytical needs.
 
@@ -126,7 +125,7 @@ Within the scope of business process management and automatic generation of exec
 
 \section{Motivación}
 
-ALSEA, S.A.B. de C.V., es una empresa multinacional mexicana dedicada a la operación de marcas de restauración franquiciadas. Con presencia en América Latina y Europa, se ha consolidado como uno de los principales operadores del sector, gestionando cadenas tan conocidas como Starbucks, Burger King, Domino’s Pizza, Vips o Foster’s Hollywood. En España, su actividad se articula a través de Food Service Project, que engloba establecimientos de restauración rápida, cafeterías y restaurantes de comida casual .\footnote{Fuente: página web oficial de ALSEA, disponible en \url{https://europe.alsea.net/alsea#somos-alsea}}
+ALSEA, S.A.B. de C.V., es una empresa multinacional mexicana dedicada a la operación de marcas de restauración franquiciadas. Con presencia en América Latina y Europa, se ha consolidado como uno de los principales operadores del sector, gestionando cadenas tan conocidas como Starbucks, Burger King, Domino’s Pizza, Vips o Foster’s Hollywood. En España, su actividad se articula a través de Food Service Project, que engloba establecimientos de restauración rápida, cafeterías y restaurantes de comida casual .\footnote{Fuente: página web oficial de ALSEA, disponible en \href{https://europe.alsea.net/alsea\#somos-alsea}{Alsea Europa}}
 
 \begin{figure}[H]
   \centering
@@ -137,9 +136,9 @@ ALSEA, S.A.B. de C.V., es una empresa multinacional mexicana dedicada a la opera
 
 La magnitud de esta operación internacional hace que ALSEA maneje diariamente un volumen muy elevado de información relativa a ventas, operaciones, proyectos de innovación, indicadores de desempeño y actividades internas. En este contexto, disponer de datos fiables, centralizados y fácilmente accesibles resulta fundamental para evaluar el rendimiento de las franquicias, identificar posibles desviaciones y tomar decisiones estratégicas fundamentadas. Sin herramientas de análisis adecuadas, la gestión de este conocimiento se vuelve compleja y poco eficiente.\\
 
-Para dar respuesta a esta necesidad, GBTEC Software AG, compañía alemana especializada en soluciones de gestión de procesos de negocio (BPM), arquitectura empresarial (EAM) y gobierno, riesgo y cumplimiento (GRC), ofrece la \textit{BIC Platform}, un ecosistema de software que permite modelar, ejecutar y analizar procesos empresariales. Dentro de este marco, se desarrolló para ALSEA un módulo específico denominado \textit{Report Service}, cuya finalidad es transformar los datos de la plataforma de Process Execution en informes ejecutivos descargables en formato Excel.\\
+Para dar respuesta a esta necesidad, GBTEC Software AG, compañía alemana especializada en soluciones de gestión de procesos de negocio (\acrshort{bpm}), arquitectura empresarial (\acrshort{eam}) y gobierno, riesgo y cumplimiento (\acrshort{grc}), ofrece la \textit{BIC Platform}, un ecosistema de software que permite modelar, ejecutar y analizar procesos empresariales. Dentro de este marco, se desarrolló para ALSEA un módulo específico denominado \textit{Report Service}, cuya finalidad es transformar los datos de la plataforma de Process Execution en informes ejecutivos descargables en formato Excel.\\
 
-La \textit{BIC Platform} se despliega habitualmente en modalidad cloud (BIC Cloud) y está compuesta por varios módulos que cubren el ciclo de vida de los procesos: \textit{Process Design} para modelar procesos mediante diagramas BPMN, y \textit{Process Execution} para ejecutar y automatizar esos procesos, gestionando instancias, tareas y persistencia de variables. El \textit{Report Service} extrae información de \textit{Process Execution} (combinada con consultas a \textit{Elasticsearch}) para componer informes Excel con KPIs, retroplannings, heatmaps y otras métricas solicitadas por ALSEA.\\
+La \textit{BIC Platform} se despliega habitualmente en modalidad cloud (BIC Cloud) y está compuesta por varios módulos que cubren el ciclo de vida de los procesos: \textit{Process Design} para modelar procesos mediante diagramas BPMN, y \textit{Process Execution} para ejecutar y automatizar esos procesos, gestionando instancias, tareas y persistencia de variables. El \textit{Report Service} extrae información de \textit{Process Execution} (combinada con consultas a \gls{elasticsearch}) para componer informes Excel con \acrshort{kpi}, \gls{retroplanning}, \gls{heatmap} y otras métricas solicitadas por ALSEA.\\
 
 El Report Service original ofrecía una solución sencilla y funcional: la interfaz permitía seleccionar el tipo de informe (KPI o Producto), la categoría (Innovación o Alternativa), una o varias franquicias y un rango de fechas. Con esta información, el backend recuperaba los datos correspondientes, generaba un libro de Excel con múltiples hojas y lo devolvía al usuario para su descarga local.\\
 
@@ -153,7 +152,7 @@ El presente Trabajo de Fin de Grado documenta, analiza y evalúa las mejoras int
     \item Ampliar la funcionalidad del servicio con almacenamiento histórico en base de datos.
     \item Incrementar la mantenibilidad y calidad del código, reduciendo duplicaciones y aumentando la cobertura de pruebas.
     \item Optimizar la experiencia de usuario en la interfaz de generación de informes y acceso al historial.
-    \item Introducir procesamiento asíncrono con Spring Batch, evitando bloqueos en la interfaz.
+    \item Introducir procesamiento asíncrono con \gls{springbatch}, evitando bloqueos en la interfaz.
     \item Registrar métricas de ejecución y tiempos de creación de informes.
     \item Añadir control de duplicidad para evitar regeneraciones innecesarias.
     \item Permitir la re-descarga de informes desde el historial.
@@ -190,9 +189,9 @@ El desarrollo del Report Service se apoyó en un conjunto de tecnologías que ab
 \begin{itemize}
     \item \textbf{Spring Boot}: framework de desarrollo en Java que permite crear aplicaciones web y microservicios de forma rápida y estructurada. Aporta configuración automática, inyección de dependencias y un ecosistema rico de librerías.
     \item \textbf{Spring Batch}: módulo de Spring orientado al procesamiento por lotes. Se utilizó para implementar la generación asíncrona de informes, gestionando \textit{jobs} y \textit{steps} de manera controlada.
-    \item \textbf{Hibernate / JPA}: framework de mapeo objeto-relacional que simplifica el acceso a la base de datos mediante entidades Java, evitando tener que escribir consultas SQL manuales.
-    \item \textbf{Aspose Cells}: librería de generación y manipulación de Excel utilizada para dar formato, estilos y estructura a los informes.
-    \item \textbf{Elasticsearch}: motor de búsqueda utilizado como fuente de datos adicional, especialmente para recuperar información de instancias de procesos con consultas JSON flexibles.
+    \item \textbf{Hibernate / \acrshort{jpa}}: framework de mapeo objeto-relacional que simplifica el acceso a la base de datos mediante entidades Java, evitando tener que escribir consultas \acrshort{sql} manuales.
+    \item \textbf{Aspose Cells}: \gls{aspose} es una librería de generación y manipulación de Excel utilizada para dar formato, estilos y estructura a los informes.
+    \item \textbf{Elasticsearch}: motor de búsqueda utilizado como fuente de datos adicional, especialmente para recuperar información de instancias de procesos con consultas \acrshort{json} flexibles.
     \item \textbf{Maven}: herramienta de gestión y automatización de proyectos Java, empleada para manejar dependencias, construir el proyecto y ejecutar tareas comunes.
 \end{itemize}
 
@@ -201,7 +200,7 @@ El desarrollo del Report Service se apoyó en un conjunto de tecnologías que ab
 \begin{itemize}
     \item \textbf{Angular}: framework de desarrollo basado en TypeScript utilizado para construir la interfaz del usuario. Permite crear componentes modulares, mantener un enrutamiento dinámico y gestionar formularios y servicios de forma escalable.
     \item \textbf{Yarn}: gestor de dependencias para proyectos JavaScript que garantiza instalaciones reproducibles y seguras. Fue la herramienta principal para administrar librerías del frontend y realizar auditorías de seguridad.
-    \item \textbf{Node.js}: entorno de ejecución necesario para compilar y ejecutar Angular en local, así como para el servidor de desarrollo.
+    \item \textbf{Node.js}: entorno de ejecución necesario para compilar y ejecutar \gls{angular} en local, así como para el servidor de desarrollo.
     \item \textbf{TypeScript}: lenguaje de programación que extiende JavaScript con tipado estático y características avanzadas, facilitando el desarrollo de aplicaciones robustas y mantenibles.
 \end{itemize}
 
@@ -210,7 +209,7 @@ El desarrollo del Report Service se apoyó en un conjunto de tecnologías que ab
 \begin{itemize}
     \item \textbf{PostgreSQL}: sistema de gestión de bases de datos relacional, robusto y de código abierto, empleado para almacenar tanto la información de procesos como los informes generados.
     \item \textbf{Flyway}: herramienta de migraciones que asegura el versionado y la coherencia del esquema de base de datos en todos los entornos (desarrollo, pruebas y producción). Se utilizó para crear y mantener el esquema \texttt{alsea\_reports} y su tabla principal \texttt{report}.
-    \item \textbf{Testcontainers}: framework de testing que permite levantar contenedores ligeros de PostgreSQL en memoria durante la ejecución de pruebas, garantizando un entorno controlado y reproducible.
+    \item \textbf{Testcontainers}: framework de testing que permite levantar contenedores ligeros de \gls{postgresql} en memoria durante la ejecución de pruebas, garantizando un entorno controlado y reproducible.
 \end{itemize}
 
 \subsection{Infraestructura y Despliegue}
@@ -228,15 +227,15 @@ El desarrollo del Report Service se apoyó en un conjunto de tecnologías que ab
 
 \section{Metodología de desarrollo}
 
-El proyecto se llevó a cabo siguiendo una metodología ágil ligera basada en iteraciones cortas y gestión Kanban en Jira. Este enfoque resultó adecuado por la naturaleza incremental de las mejoras del Report Service, la necesidad de integrar cambios en backend y frontend con validación continua, y la conveniencia de priorizar asuntos operativos (bugs y chores) junto con funcionalidades nuevas.\\
+El proyecto se llevó a cabo siguiendo una metodología ágil ligera basada en iteraciones cortas y gestión \gls{kanban} en \gls{jira}. Este enfoque resultó adecuado por la naturaleza incremental de las mejoras del Report Service, la necesidad de integrar cambios en backend y frontend con validación continua, y la conveniencia de priorizar asuntos operativos (bugs y chores) junto con funcionalidades nuevas.\\
 
 Las características principales del enfoque fueron:
 
 \begin{itemize}
   \item \textbf{Iterativo e incremental}: cada conjunto de cambios (feature/refactor/fix/chore) se abordó como una tarjeta en el tablero, produciendo un incremento funcional verificable (código, tests y PR).
   \item \textbf{Retroalimentación continua}: dailies diarias con el equipo para sincronizar prioridades, desbloquear tareas y validar entregables; revisión de PRs con comentarios técnicos.
-  \item \textbf{Flexibilidad}: replanificación rápida en función de prioridades del EPIC y de incidencias detectadas (p.\,ej., compatibilidad de datos, fechas nulas, duplicidades de informe).
-  \item \textbf{Calidad integrada}: pruebas unitarias e integradas, migraciones controladas con Flyway, y verificación manual desde Postman/Chrome antes de integrar los cambios en el frontend.
+  \item \textbf{Flexibilidad}: replanificación rápida en función de prioridades del \acrshort{epic} y de incidencias detectadas (p.\,ej., compatibilidad de datos, fechas nulas, duplicidades de informe).
+  \item \textbf{Calidad integrada}: pruebas unitarias e integradas, migraciones controladas con \gls{flyway}, y verificación manual desde Postman/Chrome antes de integrar los cambios en el frontend.
 \end{itemize}
 
 \subsection{Adaptación al proyecto}
@@ -244,32 +243,39 @@ Las características principales del enfoque fueron:
 La incorporación al proyecto siguió una fase breve de formación, alineada con las tecnologías clave:
 
 \begin{itemize}
-  \item \textbf{Formación inicial}: cursos introductorios de Spring Batch, Docker, Patrones de Diseño en Java y Angular (priorizando primero backend) proporcionados por la suscripción mediante la empresa de la entidad emisora Udemy.
+  \item \textbf{Formación inicial}: cursos introductorios de Spring Batch, \gls{docker}, Patrones de Diseño en Java y Angular (priorizando primero backend) proporcionados por la suscripción mediante la empresa de la entidad emisora \acrshort{udemy}.
   \item \textbf{Aterrizaje en Jira}: asignación al EPIC “Improvements for ALSEA Project in 2025 Q3 \& Q4”, con tareas tipificadas como Story, Task o Bug, cada una con subtareas y prioridad.
   \item \textbf{Flujo de trabajo}:
     \begin{itemize}
       \item Rama por tarea (feature/fix branch) en Git.
       \item Commits atómicos y descriptivos.
-      \item Pull Request hacia \texttt{development}, con code review y checks automáticos de SonarCloud y build de pull/push.
-      \item Cierre de la tarea al completar PR + validación.
+      \item Pull Request hacia \texttt{development}, con code review y checks automáticos de \gls{sonarcloud} y build de pull/push.
+      \item Cierre de la tarea al completar \acrshort{pr} + validación.
     \end{itemize}
 \end{itemize}
 
 El orden de adaptación técnica fue: backend → datos → frontend, permitiendo una integración progresiva.
 
 \subsection{Herramientas de apoyo}
-
 \begin{itemize}
-  \item \textbf{Gestión de trabajo}: Jira (tablero Kanban; EPIC con sus historias de usuario, subtareas, prioridades y estados \texttt{To Do} → \texttt{Task Breakdown} → \texttt{In Progress} → \texttt{Ready for QA/PR} → \texttt{QA/PR OK} → \texttt{Done}).
-  \item \textbf{Control de versiones}: Git.
-  \item \textbf{Entornos de desarrollo}: IntelliJ IDEA (backend) y VSCode (frontend).
-  \item \textbf{Navegador y pruebas manuales}: Google Chrome (localhost) con ansible levantado mediante AWX.
-  \item \textbf{Pruebas de API}: Postman (validación de endpoints antes de integrar UI).
-  \item \textbf{Build \& dependencias}: Maven (backend) y Yarn (frontend).
-  \item \textbf{Base de datos}: DBeaver (inspección de PostgreSQL; verificación del esquema \texttt{alsea\_reports} y tabla \texttt{report}).
-  \item \textbf{Contenedores}: Docker.
-  \item \textbf{Calidad}: SonarCloud.
+  \item \textbf{Gestión de trabajo}: Jira (tablero Kanban; EPICs, historias de usuario, subtareas y prioridades).
+  \item \textbf{Control de versiones y hosting}: Git para control de versiones y GitHub como repositorio remoto y plataforma de revisión mediante Pull Requests.
+  \item \textbf{Flujo de trabajo Git}: Gitflow como convención de ramas (feature/release/hotfix) para mantener estabilidad en ramas de producción y organizar el desarrollo.
+  \item \textbf{Integración continua / CI \& CD}: GitHub Actions para pipelines que automatizan build, tests y despliegues. Las acciones se integran con SonarCloud para chequeos de calidad y con los registries de artefactos.
+  \item \textbf{Registro y gestión de artefactos}: Quay y JFrog Artifactory se emplearon como registries para imágenes Docker y artefactos binarios, facilitando la distribución y el versionado de imágenes.
+  \item \textbf{Orquestación de despliegue y automatización}: AWX (interfaz web para Ansible) para ejecutar playbooks y automatizar despliegues en entornos de QA e integración.
+  \item \textbf{Entornos de desarrollo}: IntelliJ IDEA para backend (Java/Spring) y Visual Studio Code para frontend (Angular/TypeScript).
+  \item \textbf{Pruebas y depuración}: Postman para pruebas de API y Google Chrome para pruebas manuales en entorno local.
+  \item \textbf{Build \& dependencias}: Maven en backend y Yarn/Node.js en frontend para gestionar builds y dependencias.
+  \item \textbf{Base de datos y herramientas}: PostgreSQL (producción), DBeaver para inspección y Flyway para migraciones controladas.
+  \item \textbf{Batch y ejecución asíncrona}: Spring Batch para modelar y ejecutar jobs/steps de generación de informes.
+  \item \textbf{Generación de Excel}: Aspose Cells para composición, formato y estilos de los workbooks Excel.
+  \item \textbf{Logs y búsqueda}: Elasticsearch como servidor on-premise para almacenamiento y consulta de logs e información de instancias.
+  \item \textbf{Contenedores y orquestación ligera}: Docker para empaquetado de servicios; las imágenes se versionaron y almacenaron en Quay/JFrog.
+  \item \textbf{Calidad de código}: SonarCloud / SonarQube para análisis estático, cobertura y detección de deuda técnica durante los pipelines de CI.
 \end{itemize}
+
+En resumen, se utilizó un flujo de CI/CD basado en GitHub Actions que ejecuta compilaciones, pruebas y análisis de calidad (SonarCloud), publica artefactos en registries (Quay/JFrog) y utiliza AWX para ejecutar despliegues reproducibles con Ansible en entornos de integración y QA. El uso de Gitflow como convención de ramas facilitó la gestión de releases y la colaboración mediante Pull Requests.
 
 \section{Planificación y seguimiento}
 
@@ -426,14 +432,14 @@ A continuación se detallan las principales historias de usuario definidas para 
 \end{itemize}
 
 \section{Arquitectura del sistema}
-La aplicación sigue una arquitectura \textbf{cliente-servidor} basada en servicios web REST y procesamiento asíncrono.
+La aplicación sigue una arquitectura \textbf{cliente-servidor} basada en servicios web \acrshort{rest} y procesamiento asíncrono.
 
 \subsection{Cliente (Angular)}
 El cliente web, desarrollado en Angular, gestiona la interacción del usuario y las peticiones al servidor:
 \begin{itemize}
     \item Página principal: módulo \textit{Report Generator}, donde se configuran los parámetros y se lanza la generación.
     \item Página secundaria: módulo \textit{Report History}, donde se visualizan y descargan los informes existentes.
-    \item Comunicación con el servidor mediante servicios HTTP, con notificaciones de estado y validaciones de entrada.
+    \item Comunicación con el servidor mediante servicios \acrshort{http}, con notificaciones de estado y validaciones de entrada.
 \end{itemize}
 
 \subsection{Servidor (Spring Boot y Spring Batch)}
@@ -460,7 +466,12 @@ Una vez configurados estos parámetros, el usuario podía solicitar la generaci�
 
 El diseño inicial, aunque funcional, presentaba carencias de usabilidad y no incluía historial ni procesamiento asíncrono. Las principales limitaciones eran: ausencia de historial, falta de retroalimentación durante la generación, procesamiento síncrono que bloqueaba la interfaz, diseño anticuado y ausencia de control de duplicidad. Estas carencias motivaron el desarrollo de una nueva interfaz modernizada (capítulo 7).\\
 
-TODO: Insertar aquí imagen de la interfaz antigua\\
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{img/oldui.png}
+  \caption{Interfaz original del Report Service antes de su modernización.}
+  \label{fig:interfaz-antigua}
+\end{figure}
 
 \section{Modelo conceptual de datos}
 
@@ -526,7 +537,13 @@ El almacenamiento de informes se realiza en la tabla \texttt{report} del esquema
   \item El \textbf{historial} se soporta directamente gracias al almacenamiento del \texttt{content} y metadatos, es decir, la re-descarga no requiere regeneración.
 \end{itemize}
 
-TODO: Insertar aquí imagen de ejemplo de la tabla de report en dbeaver\\
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{img/tabla_dbeaver.jpg}
+  \caption{Ejemplo de registros almacenados en la tabla \textit{report} visualizados en DBeaver.}
+  \label{fig:tabla-report}
+\end{figure}
+
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  % Capítulo   5                         %
@@ -553,12 +570,12 @@ Las tareas de mejora se distribuyeron a lo largo de los tres meses de prácticas
 
 \subsection{Vulnerabilidades}
 
-El \textit{frontend} presentaba inicialmente múltiples vulnerabilidades (\textit{CVEs}) asociadas a sus dependencias. En un primer momento, el origen del problema se debía en parte a la coexistencia de los gestores de paquetes \textit{npm} y \textit{Yarn}, lo que generaba inconsistencias en el árbol de dependencias y diferentes resoluciones de versiones según el gestor empleado. Una vez unificada la gestión en \textit{Yarn}, las vulnerabilidades no desaparecieron por completo, ya que la versión de \textit{Angular} utilizada (15) era considerablemente anterior, lo que limitaba el acceso a versiones parcheadas de algunas librerías, tal y como se recoge en la documentación técnica.\\
+El \textit{frontend} presentaba inicialmente múltiples vulnerabilidades (\acrshort{cve}) asociadas a sus dependencias. En un primer momento, el origen del problema se debía en parte a la coexistencia de los gestores de paquetes \textit{npm} y \textit{Yarn}, lo que generaba inconsistencias en el árbol de dependencias y diferentes resoluciones de versiones según el gestor empleado. Una vez unificada la gestión en \textit{Yarn}, las vulnerabilidades no desaparecieron por completo, ya que la versión de \textit{Angular} utilizada (15) era considerablemente anterior, lo que limitaba el acceso a versiones parcheadas de algunas librerías, tal y como se recoge en la documentación técnica.\\
 
 \textbf{Estrategia adoptada}: 
 
 \begin{enumerate}
-    \item \textbf{Estandarización en Yarn}: se eliminaron los ficheros \texttt{package-lock.json}, se configuró \textit{Yarn} como gestor único en los archivos \texttt{angular.json} y \texttt{package.json}, y se realizó un proceso de deduplicación con \texttt{yarn-deduplicate} seguido de una reinstalación completa de dependencias. Esta medida permitió estabilizar el entorno de desarrollo y homogeneizar la instalación en local y en CI.
+    \item \textbf{Estandarización en Yarn}: se eliminaron los ficheros \texttt{package-lock.json}, se configuró \textit{Yarn} como gestor único en los archivos \texttt{angular.json} y \texttt{package.json}, y se realizó un proceso de deduplicación con \texttt{yarn-deduplicate} seguido de una reinstalación completa de dependencias. Esta medida permitió estabilizar el entorno de desarrollo y homogeneizar la instalación en local y en \acrshort{ci}.
     
     \item \textbf{Mitigación mediante \texttt{resolutions}}: dado que la actualización a \textit{Angular 16+} quedaba fuera del alcance del proyecto, se optó por emplear el bloque \texttt{resolutions} de \textit{Yarn} para forzar versiones parcheadas de dependencias transitivas, sobrescribiendo las versiones vulnerables solicitadas por los paquetes padre. Esta técnica permitió corregir gran parte de los avisos de seguridad sin alterar el núcleo del framework.
 \end{enumerate}
