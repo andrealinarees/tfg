@@ -13,15 +13,9 @@ Cosas que faltan:
 -> Gráfica de tiempos de ejecución de jobs (?) crear un histograma p.e
 -> Gráfico de sonarCloud -> coverage + duplicidad antes /después.
 -> Para la última parte fase de rc de alsea
--> Explicación del entorno de prueba del ansible para QA
--> Herramientas: jira, GitHub, quay, jfrog artifactory, elasticsearch(log server on premise system), awx, gitflow workflow, github actions, sonarqube
 -> Añadir las citas de los gloasarios y acronimos que faltan que están comentados
 -> Ver que la captura de la tabla de report esté bonita
 -> Resolver comentarios del pdf suyo.
-
-Esperando respuesta:
--> Ejemplo de hoja de reporte: añadirlo como anexo ????
--> Arreglar los números rotos de los links a los acrónimos y a los glosarios
 
 *Idea principal para el apartado 5:*
 

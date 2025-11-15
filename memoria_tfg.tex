@@ -142,6 +142,24 @@ La \textit{BIC Platform} se despliega habitualmente en modalidad cloud (BIC Clou
 
 El Report Service original ofrecía una solución sencilla y funcional: la interfaz permitía seleccionar el tipo de informe (KPI o Producto), la categoría (Innovación o Alternativa), una o varias franquicias y un rango de fechas. Con esta información, el backend recuperaba los datos correspondientes, generaba un libro de Excel con múltiples hojas y lo devolvía al usuario para su descarga local.\\
 
+El sistema permite generar cuatro tipos de informes combinando el tipo (KPI o Producto) con la categoría del proceso (Innovación o Alternativa). Cada combinación produce un libro Excel con múltiples hojas que cubren distintos requisitos y métricas personalizadas solicitadas por el cliente. A continuación se muestran dos ejemplos representativos que ilustran la estructura y contenido de estos informes:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{img/kpi_alternative_todas.png}
+  \caption{Informe de tipo KPI con categoría de proceso Alternativa (todas las franquicias, sin rango de fechas). La captura muestra la hoja del Requisito 1, que presenta un \gls{histograma} con los procesos de alternativa de producto por trimestres, diferenciando proyectos abiertos, cerrados y cancelados, además de los totales y el total absoluto en 2025. En la parte inferior se observan las pestañas de otras hojas del libro, correspondientes a requisitos adicionales personalizados impuestos por el cliente.}
+  \label{fig:kpi-alternative}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{img/product_innovation_todas.png}
+  \caption{Informe de tipo Producto con categoría de proceso Innovación (todas las franquicias, sin rango de fechas). La captura muestra la hoja del Heatmap actual, que representa para cada marca el estado de sus proyectos junto con las actividades, responsables que las llevan a cabo y fechas previstas. En la parte inferior se pueden observar las pestañas de otras hojas del libro, incluyendo los retroplannings y una hoja de comparativa, que forman parte del conjunto de métricas y análisis solicitados por ALSEA.}
+  \label{fig:product-innovation}
+\end{figure}
+
+Estos ejemplos muestran la riqueza informativa y el nivel de personalización de los informes generados por el Report Service, diseñados para cubrir las necesidades analíticas específicas de ALSEA en la gestión de sus procesos de innovación y alternativa de producto.\\
+
 Sin embargo, con el paso del tiempo surgieron limitaciones notables. El sistema carecía de un almacenamiento histórico de informes, lo que obligaba a los usuarios a regenerarlos cada vez que deseaban acceder a información pasada. Además, se detectaron problemas de duplicación de código en el backend, ausencia de procesamiento asíncrono (lo que generaba bloqueos en la interfaz durante la creación de los informes) y una experiencia de usuario que no reflejaba plenamente las necesidades de la organización. Estas carencias constituyeron la motivación principal para emprender un proceso de mejora y modernización del Report Service.
 
 \section{Objetivos}
@@ -227,7 +245,7 @@ El desarrollo del Report Service se apoyó en un conjunto de tecnologías que ab
 
 \section{Metodología de desarrollo}
 
-El proyecto se llevó a cabo siguiendo una metodología ágil ligera basada en iteraciones cortas y gestión \gls{kanban} en \gls{jira}. Este enfoque resultó adecuado por la naturaleza incremental de las mejoras del Report Service, la necesidad de integrar cambios en backend y frontend con validación continua, y la conveniencia de priorizar asuntos operativos (bugs y chores) junto con funcionalidades nuevas.\\
+El proyecto se llevó a cabo siguiendo una metodología ágil ligera basada en iteraciones cortas y gestión \gls{kanban} en \gls{jira}. Este enfoque resultó adecuado por la naturaleza incremental de las mejoras del Report Service, la necesidad de integrar cambios en backend y frontend con validación continua, y la conveniencia de priorizar asuntos operativos (bugs y chores) junto con funcionalidades nuevas. \gls{jira} se configuró con un tablero Kanban que permitía visualizar el flujo de trabajo completo, con estados definidos (\texttt{To Do} → \texttt{Task Breakdown} → \texttt{In Progress} → \texttt{Ready for QA/PR} → \texttt{QA/PR OK} → \texttt{Done}) para cada tarea, facilitando el seguimiento de prioridades y la identificación de bloqueos.\\
 
 Las características principales del enfoque fueron:
 
@@ -244,7 +262,7 @@ La incorporación al proyecto siguió una fase breve de formación, alineada con
 
 \begin{itemize}
   \item \textbf{Formación inicial}: cursos introductorios de Spring Batch, \gls{docker}, Patrones de Diseño en Java y Angular (priorizando primero backend) proporcionados por la suscripción mediante la empresa de la entidad emisora \acrshort{udemy}.
-  \item \textbf{Aterrizaje en Jira}: asignación al EPIC “Improvements for ALSEA Project in 2025 Q3 \& Q4”, con tareas tipificadas como Story, Task o Bug, cada una con subtareas y prioridad.
+  \item \textbf{Aterrizaje en \gls{jira}}: asignación al \acrshort{epic} "Improvements for ALSEA Project in 2025 Q3 \& Q4", con tareas tipificadas como Story, Task o Bug, cada una con subtareas y prioridad.
   \item \textbf{Flujo de trabajo}:
     \begin{itemize}
       \item Rama por tarea (feature/fix branch) en Git.
@@ -258,24 +276,24 @@ El orden de adaptación técnica fue: backend → datos → frontend, permitiend
 
 \subsection{Herramientas de apoyo}
 \begin{itemize}
-  \item \textbf{Gestión de trabajo}: Jira (tablero Kanban; EPICs, historias de usuario, subtareas y prioridades).
-  \item \textbf{Control de versiones y hosting}: Git para control de versiones y GitHub como repositorio remoto y plataforma de revisión mediante Pull Requests.
-  \item \textbf{Flujo de trabajo Git}: Gitflow como convención de ramas (feature/release/hotfix) para mantener estabilidad en ramas de producción y organizar el desarrollo.
-  \item \textbf{Integración continua / CI \& CD}: GitHub Actions para pipelines que automatizan build, tests y despliegues. Las acciones se integran con SonarCloud para chequeos de calidad y con los registries de artefactos.
-  \item \textbf{Registro y gestión de artefactos}: Quay y JFrog Artifactory se emplearon como registries para imágenes Docker y artefactos binarios, facilitando la distribución y el versionado de imágenes.
-  \item \textbf{Orquestación de despliegue y automatización}: AWX (interfaz web para Ansible) para ejecutar playbooks y automatizar despliegues en entornos de QA e integración.
+  \item \textbf{Gestión de trabajo}: \gls{jira} se utilizó como tablero \gls{kanban} para organizar \acrshort{epic}s, historias de usuario, subtareas y gestionar prioridades, permitiendo un seguimiento visual del progreso de cada ticket.
+  \item \textbf{Control de versiones y hosting}: Git para control de versiones y GitHub como repositorio remoto centralizado donde se alojaba el código fuente del proyecto, facilitando la colaboración mediante Pull Requests y revisiones de código.
+  \item \textbf{Flujo de trabajo Git}: \gls{gitflow} se adoptó como convención de ramas (feature/release/hotfix) para mantener estabilidad en las ramas de producción y organizar el desarrollo de forma estructurada.
+  \item \textbf{Integración continua / CI \& CD}: \gls{githubactions} se configuró con acciones personalizadas para automatizar el build del proyecto, ejecutar pruebas unitarias e integradas, y realizar despliegues. Los pipelines se integraron con \gls{sonarqube} (SonarCloud) para validar métricas de calidad de código (cobertura, duplicidad, code smells) antes de aceptar cada \acrshort{pr}.
+  \item \textbf{Registro y gestión de artefactos}: \gls{quay} se empleó como registry principal para almacenar y versionar las imágenes Docker de los entornos Ansible de prueba, mientras que \gls{jfrog} sirvió como repositorio de artefactos binarios y dependencias Maven/NPM, facilitando la distribución controlada de versiones.
+  \item \textbf{Orquestación de despliegue y automatización}: \gls{ansible} (gestionado mediante \acrshort{awx}) permitió ejecutar playbooks para levantar entornos de prueba y automatizar despliegues en \acrshort{qa} e integración.
   \item \textbf{Entornos de desarrollo}: IntelliJ IDEA para backend (Java/Spring) y Visual Studio Code para frontend (Angular/TypeScript).
   \item \textbf{Pruebas y depuración}: Postman para pruebas de API y Google Chrome para pruebas manuales en entorno local.
   \item \textbf{Build \& dependencias}: Maven en backend y Yarn/Node.js en frontend para gestionar builds y dependencias.
   \item \textbf{Base de datos y herramientas}: PostgreSQL (producción), DBeaver para inspección y Flyway para migraciones controladas.
   \item \textbf{Batch y ejecución asíncrona}: Spring Batch para modelar y ejecutar jobs/steps de generación de informes.
   \item \textbf{Generación de Excel}: Aspose Cells para composición, formato y estilos de los workbooks Excel.
-  \item \textbf{Logs y búsqueda}: Elasticsearch como servidor on-premise para almacenamiento y consulta de logs e información de instancias.
+  \item \textbf{Logs y búsqueda}: \gls{elasticsearch} se utilizó como servidor \gls{on-premise} (on-premise) para almacenar logs del sistema y como base de datos no relacional donde se consultaban las instancias de procesos y variables de ejecución necesarias para la generación de informes.
   \item \textbf{Contenedores y orquestación ligera}: Docker para empaquetado de servicios; las imágenes se versionaron y almacenaron en Quay/JFrog.
-  \item \textbf{Calidad de código}: SonarCloud / SonarQube para análisis estático, cobertura y detección de deuda técnica durante los pipelines de CI.
+  \item \textbf{Calidad de código}: \gls{sonarcloud} / \gls{sonarqube} se integró en los pipelines de CI para realizar análisis estático de código, medir cobertura de pruebas, detectar duplicaciones y controlar la deuda técnica, garantizando que cada cambio cumpliera con los umbrales de calidad definidos por la empresa.
 \end{itemize}
 
-En resumen, se utilizó un flujo de CI/CD basado en GitHub Actions que ejecuta compilaciones, pruebas y análisis de calidad (SonarCloud), publica artefactos en registries (Quay/JFrog) y utiliza AWX para ejecutar despliegues reproducibles con Ansible en entornos de integración y QA. El uso de Gitflow como convención de ramas facilitó la gestión de releases y la colaboración mediante Pull Requests.
+En resumen, se utilizó un flujo de CI/CD basado en \gls{githubactions} que ejecuta compilaciones, pruebas y análisis de calidad con \gls{sonarcloud}, publica artefactos en registries (\gls{quay} y \gls{jfrog}) y utiliza \acrshort{awx} para ejecutar despliegues reproducibles con \gls{ansible} en entornos de integración y \acrshort{qa}. El uso de \gls{gitflow} como convención de ramas facilitó la gestión de releases y la colaboración mediante Pull Requests.
 
 \section{Planificación y seguimiento}
 
@@ -564,7 +582,7 @@ El almacenamiento de informes se realiza en la tabla \texttt{report} del esquema
 
 \section{Tareas de mejora}
 
-Durante el desarrollo del proyecto, se abordaron diversas tareas de mejora que no solo añadieron nuevas funcionalidades, sino que también optimizaron la calidad, seguridad y mantenibilidad del código existente. Estas tareas se clasificaron en diferentes categorías según su naturaleza y prioridad, y se gestionaron a través del sistema de seguimiento Jira como parte del EPIC "Improvements for ALSEA Project in 2025 Q3 \& Q4".\\
+Durante el desarrollo del proyecto, se abordaron diversas tareas de mejora que no solo añadieron nuevas funcionalidades, sino que también optimizaron la calidad, seguridad y mantenibilidad del código existente. Estas tareas se clasificaron en diferentes categorías según su naturaleza y prioridad, y se gestionaron a través del sistema de seguimiento \gls{jira} como parte del \acrshort{epic} "Improvements for ALSEA Project in 2025 Q3 \& Q4".\\
 
 Las tareas de mejora se distribuyeron a lo largo de los tres meses de prácticas, abordando aspectos críticos como la seguridad de las dependencias, la cobertura de pruebas, la refactorización del código y la eliminación de duplicaciones. A continuación, se describen en detalle las principales categorías de tareas de mejora abordadas durante el proyecto.
 
@@ -592,7 +610,27 @@ El \textit{frontend} presentaba inicialmente múltiples vulnerabilidades (\acrsh
 \section{Pruebas}
 \subsection{Testing unitario}
 \subsection{Testing de integración}
-\subsection{Pruebas manuales nosotras (QA)}
+\subsection{Pruebas manuales y entorno de \acrshort{qa}}
+
+Para cada tarea asignada en \gls{jira}, se seguía un flujo de validación manual en un entorno de pruebas controlado antes de integrar los cambios en las ramas principales. El proceso de \acrshort{qa} se apoyaba en la infraestructura de \gls{ansible} gestionada mediante \acrshort{awx} y el registry de imágenes \gls{quay}.\\
+
+\textbf{Flujo de trabajo de \acrshort{qa}}:
+
+\begin{enumerate}
+  \item \textbf{Desarrollo y commits}: tras completar la implementación de una funcionalidad o corrección, se realizaban los commits necesarios en la rama feature correspondiente siguiendo las convenciones de \gls{gitflow}.
+  
+  \item \textbf{Actualización de versión}: se actualizaba el número de versión en los archivos de configuración (\texttt{package.json} en frontend, \texttt{pom.xml} en backend) para reflejar los cambios introducidos y facilitar la trazabilidad.
+  
+  \item \textbf{Build y publicación de imagen}: el pipeline de \gls{githubactions} construía automáticamente una nueva imagen Docker del servicio modificado y la publicaba en \gls{quay} con la etiqueta de versión correspondiente.
+  
+  \item \textbf{Despliegue mediante \acrshort{awx}}: desde la interfaz web de \acrshort{awx}, se ejecutaba el playbook de \gls{ansible} correspondiente que levantaba el entorno de pruebas (máquina virtual con todos los servicios necesarios: base de datos PostgreSQL, \gls{elasticsearch}, backend, frontend). El playbook descargaba la nueva imagen desde \gls{quay} y la desplegaba en el entorno aislado.
+  
+  \item \textbf{Validación funcional}: una vez levantado el entorno, se accedía mediante Google Chrome a la aplicación desplegada y se realizaban pruebas manuales exhaustivas: generación de informes con diferentes parámetros, verificación del historial, comprobación del control de duplicidad, validación de mensajes de error, etc.
+  
+  \item \textbf{Iteración o cierre}: si se detectaban problemas durante las pruebas, se volvía al paso 1 para corregirlos. Si todas las validaciones eran exitosas, se marcaba la tarea como \texttt{QA OK} en \gls{jira} y se procedía a crear el \acrshort{pr} hacia \texttt{development}.
+\end{enumerate}
+
+Este enfoque garantizaba que cada cambio se validara en un entorno realista antes de su integración, reduciendo significativamente la aparición de defectos en las ramas principales y asegurando la calidad del producto final.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  % Capítulo   7                         %
@@ -704,7 +742,7 @@ Entre los logros más significativos del proyecto destacan:
     \item \textbf{Gestión de vulnerabilidades}: se logró reducir significativamente el número de vulnerabilidades de seguridad en el frontend mediante la estandarización en Yarn y el uso estratégico de \texttt{resolutions}, equilibrando seguridad con estabilidad del sistema.
 \end{itemize}
 
-Desde el punto de vista del aprendizaje personal, este proyecto ha proporcionado una experiencia invaluable en el desarrollo de software empresarial real, permitiendo aplicar conocimientos teóricos de la titulación en un contexto profesional. La metodología ágil empleada, las revisiones de código, la gestión de tareas en Jira y el trabajo con tecnologías modernas como Spring Batch, Angular, PostgreSQL y Elasticsearch han enriquecido significativamente la formación práctica.\\
+Desde el punto de vista del aprendizaje personal, este proyecto ha proporcionado una experiencia invaluable en el desarrollo de software empresarial real, permitiendo aplicar conocimientos teóricos de la titulación en un contexto profesional. La metodología ágil empleada, las revisiones de código, la gestión de tareas en \gls{jira} y el trabajo con tecnologías modernas como Spring Batch, Angular, PostgreSQL y \gls{elasticsearch} han enriquecido significativamente la formación práctica.\\
 
 Además, el proyecto ha puesto de manifiesto la importancia de equilibrar diferentes aspectos del desarrollo de software: funcionalidad, seguridad, rendimiento, mantenibilidad y experiencia de usuario. Las decisiones tomadas durante el proyecto, como priorizar la funcionalidad sobre la resolución de vulnerabilidades menores, ilustran el tipo de compromisos que se deben gestionar en entornos de desarrollo reales con limitaciones de tiempo y recursos.\\
 
