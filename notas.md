@@ -6,15 +6,17 @@
     5. xelatex memoria_tfg
 
 Imágenes que faltan:
--> Diagrama resumen de la BIC Platform (alto nivel) -> arquitectura de la plataforma -> CONSULTAR CON CIBRÁN
--> Modelo de proceso Simple dentro de design de un BPMN
--> Diagrama de componentes detallado -> cliente, API, batch,  BD, elasticsearch...
+-> Modelo de proceso Simple dentro de design de un BPMN?
 -> Gráfica de tiempos de ejecución de jobs (?) crear un histograma p.e
--> Gráfico de sonarCloud -> coverage + duplicidad antes /después.
--> Diagramas de Gantt de la planificación
+-> Diagramas de Gantt de la planificación: mostrar a planificación inicial e outro co seguemento real, e así indicar que fases duraron máis do planificado
 
 Cosas que faltan:
--> Añadir las citas de los gloasarios y acronimos que faltan que están comentados
 -> Bibliografía con los links del resto de cosas, alsea, gbtec, documentación oficial de flyway, spring batch etc.
 -> Capítulo 6 en general con implementación y añadir fragmentos de código y demás.
+-> Capítulo 5 reescribir con la estructura correcta del códgio
 -> Revisar las citas del glosario y que salgan solo una vez, la primera vez que se les hace referencia.
+
+Consultar con Cibrán:
+-> Captura de pantalla de la BIC Platform alto nivel
+-> Fragmentos de código puntuales de ejemplos de Batch.
+-> Estructura general de paquetes del código (necesaria para el capítulo de diseño)

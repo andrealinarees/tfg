@@ -256,12 +256,12 @@ El desarrollo del Report Service se apoyó en un conjunto de tecnologías que ab
   \item \textbf{Gestión de trabajo}: \gls{jira} se utilizó como tablero \gls{kanban} para organizar \acrshort{epic}s, historias de usuario, subtareas y gestionar prioridades, permitiendo un seguimiento visual del progreso de cada ticket.
   \item \textbf{Control de versiones y hosting}: Git para control de versiones y GitHub como repositorio remoto centralizado donde se alojaba el código fuente del proyecto, facilitando la colaboración mediante Pull Requests y revisiones de código.
   \item \textbf{Flujo de trabajo Git}: \gls{gitflow}~\cite{Gitflow} se adoptó como convención de ramas (feature/release/hotfix) para mantener estabilidad en las ramas de producción y organizar el desarrollo de forma estructurada.
-  \item \textbf{Integración continua / CI \& CD}: \gls{githubactions} se configuró con acciones personalizadas para automatizar el build del proyecto, ejecutar pruebas unitarias e integradas, y realizar despliegues. Los pipelines se integraron con SonarQube (SonarCloud) para validar métricas de calidad de código (cobertura, duplicidad, code smells) antes de aceptar cada \acrshort{pr}.
+  \item \textbf{Integración continua / \acrshort{ci} \& CD}: \gls{githubactions} se configuró con acciones personalizadas para automatizar el build del proyecto, ejecutar pruebas unitarias e integradas, y realizar despliegues. Los pipelines se integraron con SonarQube (SonarCloud) para validar métricas de calidad de código (\gls{coverage}, \gls{duplicacion}, \gls{codesmells}) antes de aceptar cada \acrshort{pr}.
   \item \textbf{Registro y gestión de artefactos}: \gls{quay} se empleó como registry principal para almacenar y versionar las imágenes Docker de los entornos Ansible de prueba, mientras que \gls{jfrog} sirvió como repositorio de artefactos binarios y dependencias Maven/NPM, facilitando la distribución controlada de versiones.
-  \item \textbf{Orquestación de despliegue y automatización}: \gls{ansible} (gestionado mediante \acrshort{awx}) permitió ejecutar playbooks para levantar entornos de prueba y automatizar despliegues en \acrshort{qa} e integración.
+  \item \textbf{Orquestación de despliegue y automatización}: \gls{ansible} (gestionado mediante \acrshort{awx}) permitió levantar entornos de prueba y automatizar despliegues en \acrshort{qa} e integración.
   \item \textbf{Entornos de desarrollo}: IntelliJ IDEA para backend (Java/Spring) y Visual Studio Code para frontend (Angular/TypeScript).
-  \item \textbf{Pruebas y depuración}: Postman para pruebas de API y Google Chrome para pruebas manuales en entorno local.
-  \item \textbf{Calidad de código}: \gls{sonarcloud} / SonarQube se integró en los pipelines de CI para realizar análisis estático de código, medir cobertura de pruebas, detectar duplicaciones y controlar la deuda técnica, garantizando que cada cambio cumpliera con los umbrales de calidad definidos por la empresa.
+  \item \textbf{Pruebas y depuración}: \gls{postman} para pruebas de \acrshort{api} y Google Chrome para pruebas manuales en entorno local.
+  \item \textbf{Calidad de código}: \gls{sonarcloud} / SonarQube se integró en los pipelines de \acrshort{ci} para realizar análisis estático de código (\acrshort{html}, \acrshort{css}, TypeScript, Java), medir cobertura de pruebas (\acrshort{qa}), detectar duplicaciones y controlar la deuda técnica, garantizando que cada cambio cumpliera con los umbrales de calidad definidos por la empresa.
 \end{itemize}
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -280,7 +280,7 @@ Las características principales del enfoque fueron:
   \item \textbf{Iterativo e incremental}~\cite{ScrumGuide}: cada conjunto de cambios (feature/refactor/fix/chore) se abordó como una tarjeta en el tablero, produciendo un incremento funcional verificable (código, tests y PR).
   \item \textbf{Retroalimentación continua}: dailies diarias con el equipo para sincronizar prioridades, desbloquear tareas y validar entregables; revisión de PRs con comentarios técnicos.
   \item \textbf{Flexibilidad}: replanificación rápida en función de prioridades del \acrshort{epic} y de incidencias detectadas (p.\,ej., compatibilidad de datos, fechas nulas, duplicidades de informe).
-  \item \textbf{Calidad integrada}: pruebas unitarias e integradas, migraciones controladas con \gls{flyway}, y verificación manual desde Postman/Chrome antes de integrar los cambios en el frontend.
+  \item \textbf{Calidad integrada}: pruebas unitarias e integradas, migraciones controladas con \gls{flyway}, y verificación manual desde \gls{postman}/Chrome antes de integrar los cambios en el frontend.
 \end{itemize}
 
 \subsection{Adaptación al proyecto}
@@ -295,7 +295,7 @@ La incorporación al proyecto siguió una fase breve de formación, alineada con
       \item Rama por tarea (feature/fix branch) en Git.
       \item Commits atómicos y descriptivos.
       \item Pull Request hacia \texttt{development}, con code review y checks automáticos de SonarCloud y build de pull/push.
-      \item Cierre de la tarea al completar \acrshort{pr} + validación.
+      \item Cierre de la tarea al completar \acrshort{pr} y \acrshort{qa}.
     \end{itemize}
 \end{itemize}
 
@@ -365,6 +365,8 @@ La planificación se estructuró en etapas en lugar de Sprints formales, manteni
       \item Recopilación de evidencias (PRs, capturas, pruebas).
     \end{itemize}
 \end{itemize}
+
+TODO: añadir diagrama de Gantt de tareas y fechas de previsto vs real
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  % Capítulo   4                         %
@@ -456,7 +458,7 @@ A continuación se detallan las principales historias de usuario definidas para 
 \end{itemize}
 
 \section{Arquitectura del sistema}
-La aplicación sigue una arquitectura \textbf{cliente-servidor} basada en servicios web \acrshort{rest} y procesamiento asíncrono.
+La aplicación sigue una arquitectura cliente-servidor basada en servicios web \acrshort{rest} y procesamiento asíncrono.
 
 \subsection{Cliente web}
 El cliente web, desarrollado en Angular, gestiona la interacción del usuario y las peticiones al servidor:
@@ -488,7 +490,7 @@ La interfaz de usuario original del Report Service presentaba un diseño sencill
 
 Una vez configurados estos parámetros, el usuario podía solicitar la generación del informe mediante un botón de descarga. El sistema procesaba la solicitud de forma síncrona, bloqueando la interfaz durante todo el proceso de generación, lo que podía resultar en tiempos de espera prolongados sin retroalimentación clara sobre el estado del proceso. Al finalizar, el informe Excel se descargaba directamente al navegador del usuario.\\
 
-El diseño inicial, aunque funcional, presentaba carencias de usabilidad y no incluía historial ni procesamiento asíncrono. Las principales limitaciones eran: ausencia de historial, falta de retroalimentación durante la generación, procesamiento síncrono que bloqueaba la interfaz, diseño anticuado y ausencia de control de duplicidad. Estas carencias motivaron el desarrollo de una nueva interfaz modernizada (capítulo 7).\\
+El diseño inicial, aunque funcional, presentaba carencias de usabilidad. Las principales limitaciones eran: ausencia de historial, falta de retroalimentación durante la generación, procesamiento síncrono que bloqueaba la interfaz, diseño anticuado y ausencia de control de duplicidad. Estas carencias motivaron el desarrollo de una nueva interfaz modernizada (capítulo 7).\\
 
 \begin{figure}[H]
   \centering
@@ -518,17 +520,23 @@ El sistema sigue una arquitectura cliente-servidor de tres capas que separa clar
   \item \textbf{Capa de datos}: base de datos PostgreSQL que almacena los informes generados y sus metadatos, complementada con Elasticsearch como fuente de datos para consultar variables de procesos.
 \end{itemize}
 
-TODO: Incluir diagrama de arquitectura general aquí.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{img/arquitectura.png}
+  \caption{Arquitectura detallada del Report Service mostrando las capas de presentación, aplicación, datos e infraestructura con sus interacciones.}
+  \label{fig:arquitectura-detallada}
+\end{figure}
+
+La figura~\ref{fig:arquitectura-detallada} muestra la arquitectura completa del sistema a bajo nivel. En la capa de presentación, el usuario ALSEA interactúa con los componentes Angular (Report Generator y History) que se comunican con el backend mediante servicios HTTP/JSON. La capa de aplicación está construida con Spring Boot, exponiendo una API REST a través del ReportController que coordina la generación asíncrona mediante Spring Batch. El JobLauncher ejecuta el GenerateReportJob, que contiene un GenerateReportStep responsable de leer datos de Elasticsearch y BIC Process Execution, generar el Excel con Aspose Cells y persistir el resultado en el ReportRepository. La capa de datos incluye PostgreSQL para almacenar los informes generados (esquema \texttt{alsea\_reports}), Elasticsearch para consultar variables de procesos, y la base de datos de BIC Process Execution. Finalmente, la infraestructura utiliza Flyway para gestionar migraciones del esquema, Docker para contenerización y AWX/Ansible para automatizar despliegues.\\
 
 \subsection{Comunicación entre componentes}
 
 La comunicación entre cliente y servidor se realiza mediante una \acrshort{api} \acrshort{rest} sobre \acrshort{http}, intercambiando datos en formato \acrshort{json}. Los principales endpoints implementados son:
 
 \begin{itemize}
-  \item \texttt{POST /api/reports/generate}: inicia la generación de un nuevo informe. Recibe como parámetros el tipo, categoría, lista de franquicias y rango de fechas opcional.
+  \item \texttt{POST /api/reports/generate}: inicia la generación de un nuevo informe. Antes de lanzar el job, realiza validaciones síncronas: comprueba duplicidad (informes idénticos en los últimos 5 minutos) y disponibilidad de datos mediante el \texttt{ReportDataProbeService}. Devuelve estados como \texttt{DUPLICATE}, \texttt{NO\_DATA} o \texttt{STARTED} según corresponda.
   \item \texttt{GET /api/reports/history}: devuelve el listado paginado de informes generados, ordenados de más reciente a más antiguo.
   \item \texttt{GET /api/reports/\{id\}/download}: descarga un informe específico por su identificador \acrshort{uuid}.
-  \item \texttt{POST /api/reports/probe}: verifica si existe un informe idéntico generado recientemente (control de duplicidad).
 \end{itemize}
 
 El servidor responde con códigos \acrshort{http} estándar (200 OK, 201 Created, 400 Bad Request, 404 Not Found, 409 Conflict para duplicados) y mensajes \acrshort{json} estructurados que incluyen estado, datos y mensajes de error cuando corresponde.
@@ -567,38 +575,90 @@ El cliente web está estructurado siguiendo las mejores prácticas de Angular, o
 
 \subsubsection{Estructura de módulos y componentes}
 
-La aplicación se divide en los siguientes módulos principales:
+El frontend del proyecto está ubicado en \texttt{webapp/custom-alsea-angular-front} y sigue la estructura estándar de Angular. La organización del código dentro de \texttt{src/app} es la siguiente:
 
+\begin{itemize}
+  \item \textbf{\texttt{reports-generator}}: módulo que contiene el componente principal de generación de informes.
+    \begin{itemize}
+      \item \texttt{reports-generator.component.ts}: lógica del componente.
+      \item \texttt{reports-generator.component.html}: plantilla del formulario.
+      \item \texttt{reports-generator.component.scss}: estilos específicos.
+      \item \texttt{reports-generator.component.spec.ts}: tests unitarios del componente.
+    \end{itemize}
+  
+  \item \textbf{\texttt{reports-history}}: módulo que agrupa el componente de historial con su tabla paginada.
+    \begin{itemize}
+      \item \texttt{reports-history.component.ts}: lógica del componente de historial.
+      \item \texttt{reports-history.component.html}: plantilla de la tabla de informes.
+      \item \texttt{reports-history.component.scss}: estilos del historial.
+      \item \texttt{reports-history.component.spec.ts}: tests unitarios.
+      \item \texttt{dialog/}: subcarpeta con diálogos auxiliares (confirmaciones, mensajes).
+    \end{itemize}
+  
+  \item \textbf{\texttt{services}}: carpeta que contiene los servicios Angular para comunicación con el backend:
+    \begin{itemize}
+      \item \texttt{get-alternative-franchise-list.service.ts}: obtiene lista de franquicias de categoría Alternativa.
+      \item \texttt{get-innovation-franchise-list.service.ts}: obtiene lista de franquicias de categoría Innovación.
+      \item \texttt{report-download.service.ts}: gestiona la descarga de informes.
+      \item \texttt{reports-history.service.ts}: maneja las peticiones relacionadas con el historial.
+    \end{itemize}
+  
+  \item \textbf{Archivos raíz del módulo}:
+    \begin{itemize}
+      \item \texttt{app.component.ts}: componente raíz de la aplicación.
+      \item \texttt{app.module.ts}: módulo principal que importa todos los submódulos.
+      \item \texttt{app-routing.module.ts}: configuración de rutas entre \textit{reports-generator} y \textit{reports-history}.
+    \end{itemize}
+\end{itemize}
+
+Esta estructura modular permite mantener separadas las responsabilidades: el generador de informes gestiona la creación, el historial maneja la consulta y re-descarga, y los servicios centralizan toda la comunicación HTTP con el backend.
 
 \subsubsection{Servicios Angular}
 
-Los servicios encapsulan la lógica de comunicación con el backend y la gestión de estado:
+Los servicios encapsulan la lógica de comunicación con el backend y la gestión de estado. Basándose en la estructura real del proyecto, los servicios implementados son:
 
 \begin{itemize}
-  \item \textbf{\texttt{report.service.ts}}: servicio principal que implementa los métodos para interactuar con la \acrshort{api} \acrshort{rest}:
+  \item \textbf{\texttt{get-alternative-franchise-list.service.ts}}: servicio que obtiene la lista de franquicias disponibles para informes de categoría \textit{Alternativa}. Realiza una petición GET al backend y devuelve un Observable con el listado de franquicias.
+  
+  \item \textbf{\texttt{get-innovation-franchise-list.service.ts}}: análogo al anterior, pero específico para la categoría \textit{Innovación}. Permite poblar el selector de franquicias del formulario según la categoría elegida por el usuario.
+  
+  \item \textbf{\texttt{report-download.service.ts}}: servicio responsable de gestionar la descarga de informes. Implementa métodos para:
     \begin{itemize}
-      \item \texttt{generateReport(params)}: envía petición POST a \texttt{/api/reports/generate}.
-      \item \texttt{getHistory(page, size)}: obtiene el listado paginado de informes.
-      \item \texttt{downloadReport(id)}: descarga un informe por su ID.
-      \item \texttt{checkDuplicate(params)}: verifica duplicidad mediante \texttt{/api/reports/probe}.
+      \item Enviar peticiones POST a \texttt{/api/reports/generate} con los parámetros del informe.
+      \item Manejar la descarga del archivo Excel como blob binario.
+      \item Gestionar errores de red o validación con sus respectivos mensajes hacia el usuario en formato \gls{snackbar}.
     \end{itemize}
   
-  \item \textbf{\texttt{notification.service.ts}}: gestiona la visualización de mensajes informativos, de error o de éxito al usuario mediante toasts o snackbars.
-  
-  \item \textbf{\texttt{loading.service.ts}}: controla el estado de carga global de la aplicación, mostrando u ocultando spinners durante las peticiones asíncronas.
+  \item \textbf{\texttt{reports-history.service.ts}}: servicio que gestiona las operaciones relacionadas con el historial de informes:
+    \begin{itemize}
+      \item \texttt{getHistory(page, size)}: obtiene el listado paginado de informes mediante GET a \texttt{/api/reports/history}.
+      \item \texttt{downloadReport(id)}: re-descarga un informe existente por su ID mediante GET a \texttt{/api/reports/\{id\}/download}.
+      \item Transformación de respuestas JSON a objetos TypeScript tipados.
+    \end{itemize}
 \end{itemize}
+
+Todos los servicios utilizan \texttt{HttpClient} de Angular para las peticiones HTTP, retornan Observables de RxJS para gestión reactiva, y están decorados con \texttt{@Injectable(\{providedIn: 'root'\})} para hacerlos disponibles en toda la aplicación mediante inyección de dependencias.
 
 \subsubsection{Flujo de datos entre componentes}
 
 El flujo típico de generación de un informe es:
 
 \begin{enumerate}
-  \item El usuario rellena el formulario en \texttt{ReportGeneratorComponent}.
-  \item Al pulsar "Generar", el componente valida los datos y llama a \texttt{report.service.generateReport()}.
-  \item El servicio primero invoca \texttt{checkDuplicate()} para verificar si existe un informe reciente idéntico.
-  \item Si no hay duplicado, se lanza la generación. El servicio muestra un spinner mediante \texttt{loading.service}.
-  \item Cuando el backend responde, se descarga automáticamente el fichero y se muestra un mensaje de éxito con \texttt{notification.service}.
-  \item Si hay duplicado, se notifica al usuario para que consulte el historial.
+  \item El usuario rellena el formulario en \texttt{ReportsGeneratorComponent}, seleccionando tipo, categoría y franquicia(s).
+  \item Al seleccionar la categoría (Innovación o Alternativa), se invoca el servicio correspondiente (\texttt{get-innovation-franchise-list} o 
+  \texttt{get-alternative-franchise-list}) para poblar dinámicamente el selector de franquicias.
+  \item Al pulsar "Generar", el componente valida los datos del formulario.
+  \item Si la validación es exitosa, se invoca \texttt{report-download.service} que envía la petición POST a \texttt{/api/reports/generate}.
+  \item El backend realiza validaciones síncronas antes de lanzar el job:
+    \begin{itemize}
+      \item Verifica si existe un informe duplicado (mismos parámetros en los últimos 5 minutos).
+      \item Comprueba mediante \texttt{ReportDataProbeService} si habrá datos disponibles para el informe solicitado.
+      \item Devuelve un estado: \texttt{DUPLICATE}, \texttt{NO\_DATA} o \texttt{STARTED}.
+    \end{itemize}
+  \item El frontend muestra mensajes contextuales según el estado recibido: "Informe reciente disponible en Historial", "No hay datos para el informe solicitado" o "Generación iniciada".
+  \item Si el estado es \texttt{STARTED}, se muestra un indicador de carga y el job se ejecuta asíncronamente.
+  \item Cuando el backend completa la generación, el servicio recibe el blob binario del Excel y lo descarga automáticamente al navegador del usuario.
+  \item El usuario puede navegar al componente \texttt{ReportsHistoryComponent} para consultar todos los informes generados, donde el servicio \texttt{reports-history.service} obtiene el listado paginado y permite re-descargar cualquier informe mediante \texttt{downloadReport(id)}.
 \end{enumerate}
 
 \subsubsection{Validaciones y feedback al usuario}
@@ -629,17 +689,84 @@ El backend está organizado en capas siguiendo el patrón arquitectónico de \te
 
 \subsubsection{Estructura de paquetes}
 
-La aplicación se organiza en los siguientes paquetes Java:
+El backend está ubicado en \texttt{main/java/com/gbtec/bic/cloud} y sigue una organización modular por funcionalidad. La estructura de paquetes real del proyecto es:
 
 \begin{itemize}
-  \item \textbf{\texttt{com.gbtec.bic.alsea.reports.controller}}: controladores \acrshort{rest} que exponen los endpoints de la \acrshort{api}.
-  \item \textbf{\texttt{com.gbtec.bic.alsea.reports.service}}: servicios que implementan la lógica de negocio (generación, consulta, duplicidad).
-  \item \textbf{\texttt{com.gbtec.bic.alsea.reports.repository}}: repositorios JPA que gestionan el acceso a la base de datos.
-  \item \textbf{\texttt{com.gbtec.bic.alsea.reports.batch}}: configuración de jobs y steps de Spring Batch.
-  \item \textbf{\texttt{com.gbtec.bic.alsea.reports.model}}: entidades JPA y DTOs.
-  \item \textbf{\texttt{com.gbtec.bic.alsea.reports.config}}: clases de configuración (beans, propiedades, seguridad).
-  \item \textbf{\texttt{com.gbtec.bic.alsea.reports.util}}: utilidades comunes (generadores Excel, cálculo de firmas, formateo de fechas).
+  \item \textbf{\texttt{config}}: clases de configuración de Spring.
+    \begin{itemize}
+      \item \texttt{AsposeConfiguration}: configuración de la librería Aspose Cells para generación de Excel.
+      \item \texttt{WebSecurityConfig}: configuración de seguridad web y CORS.
+    \end{itemize}
+  
+  \item \textbf{\texttt{datastorage.elasticsearch}}: integración con Elasticsearch.
+    \begin{itemize}
+      \item \texttt{service/ElasticsearchService}: servicio para consultar variables de procesos almacenadas en Elasticsearch.
+    \end{itemize}
+  
+  \item \textbf{\texttt{processes.batch}}: configuración de Spring Batch para procesamiento asíncrono.
+    \begin{itemize}
+      \item \texttt{config/BatchAsyncConfiguration}: configuración del executor asíncrono para jobs.
+      \item \texttt{config/ReportBatchConfig}: configuración del job de generación de informes.
+      \item \texttt{controller/FranchiseController}: controlador REST para obtener listas de franquicias.
+      \item \texttt{controller/ReportBatchController}: controlador principal que gestiona las peticiones de generación.
+      \item \texttt{support/ReportParamService}: servicio auxiliar para gestión de parámetros del batch.
+      \item \texttt{support/ReportRequestDto}: DTO que encapsula los parámetros de la petición.
+      \item \texttt{tasklet/GenerateReportTasklet}: implementación del Tasklet que ejecuta la generación del informe.
+      \item \texttt{utils/ReportDuplicateUtils}: utilidades para cálculo de firma y detección de duplicados.
+      \item \texttt{utils/ReportFileNameUtils}: utilidades para generar nombres de archivo consistentes.
+      \item \texttt{utils/ReportParamUtils}: utilidades para procesamiento de parámetros.
+    \end{itemize}
+  
+  \item \textbf{\texttt{kpi\_reports}}: lógica específica para informes de tipo KPI, organizada por categoría.
+    \begin{itemize}
+      \item \texttt{alternative/}: informes KPI de categoría Alternativa.
+        \begin{itemize}
+          \item \texttt{model/}: modelos de datos específicos.
+          \item \texttt{repository/}: repositorios para acceso a datos.
+          \item \texttt{service/}: servicios de negocio.
+          \item \texttt{utils/}: utilidades específicas.
+        \end{itemize}
+      \item \texttt{innovation/}: informes KPI de categoría Innovación (estructura análoga).
+      \item \texttt{utils/}: utilidades compartidas entre ambas categorías.
+    \end{itemize}
+  
+  \item \textbf{\texttt{product\_reports}}: lógica específica para informes de tipo Producto, también organizada por categoría.
+    \begin{itemize}
+      \item \texttt{alternative/datastorage/}: acceso a datos para informes de Producto-Alternativa.
+      \item \texttt{alternative/report/}: generación del informe.
+      \item \texttt{innovation/datastorage/}: acceso a datos para informes de Producto-Innovación.
+      \item \texttt{innovation/report/}: generación del informe.
+    \end{itemize}
+  
+  \item \textbf{\texttt{report\_probe}}: funcionalidad de detección de duplicados.
+    \begin{itemize}
+      \item \texttt{ReportDataProbeService}: servicio que verifica si existe un informe duplicado reciente.
+      \item \texttt{ReportDataProbeServiceImpl}: implementación del servicio de verificación.
+      \item \texttt{ReportLaunchService}: servicio que coordina el lanzamiento de jobs.
+    \end{itemize}
+  
+  \item \textbf{\texttt{report\_storage}}: persistencia de informes generados.
+    \begin{itemize}
+      \item \texttt{ReportEntity}: entidad JPA que mapea la tabla \texttt{report} en PostgreSQL.
+      \item \texttt{ReportRepository}: interfaz JPA Repository para operaciones CRUD sobre informes.
+      \item \texttt{ReportService}: servicio de negocio para gestión de informes almacenados.
+    \end{itemize}
+  
+  \item \textbf{\texttt{utils}}: utilidades globales para generación de Excel.
+    \begin{itemize}
+      \item \texttt{heatmap/}: utilidades específicas para generación de heatmaps.
+      \item \texttt{CreateExcelFileUtils}: utilidades para creación de archivos Excel.
+      \item \texttt{ExcelCellStyleUtils}: estilos y formatos de celdas.
+    \end{itemize}
+  
+  \item \textbf{\texttt{ui}}: controladores para interfaz de usuario.
+    \begin{itemize}
+      \item \texttt{config/}: configuración específica de la UI.
+      \item \texttt{controller/}: controladores REST que sirven el frontend.
+    \end{itemize}
 \end{itemize}
+
+Esta organización separa claramente las responsabilidades: la configuración global, el procesamiento batch, la lógica específica de cada tipo de informe (KPI/Producto) y categoría (Innovación/Alternativa), la detección de duplicados, el almacenamiento persistente y las utilidades de generación Excel.
 
 \subsubsection{Patrón de diseño y arquitectura}
 
@@ -657,25 +784,25 @@ El backend aplica los siguientes patrones:
 El flujo completo de generación de un informe es:
 
 \begin{enumerate}
-  \item \textbf{ReportController} recibe la petición POST en \texttt{/api/reports/generate} con los parámetros en formato \acrshort{json}.
+  \item \textbf{ReportBatchController} recibe la petición POST en \texttt{/api/reports/generate} con los parámetros en formato \acrshort{json}.
   
-  \item El controlador valida los datos de entrada y delega en \textbf{ReportService}.
+  \item El controlador valida los datos de entrada mediante \textbf{ReportRequestDto} y delega en \textbf{ReportLaunchService}.
   
-  \item \textbf{ReportService} invoca a \textbf{ProbeService} para comprobar duplicidad:
+  \item \textbf{ReportLaunchService} realiza validaciones síncronas antes de lanzar el job:
     \begin{itemize}
-      \item Se calcula una firma única (hash MD5) a partir de tipo, categoría, franquicias y fechas.
-      \item Se busca en la base de datos si existe un informe con esa firma generado en los últimos 5 minutos.
-      \item Si existe, se devuelve un código 409 Conflict con el ID del informe duplicado.
+      \item \textbf{Comprobación de duplicidad}: calcula una firma única (hash MD5) mediante \texttt{ReportDuplicateUtils} y busca en la base de datos si existe un informe idéntico generado en los últimos 5 minutos. Si existe, devuelve estado \texttt{DUPLICATE}.
+      \item \textbf{Verificación de disponibilidad de datos}: invoca \texttt{ReportDataProbeService.hasData()} para comprobar rápidamente si habrá datos suficientes para generar el informe. Si no hay datos, devuelve estado \texttt{NO\_DATA}.
+      \item Si ambas validaciones son exitosas, devuelve estado \texttt{STARTED} y procede a lanzar el job.
     \end{itemize}
   
-  \item Si no hay duplicado, \textbf{ReportService} lanza un \textbf{Spring Batch Job} de forma asíncrona mediante \texttt{JobLauncher}.
+  \item Si el estado es \texttt{STARTED}, \textbf{ReportLaunchService} lanza un \textbf{Spring Batch Job} de forma asíncrona mediante \texttt{JobLauncher}.
   
-  \item El \textbf{Job} de Spring Batch consta de un único \textbf{Step} que:
+  \item El \textbf{Job} de Spring Batch consta de un único \textbf{Step} que ejecuta \textbf{GenerateReportTasklet}:
     \begin{itemize}
-      \item Lee variables de procesos desde Elasticsearch y desde la base de datos de BIC Process Execution.
-      \item Procesa los datos aplicando cálculos, agregaciones y transformaciones según el tipo de informe.
-      \item Genera el workbook Excel mediante \textbf{ExcelGenerator} (que utiliza Aspose Cells para aplicar formatos, estilos, heatmaps, retroplannings, etc.).
-      \item Persiste el informe en PostgreSQL mediante \textbf{ReportRepository}, almacenando metadatos y contenido binario.
+      \item Lee variables de procesos desde Elasticsearch mediante \texttt{ElasticsearchService} y desde PostgreSQL de BIC Process Execution.
+      \item Procesa los datos aplicando cálculos, agregaciones y transformaciones según el tipo de informe (KPI o Producto) y la categoría (Innovación o Alternativa).
+      \item Genera el workbook Excel mediante utilidades de \texttt{utils} y \texttt{utils/heatmap} (que utilizan Aspose Cells para aplicar formatos, estilos, heatmaps, retroplannings, etc.).
+      \item Persiste el informe en PostgreSQL mediante \textbf{ReportRepository}, almacenando metadatos y contenido binario en \texttt{ReportEntity}.
     \end{itemize}
   
   \item Al finalizar el Job, se registran métricas de tiempo de ejecución y tamaño del fichero.
@@ -685,16 +812,17 @@ El flujo completo de generación de un informe es:
 
 \subsubsection{Diseño del Job y Step de Spring Batch}
 
-El job de generación (\texttt{GenerateReportJob}) está configurado con:
+El job de generación está configurado en \texttt{ReportBatchConfig} con:
 
 \begin{itemize}
-  \item \textbf{Parámetros de entrada}: tipo de informe, categoría, franquicias, fechas, ID del informe a generar.
-  \item \textbf{Step único} (\texttt{GenerateReportStep}):
+  \item \textbf{Parámetros de entrada}: tipo de informe, categoría, franquicias, fechas, ID del informe a generar (gestionados por \texttt{ReportParamUtils} y \texttt{ReportParamService}).
+  \item \textbf{Step único} que ejecuta el \texttt{GenerateReportTasklet}:
     \begin{itemize}
-      \item \textbf{Reader}: no utiliza reader estándar; en su lugar, el \texttt{Tasklet} lee directamente de Elasticsearch y PostgreSQL.
-      \item \textbf{Processor}: lógica de transformación y cálculo de métricas (\acrshort{kpi}s, distribuciones trimestrales, estados de proyectos).
-      \item \textbf{Writer}: generación del Excel mediante Aspose y persistencia en base de datos.
+      \item \textbf{Reader}: no utiliza reader estándar; en su lugar, el Tasklet lee directamente de Elasticsearch mediante \texttt{ElasticsearchService} y de PostgreSQL.
+      \item \textbf{Processor}: lógica de transformación y cálculo de métricas (KPIs, distribuciones trimestrales, estados de proyectos) implementada en los servicios específicos de \texttt{kpi\_reports} y \texttt{product\_reports}.
+      \item \textbf{Writer}: generación del Excel mediante utilidades de \texttt{utils} (como \texttt{CreateExcelFileUtils} y \texttt{ExcelCellStyleUtils}) usando Aspose, y persistencia en base de datos mediante \texttt{ReportService}.
     \end{itemize}
+  \item \textbf{Executor asíncrono}: configurado en \texttt{BatchAsyncConfiguration} para no bloquear el thread principal.
   \item \textbf{Listeners}: registran inicio, fin y errores del job para monitorización y logs.
 \end{itemize}
 
@@ -924,8 +1052,75 @@ El \textit{frontend} presentaba inicialmente múltiples vulnerabilidades (\acrsh
 
 
 \subsection{Coverage}
+
+Una de las métricas de calidad más importantes establecidas por GBTEC en SonarCloud es la \gls{coverage} (cobertura de código) mediante pruebas unitarias. Al inicio del proyecto, el Report Service presentaba una cobertura del 17.7\%, considerablemente por debajo del umbral mínimo del 20\% exigido por la empresa para aprobar los \acrshort{pr}s.\\n
+Para abordar esta situación, se implementó una estrategia sistemática de mejora de la cobertura de tests:
+
+\begin{itemize}
+  \item \textbf{Identificación de código sin cobertura}: se analizaron los informes de SonarCloud para identificar las clases, métodos y ramas lógicas que carecían de pruebas unitarias.
+  \item \textbf{Priorización de componentes críticos}: se priorizaron los servicios de negocio (\texttt{ReportService}, \texttt{BatchService}), repositorios (\texttt{ReportRepository}) y utilidades de generación Excel (\texttt{ExcelGenerator}).
+  \item \textbf{Implementación de tests unitarios}: se escribieron nuevos tests utilizando JUnit 5 y Mockito para simular dependencias externas, cubriendo casos normales, casos límite y situaciones de error.
+  \item \textbf{Tests de integración con Testcontainers}: se añadieron tests de integración que levantan contenedores PostgreSQL en memoria para validar el comportamiento completo del repositorio y las migraciones Flyway.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{img/coverage_before.jpeg}
+  \caption{Cobertura de código antes de las mejoras: 17.7\% (por debajo del umbral mínimo del 20\%).}
+  \label{fig:coverage-before}
+\end{figure}
+
+La figura~\ref{fig:coverage-before} muestra el estado inicial de la cobertura del proyecto, evidenciando que estaba por debajo de los estándares de calidad requeridos.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{img/coverage_after.jpeg}
+  \caption{Cobertura de código después de las mejoras: 25.7\% (superando el umbral mínimo del 20\%).}
+  \label{fig:coverage-after}
+\end{figure}
+
+Tras la implementación de las mejoras, la cobertura aumentó del 17.7\% al 25.7\%, como se observa en la figura~\ref{fig:coverage-after}. Este incremento de 8 puntos porcentuales no solo cumplió con los requisitos de calidad de la empresa, sino que proporcionó mayor confianza en la estabilidad del código y facilitó la detección temprana de regresiones durante el desarrollo de nuevas funcionalidades.
+
 \subsection{Refactorización}
 \subsection{Duplicación}
+
+Otra métrica crítica de calidad de código es el porcentaje de \gls{duplicacion}, que mide la cantidad de código repetido en el proyecto. El código duplicado aumenta la deuda técnica, dificulta el mantenimiento y puede introducir inconsistencias cuando se realizan cambios que deben aplicarse en múltiples lugares.\\n
+Al inicio del proyecto, el análisis de SonarCloud reveló un 15.8\% de duplicación en el código del Report Service. Este nivel de duplicación se debía principalmente a:
+
+\begin{itemize}
+  \item \textbf{Lógica repetida en controladores}: métodos similares para manejar diferentes tipos de informes con código casi idéntico.
+  \item \textbf{Generación de Excel duplicada}: múltiples implementaciones de formateo y estilo de celdas Excel para diferentes hojas del workbook.
+  \item \textbf{Validaciones redundantes}: comprobaciones de parámetros y fechas replicadas en varios servicios.
+  \item \textbf{Consultas a Elasticsearch similares}: queries con estructura parecida pero ligeras variaciones para diferentes variables de proceso.
+\end{itemize}
+
+Para reducir la duplicación, se aplicaron las siguientes técnicas de refactorización:
+
+\begin{itemize}
+  \item \textbf{Extracción de métodos comunes}: se identificaron patrones repetidos y se extrajeron a métodos reutilizables en clases de utilidad.
+  \item \textbf{Uso de herencia y composición}: se crearon clases base abstractas para generadores de informes, compartiendo lógica común y permitiendo especialización mediante herencia.
+  \item \textbf{Parametrización de lógica}: se convirtieron bloques de código duplicados en métodos parametrizados que reciben configuración mediante argumentos.
+  \item \textbf{Patrón Template Method}: se aplicó este patrón de diseño para definir el esqueleto de algoritmos de generación, delegando pasos específicos a subclases.
+  \item \textbf{Builders y factories}: se implementaron patrones Builder para construcción de objetos complejos (configuración Excel, parámetros de jobs) reduciendo código repetitivo.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{img/duplications_before.jpeg}
+  \caption{Duplicación de código antes de la refactorización: 15.8\%.}
+  \label{fig:duplications-before}
+\end{figure}
+
+La figura~\ref{fig:duplications-before} muestra el nivel inicial de duplicación detectado por SonarCloud en el proyecto.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{img/duplications_after.jpeg}
+  \caption{Duplicación de código después de la refactorización: 10.0\%.}
+  \label{fig:duplications-after}
+\end{figure}
+
+Como resultado de las tareas de refactorización, la duplicación se redujo del 15.8\% al 10.0\%, como se aprecia en la figura~\ref{fig:duplications-after}. Esta reducción de 5.8 puntos porcentuales representa una mejora significativa en la mantenibilidad del código, facilitando futuras evoluciones del sistema y reduciendo el riesgo de introducir bugs al modificar lógica compartida.
 \section{Spring Batch discussion dificultades técnicas}
 \section{Pruebas}
 \subsection{Testing unitario}
