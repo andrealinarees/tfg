@@ -140,23 +140,36 @@ Para dar respuesta a esta necesidad, GBTEC Software AG, compañía alemana espec
 
 La \textit{BIC Platform} se despliega habitualmente en modalidad cloud (BIC Cloud) y está compuesta por varios módulos que cubren el ciclo de vida de los procesos: \textit{Process Design} para modelar procesos mediante diagramas BPMN, y \textit{Process Execution} para ejecutar y automatizar esos procesos, gestionando instancias, tareas y persistencia de variables. El \textit{Report Service} extrae información de \textit{Process Execution} (combinada con consultas a \gls{elasticsearch}) para componer informes Excel con \acrshort{kpi}, \gls{retroplanning}, \gls{heatmap} y otras métricas solicitadas por ALSEA.\\
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{img/bic_bpm_platform_context.png}
+  \caption{Contexto de la plataforma BIC BPM mostrando la arquitectura de sistemas y sus interacciones. Fuente: Documentación oficial de la arquitectura de GBTEC.}
+  \label{fig:bic-platform-context}
+\end{figure}
+
+La figura~\ref{fig:bic-platform-context} ilustra la arquitectura completa de la plataforma BIC BPM, mostrando cómo el usuario interactúa mediante \acrshort{https} con los módulos \textit{BIC Process Design} y \textit{BIC Process Execution}, que a su vez se comunican con el núcleo (\textit{Core}) y la capa de infraestructura (\textit{Infrastructure}). Esta arquitectura de sistemas distribuidos proporciona la base sobre la que se integra el Report Service desarrollado en este proyecto.\\
+
 El Report Service original ofrecía una solución sencilla y funcional: la interfaz permitía seleccionar el tipo de informe (KPI o Producto), la categoría (Innovación o Alternativa), una o varias franquicias y un rango de fechas. Con esta información, el backend recuperaba los datos correspondientes, generaba un libro de Excel con múltiples hojas y lo devolvía al usuario para su descarga local.\\
 
-El sistema permite generar cuatro tipos de informes combinando el tipo (KPI o Producto) con la categoría del proceso (Innovación o Alternativa). Cada combinación produce un libro Excel con múltiples hojas que cubren distintos requisitos y métricas personalizadas solicitadas por el cliente. A continuación se muestran dos ejemplos representativos que ilustran la estructura y contenido de estos informes:
+Cada combinación produce un libro Excel con múltiples hojas que cubren distintos requisitos y métricas personalizadas solicitadas por el cliente. A continuación se muestran dos ejemplos representativos que ilustran la estructura y contenido de estos informes:
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{img/kpi_alternative_todas.png}
-  \caption{Informe de tipo KPI con categoría de proceso Alternativa (todas las franquicias, sin rango de fechas). La captura muestra la hoja del Requisito 1, que presenta un \gls{histograma} con los procesos de alternativa de producto por trimestres, diferenciando proyectos abiertos, cerrados y cancelados, además de los totales y el total absoluto en 2025. En la parte inferior se observan las pestañas de otras hojas del libro, correspondientes a requisitos adicionales personalizados impuestos por el cliente.}
+  \caption{Informe de tipo KPI con categoría de proceso Alternativa (todas las franquicias, sin rango de fechas).}
   \label{fig:kpi-alternative}
 \end{figure}
+
+La captura muestra la hoja del Requisito 1, que presenta un \gls{histograma} con los procesos de alternativa de producto por trimestres, diferenciando proyectos abiertos, cerrados y cancelados, además de los totales y el total absoluto en 2025. En la parte inferior se observan las pestañas de otras hojas del libro, correspondientes a requisitos adicionales personalizados impuestos por el cliente.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{img/product_innovation_todas.png}
-  \caption{Informe de tipo Producto con categoría de proceso Innovación (todas las franquicias, sin rango de fechas). La captura muestra la hoja del Heatmap actual, que representa para cada marca el estado de sus proyectos junto con las actividades, responsables que las llevan a cabo y fechas previstas. En la parte inferior se pueden observar las pestañas de otras hojas del libro, incluyendo los retroplannings y una hoja de comparativa, que forman parte del conjunto de métricas y análisis solicitados por ALSEA.}
+  \caption{Informe de tipo Producto con categoría de proceso Innovación (todas las franquicias, sin rango de fechas).}
   \label{fig:product-innovation}
 \end{figure}
+
+La captura muestra la hoja del heatmap actual, que representa para cada marca el estado de sus proyectos junto con las actividades, responsables que las llevan a cabo y fechas previstas. En la parte inferior se pueden observar las pestañas de otras hojas del libro, incluyendo los retroplannings y una hoja de comparativa, que forman parte del conjunto de métricas y análisis solicitados por ALSEA.
 
 Estos ejemplos muestran la riqueza informativa y el nivel de personalización de los informes generados por el Report Service, diseñados para cubrir las necesidades analíticas específicas de ALSEA en la gestión de sus procesos de innovación y alternativa de producto.\\
 
@@ -188,11 +201,11 @@ Con ello, se pretende transformar el Report Service en una solución completa qu
 
 Para la elaboración del estado del arte se han analizado distintas soluciones disponibles en el mercado relacionadas con la generación de informes empresariales y cuadros de mando, evaluando sus ventajas y limitaciones. El objetivo de este análisis es comprender cómo se abordan actualmente estas necesidades en el sector y en qué medida las herramientas existentes inspiran o contrastan con el desarrollo del módulo Report Service en ALSEA.\\
 
-\textbf{Microsoft Power BI} es una de las plataformas líderes en el ámbito de la inteligencia de negocio. Destaca por su capacidad de conexión a múltiples fuentes de datos y por ofrecer cuadros de mando interactivos y actualizados en tiempo real. Su principal fortaleza es la flexibilidad de visualización y la posibilidad de integrar gráficos avanzados sin conocimientos de programación. No obstante, entre sus limitaciones se encuentra la complejidad de configuración inicial y la necesidad de licencias específicas para acceder a todas las funcionalidades.\\
+\textbf{Microsoft Power BI}\footnote{\url{https://www.microsoft.com/es-es/power-platform/products/power-bi}} es una de las plataformas líderes en el ámbito de la inteligencia de negocio. Destaca por su capacidad de conexión a múltiples fuentes de datos y por ofrecer cuadros de mando interactivos y actualizados en tiempo real. Su principal fortaleza es la flexibilidad de visualización y la posibilidad de integrar gráficos avanzados sin conocimientos de programación. No obstante, entre sus limitaciones se encuentra la complejidad de configuración inicial y la necesidad de licencias específicas para acceder a todas las funcionalidades.\\
 
-\textbf{Tableau} constituye otra herramienta ampliamente utilizada. Su punto fuerte es la facilidad con la que permite generar visualizaciones intuitivas y estéticamente atractivas. Además, ofrece opciones de colaboración entre equipos y una buena integración con entornos corporativos. Sin embargo, su curva de aprendizaje puede ser elevada para usuarios sin experiencia previa, y su enfoque está más orientado a cuadros de mando interactivos que a informes exportables en formatos tradicionales como Excel.\\
+\textbf{Tableau}\footnote{\url{https://www.tableau.com/es-es/why-tableau/what-is-tableau}} constituye otra herramienta ampliamente utilizada. Su punto fuerte es la facilidad con la que permite generar visualizaciones intuitivas y estéticamente atractivas. Además, ofrece opciones de colaboración entre equipos y una buena integración con entornos corporativos. Sin embargo, su curva de aprendizaje puede ser elevada para usuarios sin experiencia previa, y su enfoque está más orientado a cuadros de mando interactivos que a informes exportables en formatos tradicionales como Excel.\\
 
-\textbf{Qlik Sense} se centra en la exploración de datos y en la creación de dashboards personalizados. Su motor asociativo facilita el análisis de relaciones entre diferentes conjuntos de datos, permitiendo descubrir patrones de forma ágil. Entre sus limitaciones destaca que, al igual que en el caso de Tableau, no siempre resulta la herramienta más adecuada para informes ejecutivos estandarizados en Excel, que siguen siendo demandados en muchos entornos corporativos.\\
+\textbf{Qlik Sense}\footnote{\url{https://www.qlik.com/es-es/products/qlik-sense}} se centra en la exploración de datos y en la creación de dashboards personalizados. Su motor asociativo facilita el análisis de relaciones entre diferentes conjuntos de datos, permitiendo descubrir patrones de forma ágil. Entre sus limitaciones destaca que, al igual que en el caso de Tableau, no siempre resulta la herramienta más adecuada para informes ejecutivos estandarizados en Excel, que siguen siendo demandados en muchos entornos corporativos.\\
 
 Por otro lado, existen soluciones especializadas en automatización de informes Excel con plantillas predefinidas, aunque suelen carecer de personalización avanzada o integración con flujos de datos en tiempo real.\\
 
@@ -237,6 +250,20 @@ El desarrollo del Report Service se apoyó en un conjunto de tecnologías que ab
     \item \textbf{Git}: sistema de control de versiones empleado en combinación con ramas de funcionalidad y \textit{Pull Requests}, asegurando trazabilidad y revisiones de código antes de su integración.
 \end{itemize}
 
+\subsection{Herramientas de apoyo}
+
+\begin{itemize}
+  \item \textbf{Gestión de trabajo}: \gls{jira} se utilizó como tablero \gls{kanban} para organizar \acrshort{epic}s, historias de usuario, subtareas y gestionar prioridades, permitiendo un seguimiento visual del progreso de cada ticket.
+  \item \textbf{Control de versiones y hosting}: Git para control de versiones y GitHub como repositorio remoto centralizado donde se alojaba el código fuente del proyecto, facilitando la colaboración mediante Pull Requests y revisiones de código.
+  \item \textbf{Flujo de trabajo Git}: \gls{gitflow}~\cite{Gitflow} se adoptó como convención de ramas (feature/release/hotfix) para mantener estabilidad en las ramas de producción y organizar el desarrollo de forma estructurada.
+  \item \textbf{Integración continua / CI \& CD}: \gls{githubactions} se configuró con acciones personalizadas para automatizar el build del proyecto, ejecutar pruebas unitarias e integradas, y realizar despliegues. Los pipelines se integraron con SonarQube (SonarCloud) para validar métricas de calidad de código (cobertura, duplicidad, code smells) antes de aceptar cada \acrshort{pr}.
+  \item \textbf{Registro y gestión de artefactos}: \gls{quay} se empleó como registry principal para almacenar y versionar las imágenes Docker de los entornos Ansible de prueba, mientras que \gls{jfrog} sirvió como repositorio de artefactos binarios y dependencias Maven/NPM, facilitando la distribución controlada de versiones.
+  \item \textbf{Orquestación de despliegue y automatización}: \gls{ansible} (gestionado mediante \acrshort{awx}) permitió ejecutar playbooks para levantar entornos de prueba y automatizar despliegues en \acrshort{qa} e integración.
+  \item \textbf{Entornos de desarrollo}: IntelliJ IDEA para backend (Java/Spring) y Visual Studio Code para frontend (Angular/TypeScript).
+  \item \textbf{Pruebas y depuración}: Postman para pruebas de API y Google Chrome para pruebas manuales en entorno local.
+  \item \textbf{Calidad de código}: \gls{sonarcloud} / SonarQube se integró en los pipelines de CI para realizar análisis estático de código, medir cobertura de pruebas, detectar duplicaciones y controlar la deuda técnica, garantizando que cada cambio cumpliera con los umbrales de calidad definidos por la empresa.
+\end{itemize}
+
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  % Capítulo   3                         %
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -245,12 +272,12 @@ El desarrollo del Report Service se apoyó en un conjunto de tecnologías que ab
 
 \section{Metodología de desarrollo}
 
-El proyecto se llevó a cabo siguiendo una metodología ágil ligera basada en iteraciones cortas y gestión \gls{kanban} en \gls{jira}. Este enfoque resultó adecuado por la naturaleza incremental de las mejoras del Report Service, la necesidad de integrar cambios en backend y frontend con validación continua, y la conveniencia de priorizar asuntos operativos (bugs y chores) junto con funcionalidades nuevas. \gls{jira} se configuró con un tablero Kanban que permitía visualizar el flujo de trabajo completo, con estados definidos (\texttt{To Do} → \texttt{Task Breakdown} → \texttt{In Progress} → \texttt{Ready for QA/PR} → \texttt{QA/PR OK} → \texttt{Done}) para cada tarea, facilitando el seguimiento de prioridades y la identificación de bloqueos.\\
+El proyecto se llevó a cabo siguiendo una metodología ágil~\cite{AgileManifesto} ligera basada en iteraciones cortas y gestión Kanban~\cite{AndersonKanban} en \gls{jira}. Este enfoque resultó adecuado por la naturaleza incremental de las mejoras del Report Service, la necesidad de integrar cambios en backend y frontend con validación continua, y la conveniencia de priorizar asuntos operativos (bugs y chores) junto con funcionalidades nuevas. Jira se configuró con un tablero Kanban que permitía visualizar el flujo de trabajo completo, con estados definidos (\texttt{To Do} → \texttt{Task Breakdown} → \texttt{In Progress} → \texttt{Ready for QA/PR} → \texttt{QA/PR OK} → \texttt{Done}) para cada tarea, facilitando el seguimiento de prioridades y la identificación de bloqueos.\\
 
 Las características principales del enfoque fueron:
 
 \begin{itemize}
-  \item \textbf{Iterativo e incremental}: cada conjunto de cambios (feature/refactor/fix/chore) se abordó como una tarjeta en el tablero, produciendo un incremento funcional verificable (código, tests y PR).
+  \item \textbf{Iterativo e incremental}~\cite{ScrumGuide}: cada conjunto de cambios (feature/refactor/fix/chore) se abordó como una tarjeta en el tablero, produciendo un incremento funcional verificable (código, tests y PR).
   \item \textbf{Retroalimentación continua}: dailies diarias con el equipo para sincronizar prioridades, desbloquear tareas y validar entregables; revisión de PRs con comentarios técnicos.
   \item \textbf{Flexibilidad}: replanificación rápida en función de prioridades del \acrshort{epic} y de incidencias detectadas (p.\,ej., compatibilidad de datos, fechas nulas, duplicidades de informe).
   \item \textbf{Calidad integrada}: pruebas unitarias e integradas, migraciones controladas con \gls{flyway}, y verificación manual desde Postman/Chrome antes de integrar los cambios en el frontend.
@@ -262,38 +289,17 @@ La incorporación al proyecto siguió una fase breve de formación, alineada con
 
 \begin{itemize}
   \item \textbf{Formación inicial}: cursos introductorios de Spring Batch, \gls{docker}, Patrones de Diseño en Java y Angular (priorizando primero backend) proporcionados por la suscripción mediante la empresa de la entidad emisora \acrshort{udemy}.
-  \item \textbf{Aterrizaje en \gls{jira}}: asignación al \acrshort{epic} "Improvements for ALSEA Project in 2025 Q3 \& Q4", con tareas tipificadas como Story, Task o Bug, cada una con subtareas y prioridad.
+  \item \textbf{Aterrizaje en Jira}: asignación al \acrshort{epic} "Improvements for ALSEA Project in 2025 Q3 \& Q4", con tareas tipificadas como Story, Task o Bug, cada una con subtareas y prioridad.
   \item \textbf{Flujo de trabajo}:
     \begin{itemize}
       \item Rama por tarea (feature/fix branch) en Git.
       \item Commits atómicos y descriptivos.
-      \item Pull Request hacia \texttt{development}, con code review y checks automáticos de \gls{sonarcloud} y build de pull/push.
+      \item Pull Request hacia \texttt{development}, con code review y checks automáticos de SonarCloud y build de pull/push.
       \item Cierre de la tarea al completar \acrshort{pr} + validación.
     \end{itemize}
 \end{itemize}
 
 El orden de adaptación técnica fue: backend → datos → frontend, permitiendo una integración progresiva.
-
-\subsection{Herramientas de apoyo}
-\begin{itemize}
-  \item \textbf{Gestión de trabajo}: \gls{jira} se utilizó como tablero \gls{kanban} para organizar \acrshort{epic}s, historias de usuario, subtareas y gestionar prioridades, permitiendo un seguimiento visual del progreso de cada ticket.
-  \item \textbf{Control de versiones y hosting}: Git para control de versiones y GitHub como repositorio remoto centralizado donde se alojaba el código fuente del proyecto, facilitando la colaboración mediante Pull Requests y revisiones de código.
-  \item \textbf{Flujo de trabajo Git}: \gls{gitflow} se adoptó como convención de ramas (feature/release/hotfix) para mantener estabilidad en las ramas de producción y organizar el desarrollo de forma estructurada.
-  \item \textbf{Integración continua / CI \& CD}: \gls{githubactions} se configuró con acciones personalizadas para automatizar el build del proyecto, ejecutar pruebas unitarias e integradas, y realizar despliegues. Los pipelines se integraron con \gls{sonarqube} (SonarCloud) para validar métricas de calidad de código (cobertura, duplicidad, code smells) antes de aceptar cada \acrshort{pr}.
-  \item \textbf{Registro y gestión de artefactos}: \gls{quay} se empleó como registry principal para almacenar y versionar las imágenes Docker de los entornos Ansible de prueba, mientras que \gls{jfrog} sirvió como repositorio de artefactos binarios y dependencias Maven/NPM, facilitando la distribución controlada de versiones.
-  \item \textbf{Orquestación de despliegue y automatización}: \gls{ansible} (gestionado mediante \acrshort{awx}) permitió ejecutar playbooks para levantar entornos de prueba y automatizar despliegues en \acrshort{qa} e integración.
-  \item \textbf{Entornos de desarrollo}: IntelliJ IDEA para backend (Java/Spring) y Visual Studio Code para frontend (Angular/TypeScript).
-  \item \textbf{Pruebas y depuración}: Postman para pruebas de API y Google Chrome para pruebas manuales en entorno local.
-  \item \textbf{Build \& dependencias}: Maven en backend y Yarn/Node.js en frontend para gestionar builds y dependencias.
-  \item \textbf{Base de datos y herramientas}: PostgreSQL (producción), DBeaver para inspección y Flyway para migraciones controladas.
-  \item \textbf{Batch y ejecución asíncrona}: Spring Batch para modelar y ejecutar jobs/steps de generación de informes.
-  \item \textbf{Generación de Excel}: Aspose Cells para composición, formato y estilos de los workbooks Excel.
-  \item \textbf{Logs y búsqueda}: \gls{elasticsearch} se utilizó como servidor \gls{on-premise} (on-premise) para almacenar logs del sistema y como base de datos no relacional donde se consultaban las instancias de procesos y variables de ejecución necesarias para la generación de informes.
-  \item \textbf{Contenedores y orquestación ligera}: Docker para empaquetado de servicios; las imágenes se versionaron y almacenaron en Quay/JFrog.
-  \item \textbf{Calidad de código}: \gls{sonarcloud} / \gls{sonarqube} se integró en los pipelines de CI para realizar análisis estático de código, medir cobertura de pruebas, detectar duplicaciones y controlar la deuda técnica, garantizando que cada cambio cumpliera con los umbrales de calidad definidos por la empresa.
-\end{itemize}
-
-En resumen, se utilizó un flujo de CI/CD basado en \gls{githubactions} que ejecuta compilaciones, pruebas y análisis de calidad con \gls{sonarcloud}, publica artefactos en registries (\gls{quay} y \gls{jfrog}) y utiliza \acrshort{awx} para ejecutar despliegues reproducibles con \gls{ansible} en entornos de integración y \acrshort{qa}. El uso de \gls{gitflow} como convención de ramas facilitó la gestión de releases y la colaboración mediante Pull Requests.
 
 \section{Planificación y seguimiento}
 
@@ -354,7 +360,7 @@ La planificación se estructuró en etapas en lugar de Sprints formales, manteni
 
   \item \textbf{Cierre, release y documentación (última semana de septiembre)}
     \begin{itemize}
-      \item Preparación de release: rama de release candidate, builds, version bump y validaciones básicas.
+      \item Preparación de release y publicación de la nueva versión.
       \item Actualización de README (frontend/back) y guía de uso.
       \item Recopilación de evidencias (PRs, capturas, pruebas).
     \end{itemize}
@@ -452,7 +458,7 @@ A continuación se detallan las principales historias de usuario definidas para 
 \section{Arquitectura del sistema}
 La aplicación sigue una arquitectura \textbf{cliente-servidor} basada en servicios web \acrshort{rest} y procesamiento asíncrono.
 
-\subsection{Cliente (Angular)}
+\subsection{Cliente web}
 El cliente web, desarrollado en Angular, gestiona la interacción del usuario y las peticiones al servidor:
 \begin{itemize}
     \item Página principal: módulo \textit{Report Generator}, donde se configuran los parámetros y se lanza la generación.
@@ -460,7 +466,7 @@ El cliente web, desarrollado en Angular, gestiona la interacción del usuario y 
     \item Comunicación con el servidor mediante servicios \acrshort{http}, con notificaciones de estado y validaciones de entrada.
 \end{itemize}
 
-\subsection{Servidor (Spring Boot y Spring Batch)}
+\subsection{Servidor }
 El servidor gestiona la lógica principal:
 \begin{itemize}
     \item Controladores REST que reciben solicitudes de generación.
@@ -491,11 +497,257 @@ El diseño inicial, aunque funcional, presentaba carencias de usabilidad y no in
   \label{fig:interfaz-antigua}
 \end{figure}
 
-\section{Modelo conceptual de datos}
 
-El almacenamiento de informes se realiza en la tabla \texttt{report} del esquema \texttt{alsea\_reports}, creada y versionada mediante migraciones de \textit{Flyway}. El modelo se centra en una única entidad persistente, \textbf{Report} (\texttt{ReportEntity}), que encapsula tanto los metadatos como el contenido binario del fichero Excel. Esta entidad se diseñó para cumplir con los requisitos funcionales y no funcionales del sistema, garantizando la trazabilidad, control de duplicidad y capacidad de re-descarga.\\
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % Capítulo   5                         %
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection*{Entidad principal: \textit{Report} (\textit{ReportEntity})}
+\chapter{Diseño}
+
+\section{Arquitectura tecnológica del sistema}
+
+En este apartado se describe la estructura final elegida para el Report Service modernizado, justificando las decisiones técnicas tomadas y explicando cómo interactúan los distintos componentes del sistema.
+
+\subsection{Visión general de la arquitectura}
+
+El sistema sigue una arquitectura cliente-servidor de tres capas que separa claramente las responsabilidades y facilita el mantenimiento y escalabilidad:
+
+\begin{itemize}
+  \item \textbf{Capa de presentación}: aplicación web desarrollada en Angular 15 que proporciona la interfaz de usuario para configurar, generar y consultar informes.
+  \item \textbf{Capa de lógica de negocio}: backend basado en Spring Boot 3 y Spring Batch que gestiona las peticiones, coordina la generación asíncrona de informes, valida duplicidades y persiste los resultados.
+  \item \textbf{Capa de datos}: base de datos PostgreSQL que almacena los informes generados y sus metadatos, complementada con Elasticsearch como fuente de datos para consultar variables de procesos.
+\end{itemize}
+
+TODO: Incluir diagrama de arquitectura general aquí.
+
+\subsection{Comunicación entre componentes}
+
+La comunicación entre cliente y servidor se realiza mediante una \acrshort{api} \acrshort{rest} sobre \acrshort{http}, intercambiando datos en formato \acrshort{json}. Los principales endpoints implementados son:
+
+\begin{itemize}
+  \item \texttt{POST /api/reports/generate}: inicia la generación de un nuevo informe. Recibe como parámetros el tipo, categoría, lista de franquicias y rango de fechas opcional.
+  \item \texttt{GET /api/reports/history}: devuelve el listado paginado de informes generados, ordenados de más reciente a más antiguo.
+  \item \texttt{GET /api/reports/\{id\}/download}: descarga un informe específico por su identificador \acrshort{uuid}.
+  \item \texttt{POST /api/reports/probe}: verifica si existe un informe idéntico generado recientemente (control de duplicidad).
+\end{itemize}
+
+El servidor responde con códigos \acrshort{http} estándar (200 OK, 201 Created, 400 Bad Request, 404 Not Found, 409 Conflict para duplicados) y mensajes \acrshort{json} estructurados que incluyen estado, datos y mensajes de error cuando corresponde.
+
+\subsection{Justificación de la arquitectura elegida}
+
+La arquitectura seleccionada ofrece múltiples ventajas:
+
+\begin{itemize}
+  \item \textbf{Modularidad}: cada capa tiene responsabilidades bien definidas. El cliente gestiona la presentación, el servidor la lógica de negocio y la capa de datos la persistencia.
+  \item \textbf{Separación de responsabilidades}: el uso de Spring Batch permite aislar la lógica de generación asíncrona de informes del flujo principal de peticiones \acrshort{rest}, evitando bloqueos y mejorando la experiencia de usuario.
+  \item \textbf{Escalabilidad}: la arquitectura permite escalar horizontalmente el backend (múltiples instancias detrás de un balanceador) y verticalmente la base de datos según las necesidades.
+  \item \textbf{Trazabilidad}: el uso de Flyway para migraciones de base de datos garantiza que los cambios en el esquema estén versionados y controlados.
+\end{itemize}
+
+\subsection{Stack tecnológico}
+
+El stack tecnológico final adoptado es:
+
+\begin{itemize}
+  \item \textbf{Cliente}: Angular 15 + TypeScript + Yarn (gestión de dependencias).
+  \item \textbf{Servidor}: Spring Boot 3 + Spring Batch + Hibernate/\acrshort{jpa} + Maven.
+  \item \textbf{Almacenamiento}: PostgreSQL (informes) + Elasticsearch (variables de procesos).
+  \item \textbf{Infraestructura}: Docker (contenedores) + Ansible (despliegue) + \acrshort{awx} (orquestación).
+  \item \textbf{Migraciones}: Flyway para control de versiones del esquema de base de datos.
+  \item \textbf{Generación de Excel}: Aspose Cells para construcción y formato de workbooks..
+\end{itemize}
+
+\section{Diseño de la aplicación}
+
+A continuación se detalla el diseño interno de los principales componentes del sistema, describiendo su estructura, patrones aplicados y flujos de datos.
+
+\subsection{Cliente}
+
+El cliente web está estructurado siguiendo las mejores prácticas de Angular, organizando el código en módulos, componentes y servicios reutilizables.
+
+\subsubsection{Estructura de módulos y componentes}
+
+La aplicación se divide en los siguientes módulos principales:
+
+
+\subsubsection{Servicios Angular}
+
+Los servicios encapsulan la lógica de comunicación con el backend y la gestión de estado:
+
+\begin{itemize}
+  \item \textbf{\texttt{report.service.ts}}: servicio principal que implementa los métodos para interactuar con la \acrshort{api} \acrshort{rest}:
+    \begin{itemize}
+      \item \texttt{generateReport(params)}: envía petición POST a \texttt{/api/reports/generate}.
+      \item \texttt{getHistory(page, size)}: obtiene el listado paginado de informes.
+      \item \texttt{downloadReport(id)}: descarga un informe por su ID.
+      \item \texttt{checkDuplicate(params)}: verifica duplicidad mediante \texttt{/api/reports/probe}.
+    \end{itemize}
+  
+  \item \textbf{\texttt{notification.service.ts}}: gestiona la visualización de mensajes informativos, de error o de éxito al usuario mediante toasts o snackbars.
+  
+  \item \textbf{\texttt{loading.service.ts}}: controla el estado de carga global de la aplicación, mostrando u ocultando spinners durante las peticiones asíncronas.
+\end{itemize}
+
+\subsubsection{Flujo de datos entre componentes}
+
+El flujo típico de generación de un informe es:
+
+\begin{enumerate}
+  \item El usuario rellena el formulario en \texttt{ReportGeneratorComponent}.
+  \item Al pulsar "Generar", el componente valida los datos y llama a \texttt{report.service.generateReport()}.
+  \item El servicio primero invoca \texttt{checkDuplicate()} para verificar si existe un informe reciente idéntico.
+  \item Si no hay duplicado, se lanza la generación. El servicio muestra un spinner mediante \texttt{loading.service}.
+  \item Cuando el backend responde, se descarga automáticamente el fichero y se muestra un mensaje de éxito con \texttt{notification.service}.
+  \item Si hay duplicado, se notifica al usuario para que consulte el historial.
+\end{enumerate}
+
+\subsubsection{Validaciones y feedback al usuario}
+
+El formulario de generación implementa validaciones reactivas:
+
+\begin{itemize}
+  \item Campos obligatorios: tipo, categoría y al menos una franquicia.
+  \item Validación de fechas: si se especifica rango, la fecha de fin debe ser posterior a la de inicio.
+  \item Mensajes contextuales: cada campo muestra ayudas inline si hay errores.
+\end{itemize}
+
+Durante la generación, se muestran mensajes de estado: "Comprobando solicitud", "Generando informe", "Descarga iniciada" o "Informe reciente disponible en Historial".
+
+\subsubsection{Frameworks y librerías de interfaz}
+
+El cliente utiliza:
+
+\begin{itemize}
+  \item \textbf{Angular Material}: biblioteca de componentes UI que proporciona formularios, tablas, botones, diálogos y snackbars con diseño Material Design.
+  \item \textbf{RxJS}: para gestión reactiva de flujos asíncronos (Observables) en servicios y componentes.
+  \item \textbf{Yarn}: gestor de dependencias para instalación reproducible de paquetes.
+\end{itemize}
+
+\subsection{Servidor (Spring Boot + Spring Batch)}
+
+El backend está organizado en capas siguiendo el patrón arquitectónico de \textbf{capas (Layered Architecture)} con inyección de dependencias gestionada por Spring.
+
+\subsubsection{Estructura de paquetes}
+
+La aplicación se organiza en los siguientes paquetes Java:
+
+\begin{itemize}
+  \item \textbf{\texttt{com.gbtec.bic.alsea.reports.controller}}: controladores \acrshort{rest} que exponen los endpoints de la \acrshort{api}.
+  \item \textbf{\texttt{com.gbtec.bic.alsea.reports.service}}: servicios que implementan la lógica de negocio (generación, consulta, duplicidad).
+  \item \textbf{\texttt{com.gbtec.bic.alsea.reports.repository}}: repositorios JPA que gestionan el acceso a la base de datos.
+  \item \textbf{\texttt{com.gbtec.bic.alsea.reports.batch}}: configuración de jobs y steps de Spring Batch.
+  \item \textbf{\texttt{com.gbtec.bic.alsea.reports.model}}: entidades JPA y DTOs.
+  \item \textbf{\texttt{com.gbtec.bic.alsea.reports.config}}: clases de configuración (beans, propiedades, seguridad).
+  \item \textbf{\texttt{com.gbtec.bic.alsea.reports.util}}: utilidades comunes (generadores Excel, cálculo de firmas, formateo de fechas).
+\end{itemize}
+
+\subsubsection{Patrón de diseño y arquitectura}
+
+El backend aplica los siguientes patrones:
+
+\begin{itemize}
+  \item \textbf{Arquitectura en capas}: separación clara entre controladores (presentación), servicios (lógica de negocio) y repositorios (acceso a datos).
+  \item \textbf{Inyección de dependencias}: Spring gestiona el ciclo de vida de los beans y las dependencias mediante anotaciones (\texttt{@Autowired}, \texttt{@Service}, \texttt{@Repository}).
+  \item \textbf{DTOs (Data Transfer Objects)}: los controladores reciben y devuelven DTOs en lugar de entidades JPA, evitando exponer detalles internos del modelo de dominio.
+  \item \textbf{Builder pattern}: para construcción fluida de objetos complejos (parámetros de jobs, configuración de Excel).
+\end{itemize}
+
+\subsubsection{Flujo de generación de informes}
+
+El flujo completo de generación de un informe es:
+
+\begin{enumerate}
+  \item \textbf{ReportController} recibe la petición POST en \texttt{/api/reports/generate} con los parámetros en formato \acrshort{json}.
+  
+  \item El controlador valida los datos de entrada y delega en \textbf{ReportService}.
+  
+  \item \textbf{ReportService} invoca a \textbf{ProbeService} para comprobar duplicidad:
+    \begin{itemize}
+      \item Se calcula una firma única (hash MD5) a partir de tipo, categoría, franquicias y fechas.
+      \item Se busca en la base de datos si existe un informe con esa firma generado en los últimos 5 minutos.
+      \item Si existe, se devuelve un código 409 Conflict con el ID del informe duplicado.
+    \end{itemize}
+  
+  \item Si no hay duplicado, \textbf{ReportService} lanza un \textbf{Spring Batch Job} de forma asíncrona mediante \texttt{JobLauncher}.
+  
+  \item El \textbf{Job} de Spring Batch consta de un único \textbf{Step} que:
+    \begin{itemize}
+      \item Lee variables de procesos desde Elasticsearch y desde la base de datos de BIC Process Execution.
+      \item Procesa los datos aplicando cálculos, agregaciones y transformaciones según el tipo de informe.
+      \item Genera el workbook Excel mediante \textbf{ExcelGenerator} (que utiliza Aspose Cells para aplicar formatos, estilos, heatmaps, retroplannings, etc.).
+      \item Persiste el informe en PostgreSQL mediante \textbf{ReportRepository}, almacenando metadatos y contenido binario.
+    \end{itemize}
+  
+  \item Al finalizar el Job, se registran métricas de tiempo de ejecución y tamaño del fichero.
+  
+  \item El controlador devuelve el informe generado al cliente como stream binario con cabeceras \texttt{Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet} y \texttt{Content-Disposition: attachment}.
+\end{enumerate}
+
+\subsubsection{Diseño del Job y Step de Spring Batch}
+
+El job de generación (\texttt{GenerateReportJob}) está configurado con:
+
+\begin{itemize}
+  \item \textbf{Parámetros de entrada}: tipo de informe, categoría, franquicias, fechas, ID del informe a generar.
+  \item \textbf{Step único} (\texttt{GenerateReportStep}):
+    \begin{itemize}
+      \item \textbf{Reader}: no utiliza reader estándar; en su lugar, el \texttt{Tasklet} lee directamente de Elasticsearch y PostgreSQL.
+      \item \textbf{Processor}: lógica de transformación y cálculo de métricas (\acrshort{kpi}s, distribuciones trimestrales, estados de proyectos).
+      \item \textbf{Writer}: generación del Excel mediante Aspose y persistencia en base de datos.
+    \end{itemize}
+  \item \textbf{Listeners}: registran inicio, fin y errores del job para monitorización y logs.
+\end{itemize}
+
+El uso de Spring Batch permite:
+
+\begin{itemize}
+  \item Ejecución asíncrona sin bloquear el thread principal.
+  \item Reintentos automáticos en caso de fallos transitorios.
+  \item Trazabilidad completa de cada ejecución (timestamps, estado, parámetros).
+\end{itemize}
+
+\subsection{Capa de datos}
+
+El modelo de datos está diseñado para soportar el almacenamiento eficiente de informes y facilitar consultas rápidas por metadatos.
+
+\subsubsection{Modelo entidad-relación}
+
+El esquema \texttt{alsea\_reports} contiene una única tabla principal \texttt{report}, gestionada mediante migraciones de Flyway. La entidad JPA \texttt{ReportEntity} mapea esta tabla con los siguientes atributos:
+
+\begin{itemize}
+  \item \texttt{id} (UUID): clave primaria generada automáticamente.
+  \item \texttt{file\_name} (String): nombre del fichero Excel.
+  \item \texttt{report\_type} (enum): tipo de informe (KPI / PRODUCT).
+  \item \texttt{report\_category} (enum): categoría de proceso (INNOVATION / ALTERNATIVE).
+  \item \texttt{created\_at} (LocalDateTime): timestamp de creación.
+  \item \texttt{start\_date}, \texttt{end\_date} (LocalDate): rango de fechas opcional.
+  \item \texttt{franchises} (String): lista de franquicias concatenadas.
+  \item \texttt{file\_size} (Long): tamaño del fichero en bytes.
+  \item \texttt{content} (byte[]): contenido binario del Excel (\texttt{bytea} en PostgreSQL).
+\end{itemize}
+
+\subsubsection{Decisiones de diseño}
+
+\begin{itemize}
+  \item \textbf{Uso de bytea para content}: se eligió almacenar el contenido binario directamente en la base de datos en lugar de usar un sistema de ficheros externo para simplificar la gestión de backups, mantener atomicidad transaccional y facilitar la re-descarga sin dependencias externas.
+  
+  \item \textbf{Enumerados como VARCHAR}: los tipos \texttt{report\_type} y \texttt{report\_category} se almacenan como strings (\texttt{@Enumerated(EnumType.STRING)}) para legibilidad y evitar dependencia de ordinales que podrían cambiar.
+  
+  \item \textbf{Firma de duplicidad calculada}: no se almacena un campo de firma en la tabla. En su lugar, el \texttt{ProbeService} calcula dinámicamente la firma (hash MD5 de los parámetros) y busca informes recientes con los mismos valores de tipo, categoría, franquicias y fechas.
+  
+  \item \textbf{Índices}: se creó un índice compuesto en \texttt{(report\_type, report\_category, created\_at)} para optimizar consultas de duplicidad y listado de historial.
+\end{itemize}
+
+\subsubsection{Justificación del esquema y uso de Flyway}
+
+El uso de un esquema dedicado (\texttt{alsea\_reports}) aísla los datos del Report Service del resto de esquemas de BIC, evitando conflictos de nombres y facilitando migraciones independientes. Flyway se eligió por:
+
+\begin{itemize}
+  \item Versionado automático de cambios en el esquema mediante scripts \acrshort{sql} numerados.
+  \item Aplicación idempotente de migraciones (solo se ejecutan scripts nuevos).
+  \item Trazabilidad completa en tabla de metadatos de Flyway (\texttt{flyway\_schema\_history}).
+  \item Integración nativa con Spring Boot mediante configuración en \texttt{application.properties}.
+\end{itemize}
 
 \setlength{\tabcolsep}{6pt}%
 \renewcommand{\arraystretch}{1.15}%
@@ -505,7 +757,7 @@ El almacenamiento de informes se realiza en la tabla \texttt{report} del esquema
 
 \begin{longtable}{@{} p{0.22\textwidth} p{0.28\textwidth} p{0.08\textwidth} p{0.42\textwidth} @{}}
 \caption{Atributos de la entidad \textit{Report} en \textit{alsea\_reports.report}.}
-\label{tab:modelo-informe}\\
+\label{tab:modelo-informe-design}\\
 
 \toprule
 \rowcolor{udcpink!20}
@@ -548,31 +800,99 @@ El almacenamiento de informes se realiza en la tabla \texttt{report} del esquema
 \rowcolors{2}{}{}
 }
 
-\paragraph{Observaciones de diseño:}
+\section{Interacción cliente–servidor}
+
+Esta sección detalla los flujos de comunicación entre el cliente Angular y el backend Spring Boot, describiendo los principales casos de uso mediante diagramas de secuencia y especificaciones de endpoints.
+
+\subsection{Endpoints \acrshort{rest}}
+
+La \acrshort{api} expone los siguientes endpoints principales:
+
 \begin{itemize}
-  \item Los \textbf{tipos} \texttt{report\_type} y \texttt{report\_category} se almacenan como \texttt{varchar} (\texttt{@Enumerated(EnumType.STRING)}) para mantener legibilidad y evitar dependencia de ordinales.
-  \item El \textbf{control de duplicidad} (``probe'') se implementa en la lógica de dominio antes de persistir; no existe un campo dedicado en la tabla. La detección se realiza calculando una firma a partir de \textit{tipo, categoría, franquicias y fechas} y verificando ventanas temporales (e.g., 5 minutos).
-  \item El \textbf{historial} se soporta directamente gracias al almacenamiento del \texttt{content} y metadatos, es decir, la re-descarga no requiere regeneración.
+  \item \textbf{POST /api/reports/generate}
+    \begin{itemize}
+      \item \textbf{Descripción}: inicia la generación de un nuevo informe.
+      \item \textbf{Request body} (JSON):
+      \begin{verbatim}
+{
+  "reportType": "KPI" | "PRODUCT",
+  "reportCategory": "INNOVATION" | "ALTERNATIVE",
+  "franchises": ["Starbucks", "Burger King", ...],
+  "startDate": "2024-01-01",  // opcional
+  "endDate": "2024-12-31"     // opcional
+}
+      \end{verbatim}
+      \item \textbf{Response}: stream binario del Excel (200 OK) o mensaje de error/duplicado (409 Conflict, 400 Bad Request).
+    \end{itemize}
+  
+  \item \textbf{POST /api/reports/probe}
+    \begin{itemize}
+      \item \textbf{Descripción}: verifica si existe un informe duplicado reciente.
+      \item \textbf{Request body}: mismos parámetros que \texttt{/generate}.
+      \item \textbf{Response} (JSON):
+      \begin{verbatim}
+{
+  "isDuplicate": true,
+  "reportId": "a1b2c3d4-...",
+  "createdAt": "2024-11-15T10:30:00"
+}
+      \end{verbatim}
+    \end{itemize}
+  
+  \item \textbf{GET /api/reports/history?page=0\&size=5}
+    \begin{itemize}
+      \item \textbf{Descripción}: devuelve listado paginado de informes.
+      \item \textbf{Response} (JSON):
+      \begin{verbatim}
+{
+  "content": [
+    {
+      "id": "uuid",
+      "fileName": "KPI_Innovation_2024-11-15.xlsx",
+      "reportType": "KPI",
+      "reportCategory": "INNOVATION",
+      "createdAt": "2024-11-15T10:30:00",
+      "franchises": "Starbucks,Burger King",
+      "fileSize": 1048576
+    },
+    ...
+  ],
+  "totalElements": 42,
+  "totalPages": 9,
+  "number": 0
+}
+      \end{verbatim}
+    \end{itemize}
+  
+  \item \textbf{GET /api/reports/\{id\}/download}
+    \begin{itemize}
+      \item \textbf{Descripción}: descarga un informe por su ID.
+      \item \textbf{Response}: stream binario del Excel (200 OK) o 404 Not Found.
+    \end{itemize}
 \end{itemize}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\textwidth]{img/tabla_dbeaver.jpg}
-  \caption{Ejemplo de registros almacenados en la tabla \textit{report} visualizados en DBeaver.}
-  \label{fig:tabla-report}
-\end{figure}
+\subsection{Manejo de errores}
 
+El backend devuelve códigos \acrshort{http} estándar y mensajes estructurados:
 
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- % Capítulo   5                         %
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}
+  \item \textbf{200 OK}: operación exitosa.
+  \item \textbf{201 Created}: informe generado correctamente.
+  \item \textbf{400 Bad Request}: parámetros inválidos (fechas incorrectas, campos obligatorios ausentes).
+  \item \textbf{404 Not Found}: informe solicitado no existe.
+  \item \textbf{409 Conflict}: intento de generar un informe duplicado reciente.
+  \item \textbf{500 Internal Server Error}: error no controlado en el servidor.
+\end{itemize}
 
-\chapter{Diseño}
-\section{Arquitectura tecnológica del sistema}
-\section{Diseño de la aplicación}
-\subsection{Cliente}
-\subsection{Servidor}
-\subsection{Interacción cliente – servidor}
+Los mensajes de error incluyen un campo \texttt{message} descriptivo y un código de error interno para facilitar el debugging:
+
+\begin{verbatim}
+{
+  "error": "DUPLICATE_REPORT",
+  "message": "Un informe idéntico fue generado hace 2 minutos.",
+  "reportId": "uuid"
+}
+\end{verbatim}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  % Capítulo   6                         %
@@ -582,7 +902,7 @@ El almacenamiento de informes se realiza en la tabla \texttt{report} del esquema
 
 \section{Tareas de mejora}
 
-Durante el desarrollo del proyecto, se abordaron diversas tareas de mejora que no solo añadieron nuevas funcionalidades, sino que también optimizaron la calidad, seguridad y mantenibilidad del código existente. Estas tareas se clasificaron en diferentes categorías según su naturaleza y prioridad, y se gestionaron a través del sistema de seguimiento \gls{jira} como parte del \acrshort{epic} "Improvements for ALSEA Project in 2025 Q3 \& Q4".\\
+Durante el desarrollo del proyecto, se abordaron diversas tareas de mejora que no solo añadieron nuevas funcionalidades, sino que también optimizaron la calidad, seguridad y mantenibilidad del código existente. Estas tareas se clasificaron en diferentes categorías según su naturaleza y prioridad, y se gestionaron a través del sistema de seguimiento Jira como parte del \acrshort{epic} "Improvements for ALSEA Project in 2025 Q3 \& Q4".\\
 
 Las tareas de mejora se distribuyeron a lo largo de los tres meses de prácticas, abordando aspectos críticos como la seguridad de las dependencias, la cobertura de pruebas, la refactorización del código y la eliminación de duplicaciones. A continuación, se describen en detalle las principales categorías de tareas de mejora abordadas durante el proyecto.
 
@@ -612,22 +932,22 @@ El \textit{frontend} presentaba inicialmente múltiples vulnerabilidades (\acrsh
 \subsection{Testing de integración}
 \subsection{Pruebas manuales y entorno de \acrshort{qa}}
 
-Para cada tarea asignada en \gls{jira}, se seguía un flujo de validación manual en un entorno de pruebas controlado antes de integrar los cambios en las ramas principales. El proceso de \acrshort{qa} se apoyaba en la infraestructura de \gls{ansible} gestionada mediante \acrshort{awx} y el registry de imágenes \gls{quay}.\\
+Para cada tarea asignada en Jira, se seguía un flujo de validación manual en un entorno de pruebas controlado antes de integrar los cambios en las ramas principales. El proceso de \acrshort{qa} se apoyaba en la infraestructura de Ansible gestionada mediante \acrshort{awx} y el registry de imágenes Quay.\\
 
 \textbf{Flujo de trabajo de \acrshort{qa}}:
 
 \begin{enumerate}
-  \item \textbf{Desarrollo y commits}: tras completar la implementación de una funcionalidad o corrección, se realizaban los commits necesarios en la rama feature correspondiente siguiendo las convenciones de \gls{gitflow}.
+  \item \textbf{Desarrollo y commits}: tras completar la implementación de una funcionalidad o corrección, se realizaban los commits necesarios en la rama feature correspondiente siguiendo las convenciones de Gitflow.
   
   \item \textbf{Actualización de versión}: se actualizaba el número de versión en los archivos de configuración (\texttt{package.json} en frontend, \texttt{pom.xml} en backend) para reflejar los cambios introducidos y facilitar la trazabilidad.
   
-  \item \textbf{Build y publicación de imagen}: el pipeline de \gls{githubactions} construía automáticamente una nueva imagen Docker del servicio modificado y la publicaba en \gls{quay} con la etiqueta de versión correspondiente.
+  \item \textbf{Build y publicación de imagen}: el pipeline de GitHub Actions construía automáticamente una nueva imagen Docker del servicio modificado y la publicaba en Quay con la etiqueta de versión correspondiente.
   
-  \item \textbf{Despliegue mediante \acrshort{awx}}: desde la interfaz web de \acrshort{awx}, se ejecutaba el playbook de \gls{ansible} correspondiente que levantaba el entorno de pruebas (máquina virtual con todos los servicios necesarios: base de datos PostgreSQL, \gls{elasticsearch}, backend, frontend). El playbook descargaba la nueva imagen desde \gls{quay} y la desplegaba en el entorno aislado.
+  \item \textbf{Despliegue mediante \acrshort{awx}}: desde la interfaz web de \acrshort{awx}, se ejecutaba el playbook de Ansible correspondiente que levantaba el entorno de pruebas (máquina virtual con todos los servicios necesarios: base de datos PostgreSQL, Elasticsearch, backend, frontend). El playbook descargaba la nueva imagen desde Quay y la desplegaba en el entorno aislado.
   
   \item \textbf{Validación funcional}: una vez levantado el entorno, se accedía mediante Google Chrome a la aplicación desplegada y se realizaban pruebas manuales exhaustivas: generación de informes con diferentes parámetros, verificación del historial, comprobación del control de duplicidad, validación de mensajes de error, etc.
   
-  \item \textbf{Iteración o cierre}: si se detectaban problemas durante las pruebas, se volvía al paso 1 para corregirlos. Si todas las validaciones eran exitosas, se marcaba la tarea como \texttt{QA OK} en \gls{jira} y se procedía a crear el \acrshort{pr} hacia \texttt{development}.
+  \item \textbf{Iteración o cierre}: si se detectaban problemas durante las pruebas, se volvía al paso 1 para corregirlos. Si todas las validaciones eran exitosas, se marcaba la tarea como \texttt{QA OK} en Jira y se procedía a crear el \acrshort{pr} hacia \texttt{development}.
 \end{enumerate}
 
 Este enfoque garantizaba que cada cambio se validara en un entorno realista antes de su integración, reduciendo significativamente la aparición de defectos en las ramas principales y asegurando la calidad del producto final.
@@ -716,6 +1036,37 @@ El diseño de la tabla de historial prioriza la claridad y la facilidad de uso. 
   \label{fig:historial}
 \end{figure}
 
+\section{Release y publicación}
+
+Una vez completado el desarrollo de las funcionalidades descritas, con las interfaces validadas y aprobadas por el equipo, y habiendo superado todas las pruebas de \acrshort{qa} en el entorno de pruebas gestionado mediante \acrshort{awx}, el último paso consistía en preparar y publicar la nueva versión del Report Service siguiendo el proceso formal de release establecido por la empresa.\\
+
+Este proceso seguía las convenciones de Gitflow y las políticas de versionado de GBTEC, garantizando la trazabilidad completa y minimizando riesgos de despliegue:
+
+\begin{enumerate}
+  \item \textbf{Creación de la rama release candidate (RC)}: desde la rama \texttt{development}, que contenía todos los cambios validados e integrados, se creaba una nueva rama \texttt{release/vX.Y.Z-rc} (por ejemplo, \texttt{release/v2.1.0-rc}). Esta rama servía como candidata para la release y permitía realizar ajustes finales sin bloquear el desarrollo de nuevas funcionalidades en \texttt{development}.
+  
+  \item \textbf{Version bump}: se actualizaban los números de versión en los archivos de configuración de ambos proyectos:
+    \begin{itemize}
+      \item Backend: actualización del elemento \texttt{<version>} en el archivo \texttt{pom.xml} de Maven.
+      \item Frontend: actualización del campo \texttt{version} en el archivo \texttt{package.json} gestionado por Yarn.
+    \end{itemize}
+    Estos cambios se comprometían en la rama RC con un mensaje descriptivo (e.g., \texttt{"chore: bump version to 2.1.0"}).
+  
+  \item \textbf{Builds y validaciones finales}: se ejecutaban los pipelines de GitHub Actions para compilar el proyecto completo, ejecutar todas las pruebas (unitarias e integradas) y verificar las métricas de calidad en SonarCloud. Se realizaba una última ronda de validaciones manuales en el entorno de \acrshort{qa} para confirmar que no existían regresiones.
+  
+  \item \textbf{Creación del tag Git}: una vez aprobadas todas las validaciones, se creaba un tag Git con el número de versión (e.g., \texttt{v2.1.0}) apuntando al último commit de la rama RC. Este tag marcaba formalmente la versión publicable y permitía rastrear exactamente qué código se desplegó en producción.
+  
+  \item \textbf{Merge a \texttt{main}}: se creaba un \acrshort{pr} desde la rama RC hacia la rama \texttt{main}, que representaba el estado estable de producción. Tras la revisión final y aprobación por parte del equipo técnico, se integraban los cambios mediante merge commit preservando el historial completo.
+  
+  \item \textbf{Merge a \texttt{development}}: paralelamente, se integraban los cambios de la rama RC de vuelta a \texttt{development} para sincronizar cualquier ajuste realizado durante el proceso de release (como el version bump o correcciones de última hora), garantizando que \texttt{development} reflejara siempre el estado más actualizado.
+  
+  \item \textbf{Despliegue en producción}: el equipo de DevOps utilizaba el tag de versión para desplegar los artefactos correspondientes (imágenes Docker desde Quay, paquetes JAR desde JFrog) en el entorno de producción de ALSEA.
+  
+  \item \textbf{Documentación}: se actualizaban los archivos README con notas de la release, se documentaban los cambios principales (changelog) y se comunicaba al cliente la disponibilidad de la nueva versión con sus mejoras y funcionalidades.
+\end{enumerate}
+
+Con este proceso, la nueva versión del Report Service quedó lista para su uso en producción, incorporando todas las mejoras de almacenamiento histórico, procesamiento asíncrono, control de duplicidad y experiencia de usuario modernizada.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  % Capítulo   8                         %
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -742,7 +1093,7 @@ Entre los logros más significativos del proyecto destacan:
     \item \textbf{Gestión de vulnerabilidades}: se logró reducir significativamente el número de vulnerabilidades de seguridad en el frontend mediante la estandarización en Yarn y el uso estratégico de \texttt{resolutions}, equilibrando seguridad con estabilidad del sistema.
 \end{itemize}
 
-Desde el punto de vista del aprendizaje personal, este proyecto ha proporcionado una experiencia invaluable en el desarrollo de software empresarial real, permitiendo aplicar conocimientos teóricos de la titulación en un contexto profesional. La metodología ágil empleada, las revisiones de código, la gestión de tareas en \gls{jira} y el trabajo con tecnologías modernas como Spring Batch, Angular, PostgreSQL y \gls{elasticsearch} han enriquecido significativamente la formación práctica.\\
+Desde el punto de vista del aprendizaje personal, este proyecto ha proporcionado una experiencia invaluable en el desarrollo de software empresarial real, permitiendo aplicar conocimientos teóricos de la titulación en un contexto profesional. La metodología ágil empleada, las revisiones de código, la gestión de tareas en Jira y el trabajo con tecnologías modernas como Spring Batch, Angular, PostgreSQL y Elasticsearch han enriquecido significativamente la formación práctica.\\
 
 Además, el proyecto ha puesto de manifiesto la importancia de equilibrar diferentes aspectos del desarrollo de software: funcionalidad, seguridad, rendimiento, mantenibilidad y experiencia de usuario. Las decisiones tomadas durante el proyecto, como priorizar la funcionalidad sobre la resolución de vulnerabilidades menores, ilustran el tipo de compromisos que se deben gestionar en entornos de desarrollo reales con limitaciones de tiempo y recursos.\\
 

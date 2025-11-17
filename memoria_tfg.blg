@@ -26,44 +26,44 @@ Reallocating 'global_strs' (item size: 1) to 4000000 items.
 ** IEEEtran BST control entry "IEEEexample:BSTcontrol" detected.
 
 Done.
-You've used 1 entry,
+You've used 5 entries,
             4855 wiz_defined-function locations,
-            951 strings with 8304 characters,
-and the built_in function-call counts, 185 in all, are:
-= -- 3
-> -- 1
-< -- 0
-+ -- 0
-- -- 0
-* -- 26
-:= -- 35
-add.period$ -- 0
-call.type$ -- 1
-change.case$ -- 0
-chr.to.int$ -- 0
-cite$ -- 1
-duplicate$ -- 0
-empty$ -- 13
-format.name$ -- 0
-if$ -- 21
+            977 strings with 9136 characters,
+and the built_in function-call counts, 3029 in all, are:
+= -- 213
+> -- 152
+< -- 3
++ -- 67
+- -- 42
+* -- 198
+:= -- 516
+add.period$ -- 8
+call.type$ -- 5
+change.case$ -- 8
+chr.to.int$ -- 4
+cite$ -- 5
+duplicate$ -- 183
+empty$ -- 232
+format.name$ -- 50
+if$ -- 635
 int.to.chr$ -- 1
-int.to.str$ -- 2
-missing$ -- 1
-newline$ -- 24
-num.names$ -- 0
-pop$ -- 0
+int.to.str$ -- 6
+missing$ -- 42
+newline$ -- 42
+num.names$ -- 12
+pop$ -- 128
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 4
 quote$ -- 4
-skip$ -- 15
+skip$ -- 209
 stack$ -- 0
-substring$ -- 2
-swap$ -- 1
+substring$ -- 16
+swap$ -- 107
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 7
-type$ -- 3
+type$ -- 50
 warning$ -- 0
-while$ -- 0
+while$ -- 8
 width$ -- 0
-write$ -- 23
+write$ -- 71
