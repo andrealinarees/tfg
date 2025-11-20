@@ -142,8 +142,8 @@ La \textit{BIC Platform} se despliega habitualmente en modalidad cloud (BIC Clou
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{img/bic_bpm_platform_context.png}
-  \caption{Contexto de la plataforma BIC BPM mostrando la arquitectura de sistemas y sus interacciones. Fuente: Documentación oficial de la arquitectura de GBTEC.}
+  \includegraphics[width=0.85\textwidth]{img/bic_bpm_platform.png}
+  \caption{Contexto de la plataforma BIC BPM mostrando la arquitectura de sistemas y sus interacciones.}
   \label{fig:bic-platform-context}
 \end{figure}
 
@@ -527,14 +527,14 @@ El sistema sigue una arquitectura cliente-servidor de tres capas que separa clar
   \label{fig:arquitectura-detallada}
 \end{figure}
 
-La figura~\ref{fig:arquitectura-detallada} muestra la arquitectura completa del sistema a bajo nivel. En la capa de presentación, el usuario ALSEA interactúa con los componentes Angular (Report Generator y History) que se comunican con el backend mediante servicios HTTP/JSON. La capa de aplicación está construida con Spring Boot, exponiendo una API REST a través del ReportController que coordina la generación asíncrona mediante Spring Batch. El JobLauncher ejecuta el GenerateReportJob, que contiene un GenerateReportStep responsable de leer datos de Elasticsearch y BIC Process Execution, generar el Excel con Aspose Cells y persistir el resultado en el ReportRepository. La capa de datos incluye PostgreSQL para almacenar los informes generados (esquema \texttt{alsea\_reports}), Elasticsearch para consultar variables de procesos, y la base de datos de BIC Process Execution. Finalmente, la infraestructura utiliza Flyway para gestionar migraciones del esquema, Docker para contenerización y AWX/Ansible para automatizar despliegues.\\
+La figura~\ref{fig:arquitectura-detallada} muestra la arquitectura completa del sistema a bajo nivel. En la capa de presentación, el usuario ALSEA interactúa con los componentes Angular (Report Generator y History) que se comunican con el backend mediante servicios HTTP/JSON. La capa de aplicación está construida con Spring Boot, exponiendo una API REST a través del ReportController que coordina la generación asíncrona mediante Spring Batch. El JobLauncher ejecuta el \gls{job} de generación, que contiene un \gls{step} responsable de leer datos de Elasticsearch y BIC Process Execution, generar el Excel con Aspose Cells y persistir el resultado en el ReportRepository. La capa de datos incluye PostgreSQL para almacenar los informes generados (esquema \texttt{alsea\_reports}), Elasticsearch para consultar variables de procesos, y la base de datos de BIC Process Execution. Finalmente, la infraestructura utiliza Flyway para gestionar migraciones del esquema, Docker para contenerización y AWX/Ansible para automatizar despliegues.\\
 
 \subsection{Comunicación entre componentes}
 
 La comunicación entre cliente y servidor se realiza mediante una \acrshort{api} \acrshort{rest} sobre \acrshort{http}, intercambiando datos en formato \acrshort{json}. Los principales endpoints implementados son:
 
 \begin{itemize}
-  \item \texttt{POST /api/reports/generate}: inicia la generación de un nuevo informe. Antes de lanzar el job, realiza validaciones síncronas: comprueba duplicidad (informes idénticos en los últimos 5 minutos) y disponibilidad de datos mediante el \texttt{ReportDataProbeService}. Devuelve estados como \texttt{DUPLICATE}, \texttt{NO\_DATA} o \texttt{STARTED} según corresponda.
+  \item \texttt{POST /api/reports/generate}: inicia la generación de un nuevo informe. Antes de lanzar el job, realiza validaciones síncronas: comprueba duplicidad y disponibilidad de datos mediante el \texttt{ReportDataProbeService}. Devuelve estados como \texttt{DUPLICATE}, \texttt{NO\_DATA} o \texttt{STARTED} según corresponda.
   \item \texttt{GET /api/reports/history}: devuelve el listado paginado de informes generados, ordenados de más reciente a más antiguo.
   \item \texttt{GET /api/reports/\{id\}/download}: descarga un informe específico por su identificador \acrshort{uuid}.
 \end{itemize}
@@ -637,7 +637,7 @@ Los servicios encapsulan la lógica de comunicación con el backend y la gestió
     \end{itemize}
 \end{itemize}
 
-Todos los servicios utilizan \texttt{HttpClient} de Angular para las peticiones HTTP, retornan Observables de RxJS para gestión reactiva, y están decorados con \texttt{@Injectable(\{providedIn: 'root'\})} para hacerlos disponibles en toda la aplicación mediante inyección de dependencias.
+Todos los servicios utilizan \texttt{HttpClient} de Angular para las peticiones HTTP, devuelven Observables de RxJS para gestión reactiva, y están decorados con \texttt{@Injectable(\{providedIn: 'root'\})} para hacerlos disponibles en toda la aplicación mediante inyección de dependencias.
 
 \subsubsection{Flujo de datos entre componentes}
 
@@ -645,20 +645,19 @@ El flujo típico de generación de un informe es:
 
 \begin{enumerate}
   \item El usuario rellena el formulario en \texttt{ReportsGeneratorComponent}, seleccionando tipo, categoría y franquicia(s).
-  \item Al seleccionar la categoría (Innovación o Alternativa), se invoca el servicio correspondiente (\texttt{get-innovation-franchise-list} o 
+  \item Al seleccionar la categoría, se invoca el servicio correspondiente (\texttt{get-innovation-franchise-list} o 
   \texttt{get-alternative-franchise-list}) para poblar dinámicamente el selector de franquicias.
   \item Al pulsar "Generar", el componente valida los datos del formulario.
   \item Si la validación es exitosa, se invoca \texttt{report-download.service} que envía la petición POST a \texttt{/api/reports/generate}.
   \item El backend realiza validaciones síncronas antes de lanzar el job:
     \begin{itemize}
-      \item Verifica si existe un informe duplicado (mismos parámetros en los últimos 5 minutos).
-      \item Comprueba mediante \texttt{ReportDataProbeService} si habrá datos disponibles para el informe solicitado.
+      \item Comprueba mediante \texttt{ReportDataProbeService} si existe un informe duplicado (mismos parámetros en los últimos 5 minutos) o si hay datos disponibles para el rango solicitado.
       \item Devuelve un estado: \texttt{DUPLICATE}, \texttt{NO\_DATA} o \texttt{STARTED}.
     \end{itemize}
   \item El frontend muestra mensajes contextuales según el estado recibido: "Informe reciente disponible en Historial", "No hay datos para el informe solicitado" o "Generación iniciada".
-  \item Si el estado es \texttt{STARTED}, se muestra un indicador de carga y el job se ejecuta asíncronamente.
+  \item Si el estado es \texttt{STARTED}, el job se ejecuta asíncronamente.
   \item Cuando el backend completa la generación, el servicio recibe el blob binario del Excel y lo descarga automáticamente al navegador del usuario.
-  \item El usuario puede navegar al componente \texttt{ReportsHistoryComponent} para consultar todos los informes generados, donde el servicio \texttt{reports-history.service} obtiene el listado paginado y permite re-descargar cualquier informe mediante \texttt{downloadReport(id)}.
+  \item El usuario puede navegar al componente \texttt{ReportsHistoryComponent} para consultar todos los informes generados, donde el servicio \texttt{reports-history.service} obtiene el listado paginado y permite re-descargar cualquier informe mediante el método de \texttt{downloadReport(id)}.
 \end{enumerate}
 
 \subsubsection{Validaciones y feedback al usuario}
@@ -685,7 +684,7 @@ El cliente utiliza:
 
 \subsection{Servidor (Spring Boot + Spring Batch)}
 
-El backend está organizado en capas siguiendo el patrón arquitectónico de \textbf{capas (Layered Architecture)} con inyección de dependencias gestionada por Spring.
+El backend está organizado en capas siguiendo el patrón arquitectónico de capas (Layered Architecture) con inyección de dependencias gestionada por Spring.
 
 \subsubsection{Estructura de paquetes}
 
@@ -784,30 +783,30 @@ El backend aplica los siguientes patrones:
 El flujo completo de generación de un informe es:
 
 \begin{enumerate}
-  \item \textbf{ReportBatchController} recibe la petición POST en \texttt{/api/reports/generate} con los parámetros en formato \acrshort{json}.
+  \item ReportBatchController recibe la petición POST en \texttt{/api/reports/generate} con los parámetros.
   
-  \item El controlador valida los datos de entrada mediante \textbf{ReportRequestDto} y delega en \textbf{ReportLaunchService}.
+  \item El controlador valida los datos de entrada mediante ReportRequestDto y delega en ReportLaunchService.
   
-  \item \textbf{ReportLaunchService} realiza validaciones síncronas antes de lanzar el job:
+  \item ReportLaunchService realiza validaciones síncronas antes de lanzar el job:
     \begin{itemize}
       \item \textbf{Comprobación de duplicidad}: calcula una firma única (hash MD5) mediante \texttt{ReportDuplicateUtils} y busca en la base de datos si existe un informe idéntico generado en los últimos 5 minutos. Si existe, devuelve estado \texttt{DUPLICATE}.
-      \item \textbf{Verificación de disponibilidad de datos}: invoca \texttt{ReportDataProbeService.hasData()} para comprobar rápidamente si habrá datos suficientes para generar el informe. Si no hay datos, devuelve estado \texttt{NO\_DATA}.
+      \item \textbf{Verificación de disponibilidad de datos}: invoca \texttt{hasData()} del servicio \texttt{ReportDataProbeService} para comprobar rápidamente si habrá datos suficientes para generar el informe. Si no hay datos, devuelve estado \texttt{NO\_DATA}.
       \item Si ambas validaciones son exitosas, devuelve estado \texttt{STARTED} y procede a lanzar el job.
     \end{itemize}
   
-  \item Si el estado es \texttt{STARTED}, \textbf{ReportLaunchService} lanza un \textbf{Spring Batch Job} de forma asíncrona mediante \texttt{JobLauncher}.
+  \item Si el estado es \texttt{STARTED}, \texttt{ReportLaunchService} lanza un \texttt{Spring Batch Job} de forma asíncrona mediante \texttt{JobLauncher}.
   
-  \item El \textbf{Job} de Spring Batch consta de un único \textbf{Step} que ejecuta \textbf{GenerateReportTasklet}:
+  \item El \textbf{Job} de Spring Batch consta de un único \texttt{Step} que ejecuta \texttt{GenerateReportTasklet}:
     \begin{itemize}
       \item Lee variables de procesos desde Elasticsearch mediante \texttt{ElasticsearchService} y desde PostgreSQL de BIC Process Execution.
-      \item Procesa los datos aplicando cálculos, agregaciones y transformaciones según el tipo de informe (KPI o Producto) y la categoría (Innovación o Alternativa).
+      \item Procesa los datos aplicando cálculos, agregaciones y transformaciones según el tipo de informe y la categoría.
       \item Genera el workbook Excel mediante utilidades de \texttt{utils} y \texttt{utils/heatmap} (que utilizan Aspose Cells para aplicar formatos, estilos, heatmaps, retroplannings, etc.).
-      \item Persiste el informe en PostgreSQL mediante \textbf{ReportRepository}, almacenando metadatos y contenido binario en \texttt{ReportEntity}.
+      \item Persiste el informe en PostgreSQL mediante \texttt{ReportRepository}, almacenando metadatos y contenido binario en \texttt{ReportEntity}.
     \end{itemize}
   
-  \item Al finalizar el Job, se registran métricas de tiempo de ejecución y tamaño del fichero.
+  \item Al finalizar el Job, se registran métricas de ejecución y tamaño del fichero.
   
-  \item El controlador devuelve el informe generado al cliente como stream binario con cabeceras \texttt{Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet} y \texttt{Content-Disposition: attachment}.
+  \item El controlador devuelve el informe generado al cliente como stream binario.
 \end{enumerate}
 
 \subsubsection{Diseño del Job y Step de Spring Batch}
@@ -816,11 +815,11 @@ El job de generación está configurado en \texttt{ReportBatchConfig} con:
 
 \begin{itemize}
   \item \textbf{Parámetros de entrada}: tipo de informe, categoría, franquicias, fechas, ID del informe a generar (gestionados por \texttt{ReportParamUtils} y \texttt{ReportParamService}).
-  \item \textbf{Step único} que ejecuta el \texttt{GenerateReportTasklet}:
+  \item \textbf{Step único} que ejecuta el Tasklet \texttt{GenerateReportTasklet}:
     \begin{itemize}
       \item \textbf{Reader}: no utiliza reader estándar; en su lugar, el Tasklet lee directamente de Elasticsearch mediante \texttt{ElasticsearchService} y de PostgreSQL.
       \item \textbf{Processor}: lógica de transformación y cálculo de métricas (KPIs, distribuciones trimestrales, estados de proyectos) implementada en los servicios específicos de \texttt{kpi\_reports} y \texttt{product\_reports}.
-      \item \textbf{Writer}: generación del Excel mediante utilidades de \texttt{utils} (como \texttt{CreateExcelFileUtils} y \texttt{ExcelCellStyleUtils}) usando Aspose, y persistencia en base de datos mediante \texttt{ReportService}.
+      \item \textbf{Writer}: generación del Excel mediante utilidades de \texttt{utils} (como \texttt{CreateExcelFileUtils} y \texttt{ExcelCellStyleUtils}) usando Aspose.
     \end{itemize}
   \item \textbf{Executor asíncrono}: configurado en \texttt{BatchAsyncConfiguration} para no bloquear el thread principal.
   \item \textbf{Listeners}: registran inicio, fin y errores del job para monitorización y logs.
@@ -852,18 +851,6 @@ El esquema \texttt{alsea\_reports} contiene una única tabla principal \texttt{r
   \item \texttt{franchises} (String): lista de franquicias concatenadas.
   \item \texttt{file\_size} (Long): tamaño del fichero en bytes.
   \item \texttt{content} (byte[]): contenido binario del Excel (\texttt{bytea} en PostgreSQL).
-\end{itemize}
-
-\subsubsection{Decisiones de diseño}
-
-\begin{itemize}
-  \item \textbf{Uso de bytea para content}: se eligió almacenar el contenido binario directamente en la base de datos en lugar de usar un sistema de ficheros externo para simplificar la gestión de backups, mantener atomicidad transaccional y facilitar la re-descarga sin dependencias externas.
-  
-  \item \textbf{Enumerados como VARCHAR}: los tipos \texttt{report\_type} y \texttt{report\_category} se almacenan como strings (\texttt{@Enumerated(EnumType.STRING)}) para legibilidad y evitar dependencia de ordinales que podrían cambiar.
-  
-  \item \textbf{Firma de duplicidad calculada}: no se almacena un campo de firma en la tabla. En su lugar, el \texttt{ProbeService} calcula dinámicamente la firma (hash MD5 de los parámetros) y busca informes recientes con los mismos valores de tipo, categoría, franquicias y fechas.
-  
-  \item \textbf{Índices}: se creó un índice compuesto en \texttt{(report\_type, report\_category, created\_at)} para optimizar consultas de duplicidad y listado de historial.
 \end{itemize}
 
 \subsubsection{Justificación del esquema y uso de Flyway}
@@ -951,20 +938,6 @@ La \acrshort{api} expone los siguientes endpoints principales:
 }
       \end{verbatim}
       \item \textbf{Response}: stream binario del Excel (200 OK) o mensaje de error/duplicado (409 Conflict, 400 Bad Request).
-    \end{itemize}
-  
-  \item \textbf{POST /api/reports/probe}
-    \begin{itemize}
-      \item \textbf{Descripción}: verifica si existe un informe duplicado reciente.
-      \item \textbf{Request body}: mismos parámetros que \texttt{/generate}.
-      \item \textbf{Response} (JSON):
-      \begin{verbatim}
-{
-  "isDuplicate": true,
-  "reportId": "a1b2c3d4-...",
-  "createdAt": "2024-11-15T10:30:00"
-}
-      \end{verbatim}
     \end{itemize}
   
   \item \textbf{GET /api/reports/history?page=0\&size=5}

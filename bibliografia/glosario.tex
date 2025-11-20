@@ -132,3 +132,18 @@
   name={snackbar},
   description={Elemento de interfaz que muestra mensajes breves y temporales al usuario (normalmente en la parte inferior de la pantalla) para notificaciones de estado, confirmaciones o errores. En Angular suele implementarse con MatSnackBar (Angular Material).}
 }
+
+\newglossaryentry{job}{
+  name=Job (Spring Batch),
+  description={Unidad de trabajo completa en Spring Batch que encapsula todo el proceso de un batch. Un Job se compone de uno o más Steps y define el flujo de ejecución, los parámetros de entrada y los listeners para monitorizar su ciclo de vida.}
+}
+
+\newglossaryentry{step}{
+  name=Step (Spring Batch),
+  description={Fase independiente dentro de un Job de Spring Batch que representa una unidad lógica de procesamiento. Cada Step puede configurarse con un reader (lectura), processor (transformación) y writer (escritura), o utilizar un Tasklet para lógica personalizada.}
+}
+
+\newglossaryentry{tasklet}{
+  name=Tasklet (Spring Batch),
+  description={Interfaz de Spring Batch que permite implementar lógica de procesamiento personalizada dentro de un Step. A diferencia del patrón chunk (reader-processor-writer), un Tasklet ejecuta código arbitrario y es útil para tareas que no se ajustan al modelo estándar de procesamiento por lotes.}
+}

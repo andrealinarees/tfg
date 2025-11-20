@@ -2,85 +2,85 @@
 \contentsline {chapter}{\numberline {1}Introducción}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Motivación}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Objetivos}{5}{section.1.2}%
-\contentsline {chapter}{\numberline {2}Fundamentos tecnológicos}{6}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Estado del arte}{6}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Tecnologías utilizadas}{7}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Web server}{7}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Web client}{8}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Database}{8}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Infraestructura y Despliegue}{8}{subsection.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.5}Herramientas de apoyo}{9}{subsection.2.2.5}%
-\contentsline {chapter}{\numberline {3}Metodología y planificación}{10}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Metodología de desarrollo}{10}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Adaptación al proyecto}{11}{subsection.3.1.1}%
-\contentsline {section}{\numberline {3.2}Planificación y seguimiento}{11}{section.3.2}%
-\contentsline {chapter}{\numberline {4}Análisis}{14}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Requisitos}{14}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Actores}{14}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Requisitos funcionales}{15}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Requisitos no funcionales}{16}{subsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.1.4}Historias de usuario}{16}{subsection.4.1.4}%
-\contentsline {section}{\numberline {4.2}Arquitectura del sistema}{17}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Cliente web}{17}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Servidor }{17}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Capa de datos}{17}{subsection.4.2.3}%
-\contentsline {section}{\numberline {4.3}Interfaz de usuario}{18}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Diseño}{19}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Arquitectura tecnológica del sistema}{19}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Visión general de la arquitectura}{19}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Comunicación entre componentes}{21}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Justificación de la arquitectura elegida}{21}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}Stack tecnológico}{22}{subsection.5.1.4}%
-\contentsline {section}{\numberline {5.2}Diseño de la aplicación}{22}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Cliente}{22}{subsection.5.2.1}%
-\contentsline {subsubsection}{Estructura de módulos y componentes}{22}{subsubsection*.11}%
-\contentsline {subsubsection}{Servicios Angular}{24}{subsubsection*.12}%
-\contentsline {subsubsection}{Flujo de datos entre componentes}{24}{subsubsection*.13}%
-\contentsline {subsubsection}{Validaciones y feedback al usuario}{25}{subsubsection*.14}%
-\contentsline {subsubsection}{Frameworks y librerías de interfaz}{25}{subsubsection*.15}%
-\contentsline {subsection}{\numberline {5.2.2}Servidor (Spring Boot + Spring Batch)}{26}{subsection.5.2.2}%
-\contentsline {subsubsection}{Estructura de paquetes}{26}{subsubsection*.16}%
-\contentsline {subsubsection}{Patrón de diseño y arquitectura}{28}{subsubsection*.17}%
-\contentsline {subsubsection}{Flujo de generación de informes}{28}{subsubsection*.18}%
-\contentsline {subsubsection}{Diseño del Job y Step de Spring Batch}{29}{subsubsection*.19}%
-\contentsline {subsection}{\numberline {5.2.3}Capa de datos}{30}{subsection.5.2.3}%
-\contentsline {subsubsection}{Modelo entidad-relación}{30}{subsubsection*.20}%
-\contentsline {subsubsection}{Decisiones de diseño}{31}{subsubsection*.21}%
-\contentsline {subsubsection}{Justificación del esquema y uso de Flyway}{31}{subsubsection*.22}%
-\contentsline {section}{\numberline {5.3}Interacción cliente–servidor}{32}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Endpoints \acrshort {rest}}{32}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Manejo de errores}{34}{subsection.5.3.2}%
-\contentsline {chapter}{\numberline {6}Implementación y pruebas}{35}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Tareas de mejora}{35}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Vulnerabilidades}{35}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}Coverage}{36}{subsection.6.1.2}%
-\contentsline {subsection}{\numberline {6.1.3}Refactorización}{38}{subsection.6.1.3}%
-\contentsline {subsection}{\numberline {6.1.4}Duplicación}{38}{subsection.6.1.4}%
-\contentsline {section}{\numberline {6.2}Spring Batch discussion dificultades técnicas}{40}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Pruebas}{40}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Testing unitario}{40}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}Testing de integración}{40}{subsection.6.3.2}%
-\contentsline {subsection}{\numberline {6.3.3}Pruebas manuales y entorno de \acrshort {qa}}{40}{subsection.6.3.3}%
-\contentsline {chapter}{\numberline {7}Solución desarrollada}{42}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Introducción}{42}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Página de Generar}{42}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Funcionalidad}{43}{subsection.7.2.1}%
-\contentsline {subsection}{\numberline {7.2.2}Diseño de la interfaz}{43}{subsection.7.2.2}%
-\contentsline {subsection}{\numberline {7.2.3}Flujo de interacción}{44}{subsection.7.2.3}%
-\contentsline {section}{\numberline {7.3}Página de Historial}{45}{section.7.3}%
-\contentsline {subsection}{\numberline {7.3.1}Funcionalidad}{45}{subsection.7.3.1}%
-\contentsline {subsection}{\numberline {7.3.2}Diseño de la interfaz}{45}{subsection.7.3.2}%
-\contentsline {section}{\numberline {7.4}Release y publicación}{46}{section.7.4}%
-\contentsline {chapter}{\numberline {8}Conclusión y trabajo futuro}{48}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Conclusiones}{48}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Posibles ampliaciones futuras}{49}{section.8.2}%
-\contentsline {subsection}{\numberline {8.2.1}Actualización de la versión mayor de Angular}{50}{subsection.8.2.1}%
-\contentsline {subsection}{\numberline {8.2.2}Mejoras en la gestión del historial}{50}{subsection.8.2.2}%
-\contentsline {subsubsection}{Eliminación de informes}{50}{subsubsection*.30}%
-\contentsline {subsubsection}{Otras mejoras planificadas para el historial}{51}{subsubsection*.33}%
-\contentsline {subsection}{\numberline {8.2.3}Refactorización adicional del código backend}{52}{subsection.8.2.3}%
-\contentsline {subsection}{\numberline {8.2.4}Funcionalidades avanzadas}{52}{subsection.8.2.4}%
-\contentsline {chapter}{\numberline {A}Material adicional}{54}{appendix.A}%
-\contentsline {chapter}{Lista de acrónimos}{56}{section*.34}%
-\contentsline {chapter}{Glosario}{58}{section*.36}%
-\contentsline {chapter}{Bibliografía}{60}{appendix*.38}%
+\contentsline {chapter}{\numberline {2}Fundamentos tecnológicos}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Estado del arte}{7}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Tecnologías utilizadas}{8}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Web server}{8}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Web client}{9}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Database}{9}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Infraestructura y Despliegue}{9}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Herramientas de apoyo}{10}{subsection.2.2.5}%
+\contentsline {chapter}{\numberline {3}Metodología y planificación}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Metodología de desarrollo}{11}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Adaptación al proyecto}{12}{subsection.3.1.1}%
+\contentsline {section}{\numberline {3.2}Planificación y seguimiento}{12}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Análisis}{15}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Requisitos}{15}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Actores}{15}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Requisitos funcionales}{16}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Requisitos no funcionales}{17}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Historias de usuario}{17}{subsection.4.1.4}%
+\contentsline {section}{\numberline {4.2}Arquitectura del sistema}{18}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Cliente web}{18}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Servidor }{18}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Capa de datos}{18}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Interfaz de usuario}{19}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Diseño}{20}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Arquitectura tecnológica del sistema}{20}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Visión general de la arquitectura}{20}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Comunicación entre componentes}{22}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Justificación de la arquitectura elegida}{22}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Stack tecnológico}{23}{subsection.5.1.4}%
+\contentsline {section}{\numberline {5.2}Diseño de la aplicación}{23}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Cliente}{23}{subsection.5.2.1}%
+\contentsline {subsubsection}{Estructura de módulos y componentes}{23}{subsubsection*.11}%
+\contentsline {subsubsection}{Servicios Angular}{25}{subsubsection*.12}%
+\contentsline {subsubsection}{Flujo de datos entre componentes}{25}{subsubsection*.13}%
+\contentsline {subsubsection}{Validaciones y feedback al usuario}{26}{subsubsection*.14}%
+\contentsline {subsubsection}{Frameworks y librerías de interfaz}{27}{subsubsection*.15}%
+\contentsline {subsection}{\numberline {5.2.2}Servidor (Spring Boot + Spring Batch)}{27}{subsection.5.2.2}%
+\contentsline {subsubsection}{Estructura de paquetes}{27}{subsubsection*.16}%
+\contentsline {subsubsection}{Patrón de diseño y arquitectura}{29}{subsubsection*.17}%
+\contentsline {subsubsection}{Flujo de generación de informes}{30}{subsubsection*.18}%
+\contentsline {subsubsection}{Diseño del Job y Step de Spring Batch}{31}{subsubsection*.19}%
+\contentsline {subsection}{\numberline {5.2.3}Capa de datos}{31}{subsection.5.2.3}%
+\contentsline {subsubsection}{Modelo entidad-relación}{31}{subsubsection*.20}%
+\contentsline {subsubsection}{Decisiones de diseño}{32}{subsubsection*.21}%
+\contentsline {subsubsection}{Justificación del esquema y uso de Flyway}{32}{subsubsection*.22}%
+\contentsline {section}{\numberline {5.3}Interacción cliente–servidor}{33}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Endpoints \acrshort {rest}}{33}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Manejo de errores}{35}{subsection.5.3.2}%
+\contentsline {chapter}{\numberline {6}Implementación y pruebas}{36}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Tareas de mejora}{36}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Vulnerabilidades}{36}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Coverage}{37}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Refactorización}{39}{subsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.1.4}Duplicación}{39}{subsection.6.1.4}%
+\contentsline {section}{\numberline {6.2}Spring Batch discussion dificultades técnicas}{41}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Pruebas}{41}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Testing unitario}{41}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Testing de integración}{41}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}Pruebas manuales y entorno de \acrshort {qa}}{41}{subsection.6.3.3}%
+\contentsline {chapter}{\numberline {7}Solución desarrollada}{43}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Introducción}{43}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Página de Generar}{43}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Funcionalidad}{44}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Diseño de la interfaz}{44}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.3}Flujo de interacción}{45}{subsection.7.2.3}%
+\contentsline {section}{\numberline {7.3}Página de Historial}{46}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Funcionalidad}{46}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Diseño de la interfaz}{46}{subsection.7.3.2}%
+\contentsline {section}{\numberline {7.4}Release y publicación}{47}{section.7.4}%
+\contentsline {chapter}{\numberline {8}Conclusión y trabajo futuro}{49}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Conclusiones}{49}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Posibles ampliaciones futuras}{50}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Actualización de la versión mayor de Angular}{51}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}Mejoras en la gestión del historial}{51}{subsection.8.2.2}%
+\contentsline {subsubsection}{Eliminación de informes}{51}{subsubsection*.30}%
+\contentsline {subsubsection}{Otras mejoras planificadas para el historial}{52}{subsubsection*.33}%
+\contentsline {subsection}{\numberline {8.2.3}Refactorización adicional del código backend}{53}{subsection.8.2.3}%
+\contentsline {subsection}{\numberline {8.2.4}Funcionalidades avanzadas}{53}{subsection.8.2.4}%
+\contentsline {chapter}{\numberline {A}Material adicional}{55}{appendix.A}%
+\contentsline {chapter}{Lista de acrónimos}{57}{section*.34}%
+\contentsline {chapter}{Glosario}{59}{section*.36}%
+\contentsline {chapter}{Bibliografía}{62}{appendix*.38}%

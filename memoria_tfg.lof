@@ -2,24 +2,24 @@
 \contentsline {figure}{\numberline {1.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Mapa de presencia internacional de ALSEA (Food Service Project).}}{1}{figure.caption.4}%
 \contentsline {figure}{\numberline {1.2}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Contexto de la plataforma BIC BPM mostrando la arquitectura de sistemas y sus interacciones. Fuente: Documentación oficial de la arquitectura de GBTEC.}}{3}{figure.caption.5}%
 \contentsline {figure}{\numberline {1.3}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Informe de tipo KPI con categoría de proceso Alternativa (todas las franquicias, sin rango de fechas).}}{4}{figure.caption.6}%
-\contentsline {figure}{\numberline {1.4}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Informe de tipo Producto con categoría de proceso Innovación (todas las franquicias, sin rango de fechas).}}{4}{figure.caption.7}%
+\contentsline {figure}{\numberline {1.4}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Informe de tipo Producto con categoría de proceso Innovación (todas las franquicias, sin rango de fechas).}}{5}{figure.caption.7}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Distribución de horas trabajadas por mes durante el proyecto.}}{11}{figure.caption.8}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Distribución de horas trabajadas por mes durante el proyecto.}}{12}{figure.caption.8}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Interfaz original del Report Service antes de su modernización.}}{18}{figure.caption.9}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Interfaz original del Report Service antes de su modernización.}}{19}{figure.caption.9}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Arquitectura detallada del Report Service mostrando las capas de presentación, aplicación, datos e infraestructura con sus interacciones.}}{20}{figure.caption.10}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Arquitectura detallada del Report Service mostrando las capas de presentación, aplicación, datos e infraestructura con sus interacciones.}}{21}{figure.caption.10}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Cobertura de código antes de las mejoras: 17.7\% (por debajo del umbral mínimo del 20\%).}}{37}{figure.caption.23}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Cobertura de código después de las mejoras: 25.7\% (superando el umbral mínimo del 20\%).}}{38}{figure.caption.24}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Duplicación de código antes de la refactorización: 15.8\%.}}{39}{figure.caption.25}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Duplicación de código después de la refactorización: 10.0\%.}}{40}{figure.caption.26}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Cobertura de código antes de las mejoras: 17.7\% (por debajo del umbral mínimo del 20\%).}}{38}{figure.caption.23}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Cobertura de código después de las mejoras: 25.7\% (superando el umbral mínimo del 20\%).}}{39}{figure.caption.24}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Duplicación de código antes de la refactorización: 15.8\%.}}{40}{figure.caption.25}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Duplicación de código después de la refactorización: 10.0\%.}}{41}{figure.caption.26}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Interfaz principal del módulo de generación de informes.}}{44}{figure.caption.27}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Diagrama de flujo del proceso de generación de informes.}}{44}{figure.caption.28}%
-\contentsline {figure}{\numberline {7.3}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Vista de la página de historial de informes generados.}}{46}{figure.caption.29}%
+\contentsline {figure}{\numberline {7.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Interfaz principal del módulo de generación de informes.}}{45}{figure.caption.27}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Diagrama de flujo del proceso de generación de informes.}}{45}{figure.caption.28}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Vista de la página de historial de informes generados.}}{47}{figure.caption.29}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Mockup de la interfaz de historial con funcionalidad de eliminación de informes.}}{51}{figure.caption.31}%
-\contentsline {figure}{\numberline {8.2}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Diálogo de confirmación para la eliminación de informes.}}{51}{figure.caption.32}%
+\contentsline {figure}{\numberline {8.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Mockup de la interfaz de historial con funcionalidad de eliminación de informes.}}{52}{figure.caption.31}%
+\contentsline {figure}{\numberline {8.2}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Diálogo de confirmación para la eliminación de informes.}}{52}{figure.caption.32}%
 \addvspace {10\p@ }

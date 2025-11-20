@@ -15,6 +15,7 @@ Cosas que faltan:
 -> Capítulo 6 en general con implementación y añadir fragmentos de código y demás.
 -> Capítulo 5 reescribir con la estructura correcta del códgio
 -> Revisar las citas del glosario y que salgan solo una vez, la primera vez que se les hace referencia.
+-> Resolver warnings
 
 Consultar con Cibrán:
 -> Captura de pantalla de la BIC Platform alto nivel
