@@ -45,11 +45,10 @@
 \contentsline {subsubsection}{Diseño del Job y Step de Spring Batch}{31}{subsubsection*.19}%
 \contentsline {subsection}{\numberline {5.2.3}Capa de datos}{31}{subsection.5.2.3}%
 \contentsline {subsubsection}{Modelo entidad-relación}{31}{subsubsection*.20}%
-\contentsline {subsubsection}{Decisiones de diseño}{32}{subsubsection*.21}%
-\contentsline {subsubsection}{Justificación del esquema y uso de Flyway}{32}{subsubsection*.22}%
+\contentsline {subsubsection}{Justificación del esquema y uso de Flyway}{32}{subsubsection*.21}%
 \contentsline {section}{\numberline {5.3}Interacción cliente–servidor}{33}{section.5.3}%
 \contentsline {subsection}{\numberline {5.3.1}Endpoints \acrshort {rest}}{33}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Manejo de errores}{35}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.2}Manejo de errores}{34}{subsection.5.3.2}%
 \contentsline {chapter}{\numberline {6}Implementación y pruebas}{36}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Tareas de mejora}{36}{section.6.1}%
 \contentsline {subsection}{\numberline {6.1.1}Vulnerabilidades}{36}{subsection.6.1.1}%
@@ -76,11 +75,11 @@
 \contentsline {section}{\numberline {8.2}Posibles ampliaciones futuras}{50}{section.8.2}%
 \contentsline {subsection}{\numberline {8.2.1}Actualización de la versión mayor de Angular}{51}{subsection.8.2.1}%
 \contentsline {subsection}{\numberline {8.2.2}Mejoras en la gestión del historial}{51}{subsection.8.2.2}%
-\contentsline {subsubsection}{Eliminación de informes}{51}{subsubsection*.30}%
-\contentsline {subsubsection}{Otras mejoras planificadas para el historial}{52}{subsubsection*.33}%
+\contentsline {subsubsection}{Eliminación de informes}{51}{subsubsection*.29}%
+\contentsline {subsubsection}{Otras mejoras planificadas para el historial}{52}{subsubsection*.32}%
 \contentsline {subsection}{\numberline {8.2.3}Refactorización adicional del código backend}{53}{subsection.8.2.3}%
 \contentsline {subsection}{\numberline {8.2.4}Funcionalidades avanzadas}{53}{subsection.8.2.4}%
 \contentsline {chapter}{\numberline {A}Material adicional}{55}{appendix.A}%
-\contentsline {chapter}{Lista de acrónimos}{57}{section*.34}%
-\contentsline {chapter}{Glosario}{59}{section*.36}%
-\contentsline {chapter}{Bibliografía}{62}{appendix*.38}%
+\contentsline {chapter}{Lista de acrónimos}{57}{section*.33}%
+\contentsline {chapter}{Glosario}{59}{section*.35}%
+\contentsline {chapter}{Bibliografía}{62}{appendix*.37}%

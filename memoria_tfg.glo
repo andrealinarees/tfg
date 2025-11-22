@@ -22,6 +22,8 @@
 \glossaryentry{Flyway?\glossentry{flyway}|setentrycounter[]{page}"\glsnumberformat}{11}
 \glossaryentry{Postman?\glossentry{postman}|setentrycounter[]{page}"\glsnumberformat}{11}
 \glossaryentry{Docker?\glossentry{docker}|setentrycounter[]{page}"\glsnumberformat}{12}
+\glossaryentry{Job (Spring Batch)?\glossentry{job}|setentrycounter[]{page}"\glsnumberformat}{22}
+\glossaryentry{Step (Spring Batch)?\glossentry{step}|setentrycounter[]{page}"\glsnumberformat}{22}
 \glossaryentry{snackbar?\glossentry{snackbar}|setentrycounter[]{page}"\glsnumberformat}{25}
 \glossaryentry{Coverage?\glossentry{coverage}|setentrycounter[]{page}"\glsnumberformat}{37}
 \glossaryentry{Duplicación de código?\glossentry{duplicacion}|setentrycounter[]{page}"\glsnumberformat}{39}

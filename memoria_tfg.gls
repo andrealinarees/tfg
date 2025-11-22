@@ -39,7 +39,9 @@
 \glossentry{jfrog}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{10}}}%
 \glossentry{jira}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{10\delimN 11}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{10\delimN 11}}}%
+\glossentry{job}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{22}}}\glsgroupskip
 \glsgroupheading{K}\relax \glsresetentrylist %
 \glossentry{kanban}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{10}}}\glsgroupskip
@@ -61,4 +63,6 @@
 		\setentrycounter[]{page}\glsnumberformat{10}}}%
 \glossentry{springbatch}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{6}}}%
+\glossentry{step}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{22}}}%
 \end{theglossary}\glossarypostamble

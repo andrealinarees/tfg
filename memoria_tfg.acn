@@ -4,6 +4,7 @@
 \glossaryentry{EAM?\glossentry{eam}|setentrycounter[]{page}"\glsnumberformat}{2}
 \glossaryentry{GRC?\glossentry{grc}|setentrycounter[]{page}"\glsnumberformat}{2}
 \glossaryentry{KPI?\glossentry{kpi}|setentrycounter[]{page}"\glsnumberformat}{2}
+\glossaryentry{HTTPS?\glossentry{https}|setentrycounter[]{page}"\glsnumberformat}{3}
 \glossaryentry{JPA?\glossentry{jpa}|setentrycounter[]{page}"\glsnumberformat}{8}
 \glossaryentry{SQL?\glossentry{sql}|setentrycounter[]{page}"\glsnumberformat}{8}
 \glossaryentry{JSON?\glossentry{json}|setentrycounter[]{page}"\glsnumberformat}{8}
@@ -34,11 +35,10 @@
 \glossaryentry{REST?\glossentry{rest}|setentrycounter[]{page}"\glsnumberformat}{23}
 \glossaryentry{JPA?\glossentry{jpa}|setentrycounter[]{page}"\glsnumberformat}{23}
 \glossaryentry{AWX?\glossentry{awx}|setentrycounter[]{page}"\glsnumberformat}{23}
-\glossaryentry{JSON?\glossentry{json}|setentrycounter[]{page}"\glsnumberformat}{30}
 \glossaryentry{SQL?\glossentry{sql}|setentrycounter[]{page}"\glsnumberformat}{32}
 \glossaryentry{REST?\glossentry{rest}|setentrycounter[]{page}"\glsnumberformat}{33}
 \glossaryentry{API?\glossentry{api}|setentrycounter[]{page}"\glsnumberformat}{33}
-\glossaryentry{HTTP?\glossentry{http}|setentrycounter[]{page}"\glsnumberformat}{35}
+\glossaryentry{HTTP?\glossentry{http}|setentrycounter[]{page}"\glsnumberformat}{34}
 \glossaryentry{EPIC?\glossentry{epic}|setentrycounter[]{page}"\glsnumberformat}{36}
 \glossaryentry{CVE?\glossentry{cve}|setentrycounter[]{page}"\glsnumberformat}{36}
 \glossaryentry{CI?\glossentry{ci}|setentrycounter[]{page}"\glsnumberformat}{37}

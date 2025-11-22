@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.10.20)  20 NOV 2025 13:15
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.10.20)  21 NOV 2025 11:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2067,23 +2067,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 141--142
 
  []
 
-File: img/bic_bpm_platform_context.png Graphic file (type bmp)
-<img/bic_bpm_platform_context.png>
+File: img/bic_bpm_platform.png Graphic file (type bmp)
+<img/bic_bpm_platform.png>
 
 
 [2]
-
-! Package glossaries Error: Glossary entry `https' has not been defined.
-
-See the glossaries package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.150 ...rio interactúa mediante \acrshort{https} 
-                                                  con los módulos \textit{BI...
-
-? 
-
 Underfull \hbox (badness 10000) in paragraph at lines 150--151
 
  []
@@ -2300,22 +2288,25 @@ iste, devuelve estado \TU/LinLibertine(5)/m/n/10.95 DUPLICATE\TU/LinLibertine(0
  []
 
 
-Overfull \hbox (86.21014pt too wide) in paragraph at lines 793--794
+Overfull \hbox (132.98857pt too wide) in paragraph at lines 793--794
 []\TU/LinLibertine(0)/b/n/10.95 Verificación de disponibilidad de datos\TU/LinL
-ibertine(0)/m/n/10.95 : invoca \TU/LinLibertine(5)/m/n/10.95 ReportDataProbeSer
-vice.hasData()
+ibertine(0)/m/n/10.95 : invoca \TU/LinLibertine(5)/m/n/10.95 hasData() \TU/LinL
+ibertine(0)/m/n/10.95 del servicio \TU/LinLibertine(5)/m/n/10.95 ReportDataProb
+eService
+ []
+
+
+Overfull \hbox (28.9062pt too wide) in paragraph at lines 799--801
+[]\TU/LinLibertine(0)/m/n/10.95 El \TU/LinLibertine(0)/b/n/10.95 Job \TU/LinLib
+ertine(0)/m/n/10.95 de Spring Batch consta de un único \TU/LinLibertine(5)/m/n/
+10.95 Step \TU/LinLibertine(0)/m/n/10.95 que ejecuta \TU/LinLibertine(5)/m/n/10
+.95 GenerateReportTasklet\TU/LinLibertine(0)/m/n/10.95 : 
  []
 
 
 Overfull \hbox (21.44551pt too wide) in paragraph at lines 801--802
 []\TU/LinLibertine(0)/m/n/10.95 Lee variables de procesos desde Elasticsearch m
 ediante \TU/LinLibertine(5)/m/n/10.95 ElasticsearchService
- []
-
-
-Overfull \hbox (181.2859pt too wide) in paragraph at lines 809--810
-\TU/LinLibertine(0)/m/n/10.95 ras \TU/LinLibertine(5)/m/n/10.95 Content-Type: a
-pplication/vnd.openxmlformats-officedocument.spreadsheetml.sheet
  []
 
 
@@ -2330,76 +2321,75 @@ ibertine(0)/m/n/10.95 (como \TU/LinLibertine(5)/m/n/10.95 CreateExcelFileUtils
 
 
 [31]
-Overfull \hbox (13.87544pt too wide) in paragraph at lines 875--876
+Overfull \hbox (13.87544pt too wide) in paragraph at lines 863--864
 []\TU/LinLibertine(0)/m/n/10.95 Trazabilidad completa en tabla de metadatos de 
 Flyway (\TU/LinLibertine(5)/m/n/10.95 flyway_schema_history\TU/LinLibertine(0)/
 m/n/10.95 ). 
  []
 
 
-
-[32]
-Overfull \hbox (45.60855pt too wide) in paragraph at lines 876--877
+Overfull \hbox (45.60855pt too wide) in paragraph at lines 864--865
 []\TU/LinLibertine(0)/m/n/10.95 Integración nativa con Spring Boot mediante con
 figuración en \TU/LinLibertine(5)/m/n/10.95 application.properties\TU/LinLibert
 ine(0)/m/n/10.95 . 
  []
 
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
-(Font)              scaled to size 10.0pt on input line 891.
+(Font)              scaled to size 10.0pt on input line 879.
 
-Overfull \hbox (35.99997pt too wide) in alignment at lines 885--896
+Overfull \hbox (35.99997pt too wide) in alignment at lines 873--884
  [] [] [] [] 
  []
 
 
-Overfull \hbox (35.99997pt too wide) in alignment at lines 896--906
+Overfull \hbox (35.99997pt too wide) in alignment at lines 884--894
  [] [] [] [] 
  []
 
 
-Overfull \hbox (35.99997pt too wide) in alignment at lines 906--910
+Overfull \hbox (35.99997pt too wide) in alignment at lines 894--898
  [] [] [] [] 
  []
 
 
-Overfull \hbox (35.99997pt too wide) in alignment at lines 910--913
+Overfull \hbox (35.99997pt too wide) in alignment at lines 898--901
  [] [] [] [] 
  []
 
 LaTeX Font Info:    Font shape `TU/LinLibertine(5)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 915.
+(Font)              scaled to size 10.0pt on input line 903.
 
-Overfull \hbox (5.23521pt too wide) in paragraph at lines 918--918
+Overfull \hbox (5.23521pt too wide) in paragraph at lines 906--906
 []|\TU/LinLibertine(5)/m/n/10 report_category| 
  []
 
 
-Underfull \hbox (badness 1067) in paragraph at lines 918--919
+Underfull \hbox (badness 1067) in paragraph at lines 906--907
 []|\TU/LinLibertine(0)/m/n/10 Categoría de proceso: \TU/LinLibertine(5)/m/n/10 
 INNOVATION \TU/LinLibertine(0)/m/n/10 o
  []
 
 
-Underfull \hbox (badness 1092) in paragraph at lines 922--923
+Underfull \hbox (badness 1092) in paragraph at lines 910--911
 []|\TU/LinLibertine(0)/m/n/10 Franquicia(s) seleccionadas; se almacena
  []
 
 
-Overfull \hbox (35.99997pt too wide) in alignment at lines 913--926
+Overfull \hbox (35.99997pt too wide) in alignment at lines 901--914
  [] [] [] [] 
  []
 
+[32]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\acrshort' on input line 934.
+(hyperref)                removing `\acrshort' on input line 922.
 
 
 
 [33]
 
 [34]
-Overfull \hbox (12.58691pt too wide) in paragraph at lines 1022--1022
+Overfull \hbox (12.58691pt too wide) in paragraph at lines 996--996
 []  \TU/LinLibertine(5)/m/n/10.95 "message": "Un informe idéntico fue generado 
 hace 2 minutos.",[] 
  []
@@ -2409,17 +2399,17 @@ hace 2 minutos.",[]
 [35]
 Capítulo 6.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1032--1033
+Underfull \hbox (badness 10000) in paragraph at lines 1006--1007
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1038--1039
+Underfull \hbox (badness 10000) in paragraph at lines 1012--1013
 
  []
 
 
-Overfull \hbox (10.94455pt too wide) in paragraph at lines 1043--1044
+Overfull \hbox (10.94455pt too wide) in paragraph at lines 1017--1018
 \TU/LinLibertine(0)/m/n/10.95 configuró \TU/LinLibertine(0)/m/it/10.95 Yarn \TU
 /LinLibertine(0)/m/n/10.95 como gestor único en los archivos \TU/LinLibertine(5
 )/m/n/10.95 angular.json \TU/LinLibertine(0)/m/n/10.95 y \TU/LinLibertine(5)/m/
@@ -2431,12 +2421,12 @@ n/10.95 package.json\TU/LinLibertine(0)/m/n/10.95 ,
 [36
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1048--1049
+Underfull \hbox (badness 10000) in paragraph at lines 1022--1023
 
  []
 
 
-Overfull \hbox (64.42705pt too wide) in paragraph at lines 1060--1061
+Overfull \hbox (64.42705pt too wide) in paragraph at lines 1034--1035
 []\TU/LinLibertine(0)/b/n/10.95 Priorización de componentes críticos\TU/LinLibe
 rtine(0)/m/n/10.95 : se priorizaron los servicios de negocio (\TU/LinLibertine(
 5)/m/n/10.95 ReportService\TU/LinLibertine(0)/m/n/10.95 ,
@@ -2463,17 +2453,17 @@ File: img/duplications_after.jpeg Graphic file (type bmp)
 [40]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\acrshort' on input line 1127.
+(hyperref)                removing `\acrshort' on input line 1101.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1129--1130
+Underfull \hbox (badness 10000) in paragraph at lines 1103--1104
 
  []
 
 
 
 [41]
-Overfull \hbox (0.23544pt too wide) in paragraph at lines 1142--1143
+Overfull \hbox (0.23544pt too wide) in paragraph at lines 1116--1117
 []\TU/LinLibertine(0)/b/n/10.95 Validación funcional\TU/LinLibertine(0)/m/n/10.
 95 : una vez levantado el entorno, se accedía mediante Google Chro-
  []
@@ -2483,12 +2473,12 @@ Overfull \hbox (0.23544pt too wide) in paragraph at lines 1142--1143
 [42]
 Capítulo 7.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1156--1157
+Underfull \hbox (badness 10000) in paragraph at lines 1130--1131
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1171--1172
+Underfull \hbox (badness 10000) in paragraph at lines 1145--1146
 
  []
 
@@ -2497,7 +2487,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1171--1172
 [43
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1173--1174
+Underfull \hbox (badness 10000) in paragraph at lines 1147--1148
 
  []
 
@@ -2516,18 +2506,18 @@ File: img/historial.png Graphic file (type bmp)
 
 
 [46]
-Underfull \hbox (badness 10000) in paragraph at lines 1235--1236
+Underfull \hbox (badness 10000) in paragraph at lines 1209--1210
 
  []
 
 
-Overfull \hbox (69.07172pt too wide) in paragraph at lines 1240--1241
+Overfull \hbox (69.07172pt too wide) in paragraph at lines 1214--1215
 \TU/LinLibertine(0)/m/n/10.95 contenía todos los cambios validados e integrados
 , se creaba una nueva rama \TU/LinLibertine(5)/m/n/10.95 release/vX.Y.Z-rc
  []
 
 
-Overfull \hbox (11.28403pt too wide) in paragraph at lines 1247--1248
+Overfull \hbox (11.28403pt too wide) in paragraph at lines 1221--1222
 \TU/LinLibertine(0)/m/n/10.95 Estos cambios se comprometían en la rama RC con u
 n mensaje descriptivo (e.g., \TU/LinLibertine(5)/m/n/10.95 "chore:
  []
@@ -2539,7 +2529,7 @@ n mensaje descriptivo (e.g., \TU/LinLibertine(5)/m/n/10.95 "chore:
 [48]
 Capítulo 8.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1272--1273
+Underfull \hbox (badness 10000) in paragraph at lines 1246--1247
 
  []
 
@@ -2548,26 +2538,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 1272--1273
 [49
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1290--1291
+Underfull \hbox (badness 10000) in paragraph at lines 1264--1265
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1292--1293
+Underfull \hbox (badness 10000) in paragraph at lines 1266--1267
 
  []
 
 
 
 [50]
-Overfull \hbox (9.6488pt too wide) in paragraph at lines 1308--1309
+Overfull \hbox (9.6488pt too wide) in paragraph at lines 1282--1283
 []\TU/LinLibertine(0)/m/n/10.95 Reducir los avisos de incompatibilidad que actu
 almente genera el uso de \TU/LinLibertine(5)/m/n/10.95 resolutions\TU/LinLibert
 ine(0)/m/n/10.95 . 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1319--1320
+Underfull \hbox (badness 10000) in paragraph at lines 1293--1294
 
  []
 
@@ -2584,7 +2574,7 @@ File: img/emergente_borrar.png Graphic file (type bmp)
 
 [53]
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 24.88pt on input line 1383.
+(Font)              scaled to size 24.88pt on input line 1357.
 
 
 [54
@@ -2639,15 +2629,15 @@ LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
 Package rerunfilecheck Info: File `memoria_tfg.out' has not changed.
-(rerunfilecheck)             Checksum: FAEB8B006DC4BFA462C1E20ABD345FED;8982.
+(rerunfilecheck)             Checksum: EE66F5C334FC820175A364A8F4F316BA;8982.
  ) 
 Here is how much of TeX's memory you used:
- 39663 strings out of 403197
- 816376 string characters out of 5455936
- 1247078 words of memory out of 5000000
- 67639 multiletter control sequences out of 15000+600000
+ 39782 strings out of 403197
+ 818204 string characters out of 5455936
+ 1250851 words of memory out of 5000000
+ 67758 multiletter control sequences out of 15000+600000
  640212 words of font info for 139 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 98i,13n,145p,2518b,834s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,13n,145p,2518b,753s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on memoria_tfg.pdf (72 pages).
