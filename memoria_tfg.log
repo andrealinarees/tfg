@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.10.20)  21 NOV 2025 11:38
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.10.20)  24 NOV 2025 10:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2163,6 +2163,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 323--324
 
 
 [12]
+Overfull \hbox (30.85799pt too wide) in paragraph at lines 347--348
+[]\TU/LinLibertine(0)/m/n/10.95 Normalización de estructura de paquetes: se reo
+rganizaron los paquetes \TU/LinLibertine(5)/m/n/10.95 kpi_reports
+ []
+
+
+Overfull \hbox (17.67781pt too wide) in paragraph at lines 347--348
+\TU/LinLibertine(0)/m/n/10.95 y \TU/LinLibertine(5)/m/n/10.95 product_reports \
+TU/LinLibertine(0)/m/n/10.95 siguiendo la misma jerarquía (por categoría: \TU/L
+inLibertine(5)/m/n/10.95 innovation
+ []
+
+
 
 [13]
 
@@ -2177,19 +2190,19 @@ Capítulo 4.
 [16]
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 489--490
+Underfull \hbox (badness 10000) in paragraph at lines 498--499
 
  []
 
 
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 491--492
+Underfull \hbox (badness 10000) in paragraph at lines 500--501
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 493--494
+Underfull \hbox (badness 10000) in paragraph at lines 502--503
 
  []
 
@@ -2206,7 +2219,7 @@ File: img/arquitectura.png Graphic file (type bmp)
 [20
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 530--531
+Underfull \hbox (badness 10000) in paragraph at lines 539--540
 
  []
 
@@ -2215,17 +2228,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 530--531
 [21]
 
 [22]
-Overfull \hbox (12.14366pt too wide) in paragraph at lines 578--579
+Overfull \hbox (12.14366pt too wide) in paragraph at lines 587--588
 []\TU/LinLibertine(0)/m/n/10.95 El frontend del proyecto está ubicado en \TU/Li
 nLibertine(5)/m/n/10.95 webapp/custom-alsea-angular-front
  []
 
 LaTeX Font Info:    Font shape `TU/LinLibertine(5)/b/n' will be
-(Font)              scaled to size 10.95pt on input line 581.
+(Font)              scaled to size 10.95pt on input line 590.
 
 
 [23]
-Overfull \hbox (13.31238pt too wide) in paragraph at lines 601--602
+Overfull \hbox (13.31238pt too wide) in paragraph at lines 610--611
 []\TU/LinLibertine(5)/m/n/10.95 get-innovation-franchise-list.service.ts\TU/Lin
 Libertine(0)/m/n/10.95 : obtiene lista de fran-
  []
@@ -2233,19 +2246,19 @@ Libertine(0)/m/n/10.95 : obtiene lista de fran-
 
 
 [24]
-Overfull \hbox (0.44708pt too wide) in paragraph at lines 623--624
+Overfull \hbox (0.44708pt too wide) in paragraph at lines 632--633
 []\TU/LinLibertine(5)/b/n/10.95 get-innovation-franchise-list.service.ts\TU/Lin
 Libertine(0)/m/n/10.95 : análogo al anterior, pe-
  []
 
 
-Overfull \hbox (57.94926pt too wide) in paragraph at lines 640--641
+Overfull \hbox (57.94926pt too wide) in paragraph at lines 649--650
 \TU/LinLibertine(0)/m/n/10.95 ven Observables de RxJS para gestión reactiva, y 
 están decorados con \TU/LinLibertine(5)/m/n/10.95 @Injectable({providedIn:
  []
 
 
-Overfull \hbox (103.3342pt too wide) in paragraph at lines 648--650
+Overfull \hbox (103.3342pt too wide) in paragraph at lines 657--659
 []\TU/LinLibertine(0)/m/n/10.95 Al seleccionar la categoría, se invoca el servi
 cio correspondiente (\TU/LinLibertine(5)/m/n/10.95 get-innovation-franchise-lis
 t
@@ -2254,7 +2267,7 @@ t
 
 
 [25]
-Overfull \hbox (11.09511pt too wide) in paragraph at lines 660--661
+Overfull \hbox (11.09511pt too wide) in paragraph at lines 669--670
 \TU/LinLibertine(0)/m/n/10.95 sultar todos los informes generados, donde el ser
 vicio \TU/LinLibertine(5)/m/n/10.95 reports-history.service
  []
@@ -2264,7 +2277,7 @@ vicio \TU/LinLibertine(5)/m/n/10.95 reports-history.service
 [26]
 
 [27]
-Overfull \hbox (4.12164pt too wide) in paragraph at lines 713--714
+Overfull \hbox (4.12164pt too wide) in paragraph at lines 722--723
 []\TU/LinLibertine(5)/m/n/10.95 tasklet/GenerateReportTasklet\TU/LinLibertine(0
 )/m/n/10.95 : implementación del Tasklet que eje-
  []
@@ -2272,7 +2285,7 @@ Overfull \hbox (4.12164pt too wide) in paragraph at lines 713--714
 
 
 [28]
-Overfull \hbox (0.13593pt too wide) in paragraph at lines 786--787
+Overfull \hbox (0.13593pt too wide) in paragraph at lines 795--796
 []\TU/LinLibertine(0)/m/n/10.95 ReportBatchController recibe la petición POST e
 n \TU/LinLibertine(5)/m/n/10.95 /api/reports/generate \TU/LinLibertine(0)/m/n/1
 0.95 con
@@ -2281,30 +2294,28 @@ n \TU/LinLibertine(5)/m/n/10.95 /api/reports/generate \TU/LinLibertine(0)/m/n/1
 
 
 [29]
-Overfull \hbox (7.66222pt too wide) in paragraph at lines 792--793
-\TU/LinLibertine(0)/m/n/10.95 idéntico generado en los últimos 5 minutos. Si ex
-iste, devuelve estado \TU/LinLibertine(5)/m/n/10.95 DUPLICATE\TU/LinLibertine(0
-)/m/n/10.95 . 
+Overfull \hbox (71.0919pt too wide) in paragraph at lines 801--802
+[]\TU/LinLibertine(0)/b/n/10.95 Comprobación de duplicidad\TU/LinLibertine(0)/m
+/n/10.95 : calcula una firma única mediante \TU/LinLibertine(5)/m/n/10.95 Repor
+tDuplicateUtils
  []
 
 
-Overfull \hbox (132.98857pt too wide) in paragraph at lines 793--794
-[]\TU/LinLibertine(0)/b/n/10.95 Verificación de disponibilidad de datos\TU/LinL
-ibertine(0)/m/n/10.95 : invoca \TU/LinLibertine(5)/m/n/10.95 hasData() \TU/LinL
-ibertine(0)/m/n/10.95 del servicio \TU/LinLibertine(5)/m/n/10.95 ReportDataProb
-eService
+Overfull \hbox (91.52821pt too wide) in paragraph at lines 802--803
+[]\TU/LinLibertine(0)/b/n/10.95 Verificación de disponibilidad\TU/LinLibertine(
+0)/m/n/10.95 : invoca \TU/LinLibertine(5)/m/n/10.95 hasData() \TU/LinLibertine(
+0)/m/n/10.95 del servicio \TU/LinLibertine(5)/m/n/10.95 ReportDataProbeService
  []
 
 
-Overfull \hbox (28.9062pt too wide) in paragraph at lines 799--801
-[]\TU/LinLibertine(0)/m/n/10.95 El \TU/LinLibertine(0)/b/n/10.95 Job \TU/LinLib
-ertine(0)/m/n/10.95 de Spring Batch consta de un único \TU/LinLibertine(5)/m/n/
-10.95 Step \TU/LinLibertine(0)/m/n/10.95 que ejecuta \TU/LinLibertine(5)/m/n/10
-.95 GenerateReportTasklet\TU/LinLibertine(0)/m/n/10.95 : 
+Overfull \hbox (27.29654pt too wide) in paragraph at lines 808--810
+[]\TU/LinLibertine(0)/m/n/10.95 El Job de Spring Batch consta de un único \TU/L
+inLibertine(5)/m/n/10.95 Step \TU/LinLibertine(0)/m/n/10.95 que ejecuta \TU/Lin
+Libertine(5)/m/n/10.95 GenerateReportTasklet\TU/LinLibertine(0)/m/n/10.95 : 
  []
 
 
-Overfull \hbox (21.44551pt too wide) in paragraph at lines 801--802
+Overfull \hbox (21.44551pt too wide) in paragraph at lines 810--811
 []\TU/LinLibertine(0)/m/n/10.95 Lee variables de procesos desde Elasticsearch m
 ediante \TU/LinLibertine(5)/m/n/10.95 ElasticsearchService
  []
@@ -2312,7 +2323,7 @@ ediante \TU/LinLibertine(5)/m/n/10.95 ElasticsearchService
 
 
 [30]
-Overfull \hbox (75.41351pt too wide) in paragraph at lines 822--823
+Overfull \hbox (75.41351pt too wide) in paragraph at lines 831--832
 []\TU/LinLibertine(0)/b/n/10.95 Writer\TU/LinLibertine(0)/m/n/10.95 : generació
 n del Excel mediante utilidades de \TU/LinLibertine(5)/m/n/10.95 utils \TU/LinL
 ibertine(0)/m/n/10.95 (como \TU/LinLibertine(5)/m/n/10.95 CreateExcelFileUtils
@@ -2321,77 +2332,72 @@ ibertine(0)/m/n/10.95 (como \TU/LinLibertine(5)/m/n/10.95 CreateExcelFileUtils
 
 
 [31]
-Overfull \hbox (13.87544pt too wide) in paragraph at lines 863--864
+Overfull \hbox (13.87544pt too wide) in paragraph at lines 872--873
 []\TU/LinLibertine(0)/m/n/10.95 Trazabilidad completa en tabla de metadatos de 
 Flyway (\TU/LinLibertine(5)/m/n/10.95 flyway_schema_history\TU/LinLibertine(0)/
 m/n/10.95 ). 
  []
 
 
-Overfull \hbox (45.60855pt too wide) in paragraph at lines 864--865
+Overfull \hbox (45.60855pt too wide) in paragraph at lines 873--874
 []\TU/LinLibertine(0)/m/n/10.95 Integración nativa con Spring Boot mediante con
 figuración en \TU/LinLibertine(5)/m/n/10.95 application.properties\TU/LinLibert
 ine(0)/m/n/10.95 . 
  []
 
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
-(Font)              scaled to size 10.0pt on input line 879.
+(Font)              scaled to size 10.0pt on input line 888.
 
-Overfull \hbox (35.99997pt too wide) in alignment at lines 873--884
+Overfull \hbox (35.99997pt too wide) in alignment at lines 882--893
  [] [] [] [] 
  []
 
 
-Overfull \hbox (35.99997pt too wide) in alignment at lines 884--894
+Overfull \hbox (35.99997pt too wide) in alignment at lines 893--903
  [] [] [] [] 
  []
 
 
-Overfull \hbox (35.99997pt too wide) in alignment at lines 894--898
+Overfull \hbox (35.99997pt too wide) in alignment at lines 903--907
  [] [] [] [] 
  []
 
 
-Overfull \hbox (35.99997pt too wide) in alignment at lines 898--901
+Overfull \hbox (35.99997pt too wide) in alignment at lines 907--910
  [] [] [] [] 
  []
 
 LaTeX Font Info:    Font shape `TU/LinLibertine(5)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 903.
+(Font)              scaled to size 10.0pt on input line 912.
 
-Overfull \hbox (5.23521pt too wide) in paragraph at lines 906--906
+Overfull \hbox (5.23521pt too wide) in paragraph at lines 915--915
 []|\TU/LinLibertine(5)/m/n/10 report_category| 
  []
 
 
-Underfull \hbox (badness 1067) in paragraph at lines 906--907
+Underfull \hbox (badness 1067) in paragraph at lines 915--916
 []|\TU/LinLibertine(0)/m/n/10 Categoría de proceso: \TU/LinLibertine(5)/m/n/10 
 INNOVATION \TU/LinLibertine(0)/m/n/10 o
  []
 
 
-Underfull \hbox (badness 1092) in paragraph at lines 910--911
+Underfull \hbox (badness 1092) in paragraph at lines 919--920
 []|\TU/LinLibertine(0)/m/n/10 Franquicia(s) seleccionadas; se almacena
  []
 
 
-Overfull \hbox (35.99997pt too wide) in alignment at lines 901--914
+Overfull \hbox (35.99997pt too wide) in alignment at lines 910--923
  [] [] [] [] 
  []
 
 [32]
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\acrshort' on input line 922.
-
-
-
 [33]
 
 [34]
-Overfull \hbox (12.58691pt too wide) in paragraph at lines 996--996
+Overfull \hbox (10.25092pt too wide) in paragraph at lines 1004--1004
 []  \TU/LinLibertine(5)/m/n/10.95 "message": "Un informe idéntico fue generado 
-hace 2 minutos.",[] 
+recientemente.",[] 
  []
 
 
@@ -2399,17 +2405,17 @@ hace 2 minutos.",[]
 [35]
 Capítulo 6.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1006--1007
+Underfull \hbox (badness 10000) in paragraph at lines 1014--1015
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1012--1013
+Underfull \hbox (badness 10000) in paragraph at lines 1020--1021
 
  []
 
 
-Overfull \hbox (10.94455pt too wide) in paragraph at lines 1017--1018
+Overfull \hbox (10.94455pt too wide) in paragraph at lines 1025--1026
 \TU/LinLibertine(0)/m/n/10.95 configuró \TU/LinLibertine(0)/m/it/10.95 Yarn \TU
 /LinLibertine(0)/m/n/10.95 como gestor único en los archivos \TU/LinLibertine(5
 )/m/n/10.95 angular.json \TU/LinLibertine(0)/m/n/10.95 y \TU/LinLibertine(5)/m/
@@ -2421,22 +2427,17 @@ n/10.95 package.json\TU/LinLibertine(0)/m/n/10.95 ,
 [36
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1022--1023
-
- []
-
-
-Overfull \hbox (64.42705pt too wide) in paragraph at lines 1034--1035
+Overfull \hbox (64.42705pt too wide) in paragraph at lines 1040--1041
 []\TU/LinLibertine(0)/b/n/10.95 Priorización de componentes críticos\TU/LinLibe
 rtine(0)/m/n/10.95 : se priorizaron los servicios de negocio (\TU/LinLibertine(
 5)/m/n/10.95 ReportService\TU/LinLibertine(0)/m/n/10.95 ,
  []
 
+File: img/coverage_before.jpeg Graphic file (type bmp)
+<img/coverage_before.jpeg>
 
 
 [37]
-File: img/coverage_before.jpeg Graphic file (type bmp)
-<img/coverage_before.jpeg>
 File: img/coverage_after.jpeg Graphic file (type bmp)
 <img/coverage_after.jpeg>
 
@@ -2451,19 +2452,14 @@ File: img/duplications_after.jpeg Graphic file (type bmp)
 
 
 [40]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\acrshort' on input line 1101.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1103--1104
+Underfull \hbox (badness 10000) in paragraph at lines 1109--1110
 
  []
 
 
 
 [41]
-Overfull \hbox (0.23544pt too wide) in paragraph at lines 1116--1117
+Overfull \hbox (0.23544pt too wide) in paragraph at lines 1121--1122
 []\TU/LinLibertine(0)/b/n/10.95 Validación funcional\TU/LinLibertine(0)/m/n/10.
 95 : una vez levantado el entorno, se accedía mediante Google Chro-
  []
@@ -2473,12 +2469,12 @@ Overfull \hbox (0.23544pt too wide) in paragraph at lines 1116--1117
 [42]
 Capítulo 7.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1130--1131
+Underfull \hbox (badness 10000) in paragraph at lines 1135--1136
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1145--1146
+Underfull \hbox (badness 10000) in paragraph at lines 1150--1151
 
  []
 
@@ -2487,7 +2483,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1145--1146
 [43
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1147--1148
+Underfull \hbox (badness 10000) in paragraph at lines 1152--1153
 
  []
 
@@ -2506,18 +2502,18 @@ File: img/historial.png Graphic file (type bmp)
 
 
 [46]
-Underfull \hbox (badness 10000) in paragraph at lines 1209--1210
+Underfull \hbox (badness 10000) in paragraph at lines 1214--1215
 
  []
 
 
-Overfull \hbox (69.07172pt too wide) in paragraph at lines 1214--1215
+Overfull \hbox (69.07172pt too wide) in paragraph at lines 1219--1220
 \TU/LinLibertine(0)/m/n/10.95 contenía todos los cambios validados e integrados
 , se creaba una nueva rama \TU/LinLibertine(5)/m/n/10.95 release/vX.Y.Z-rc
  []
 
 
-Overfull \hbox (11.28403pt too wide) in paragraph at lines 1221--1222
+Overfull \hbox (11.28403pt too wide) in paragraph at lines 1225--1226
 \TU/LinLibertine(0)/m/n/10.95 Estos cambios se comprometían en la rama RC con u
 n mensaje descriptivo (e.g., \TU/LinLibertine(5)/m/n/10.95 "chore:
  []
@@ -2529,7 +2525,7 @@ n mensaje descriptivo (e.g., \TU/LinLibertine(5)/m/n/10.95 "chore:
 [48]
 Capítulo 8.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1246--1247
+Underfull \hbox (badness 10000) in paragraph at lines 1248--1249
 
  []
 
@@ -2538,26 +2534,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 1246--1247
 [49
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1264--1265
+Underfull \hbox (badness 10000) in paragraph at lines 1266--1267
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1266--1267
+Underfull \hbox (badness 10000) in paragraph at lines 1268--1269
 
  []
 
 
 
 [50]
-Overfull \hbox (9.6488pt too wide) in paragraph at lines 1282--1283
+Overfull \hbox (9.6488pt too wide) in paragraph at lines 1284--1285
 []\TU/LinLibertine(0)/m/n/10.95 Reducir los avisos de incompatibilidad que actu
 almente genera el uso de \TU/LinLibertine(5)/m/n/10.95 resolutions\TU/LinLibert
 ine(0)/m/n/10.95 . 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1293--1294
+Underfull \hbox (badness 10000) in paragraph at lines 1295--1296
 
  []
 
@@ -2574,7 +2570,7 @@ File: img/emergente_borrar.png Graphic file (type bmp)
 
 [53]
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 24.88pt on input line 1357.
+(Font)              scaled to size 24.88pt on input line 1359.
 
 
 [54
@@ -2629,15 +2625,15 @@ LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
 Package rerunfilecheck Info: File `memoria_tfg.out' has not changed.
-(rerunfilecheck)             Checksum: EE66F5C334FC820175A364A8F4F316BA;8982.
+(rerunfilecheck)             Checksum: 7EF8B7079BD83C425A34C692EC826068;8982.
  ) 
 Here is how much of TeX's memory you used:
- 39782 strings out of 403197
- 818204 string characters out of 5455936
- 1250851 words of memory out of 5000000
- 67758 multiletter control sequences out of 15000+600000
+ 39781 strings out of 403197
+ 818182 string characters out of 5455936
+ 1249851 words of memory out of 5000000
+ 67757 multiletter control sequences out of 15000+600000
  640212 words of font info for 139 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 98i,13n,145p,2518b,753s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,12n,145p,2518b,753s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on memoria_tfg.pdf (72 pages).

@@ -12,7 +12,7 @@
 \contentsline {figure}{\numberline {5.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Arquitectura detallada del Report Service mostrando las capas de presentación, aplicación, datos e infraestructura con sus interacciones.}}{21}{figure.caption.10}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {6.1}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Cobertura de código antes de las mejoras: 17.7\% (por debajo del umbral mínimo del 20\%).}}{38}{figure.caption.22}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Cobertura de código después de las mejoras: 25.7\% (superando el umbral mínimo del 20\%).}}{39}{figure.caption.23}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Cobertura de código después de las mejoras: 25.7\% (superando el umbral mínimo del 20\%).}}{38}{figure.caption.23}%
 \contentsline {figure}{\numberline {6.3}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Duplicación de código antes de la refactorización: 15.8\%.}}{40}{figure.caption.24}%
 \contentsline {figure}{\numberline {6.4}{\ignorespaces \xpg@aux {}{spanish}\ignorespaces Duplicación de código después de la refactorización: 10.0\%.}}{41}{figure.caption.25}%
 \addvspace {10\p@ }

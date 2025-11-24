@@ -35,7 +35,7 @@
 \BOOKMARK [2][-]{subsection.5.2.2}{Servidor\040\(Spring\040Boot\040+\040Spring\040Batch\)}{section.5.2}% 35
 \BOOKMARK [2][-]{subsection.5.2.3}{Capa\040de\040datos}{section.5.2}% 36
 \BOOKMARK [1][-]{section.5.3}{\376\377\000I\000n\000t\000e\000r\000a\000c\000c\000i\000\363\000n\000\040\000c\000l\000i\000e\000n\000t\000e\040\023\000s\000e\000r\000v\000i\000d\000o\000r}{chapter.5}% 37
-\BOOKMARK [2][-]{subsection.5.3.1}{Endpoints\040rest}{section.5.3}% 38
+\BOOKMARK [2][-]{subsection.5.3.1}{Endpoints\040REST}{section.5.3}% 38
 \BOOKMARK [2][-]{subsection.5.3.2}{Manejo\040de\040errores}{section.5.3}% 39
 \BOOKMARK [0][-]{chapter.6}{\376\377\000I\000m\000p\000l\000e\000m\000e\000n\000t\000a\000c\000i\000\363\000n\000\040\000y\000\040\000p\000r\000u\000e\000b\000a\000s}{}% 40
 \BOOKMARK [1][-]{section.6.1}{Tareas\040de\040mejora}{chapter.6}% 41
@@ -47,7 +47,7 @@
 \BOOKMARK [1][-]{section.6.3}{Pruebas}{chapter.6}% 47
 \BOOKMARK [2][-]{subsection.6.3.1}{Testing\040unitario}{section.6.3}% 48
 \BOOKMARK [2][-]{subsection.6.3.2}{\376\377\000T\000e\000s\000t\000i\000n\000g\000\040\000d\000e\000\040\000i\000n\000t\000e\000g\000r\000a\000c\000i\000\363\000n}{section.6.3}% 49
-\BOOKMARK [2][-]{subsection.6.3.3}{Pruebas\040manuales\040y\040entorno\040de\040qa}{section.6.3}% 50
+\BOOKMARK [2][-]{subsection.6.3.3}{Pruebas\040manuales\040y\040entorno\040de\040QA}{section.6.3}% 50
 \BOOKMARK [0][-]{chapter.7}{\376\377\000S\000o\000l\000u\000c\000i\000\363\000n\000\040\000d\000e\000s\000a\000r\000r\000o\000l\000l\000a\000d\000a}{}% 51
 \BOOKMARK [1][-]{section.7.1}{\376\377\000I\000n\000t\000r\000o\000d\000u\000c\000c\000i\000\363\000n}{chapter.7}% 52
 \BOOKMARK [1][-]{section.7.2}{\376\377\000P\000\341\000g\000i\000n\000a\000\040\000d\000e\000\040\000G\000e\000n\000e\000r\000a\000r}{chapter.7}% 53

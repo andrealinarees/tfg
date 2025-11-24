@@ -13,11 +13,9 @@ Imágenes que faltan:
 Cosas que faltan:
 -> Bibliografía con los links del resto de cosas, alsea, gbtec, documentación oficial de flyway, spring batch etc.
 -> Capítulo 6 en general con implementación y añadir fragmentos de código y demás.
--> Capítulo 5 reescribir con la estructura correcta del códgio
--> Revisar las citas del glosario y que salgan solo una vez, la primera vez que se les hace referencia.
--> Resolver warnings
+-> Revisar las citas del glosario y que salgan solo una vez? la primera vez que se les hace referencia.
 
-Consultar con Cibrán:
+Consultar con Cibrán que responda Ángel:
 -> Captura de pantalla de la BIC Platform alto nivel
 -> Fragmentos de código puntuales de ejemplos de Batch.
 -> Estructura general de paquetes del código (necesaria para el capítulo de diseño)
