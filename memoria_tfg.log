@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.10.20)  24 NOV 2025 10:17
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.10.20)  26 NOV 2025 13:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2230,7 +2230,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 539--540
 [22]
 Overfull \hbox (12.14366pt too wide) in paragraph at lines 587--588
 []\TU/LinLibertine(0)/m/n/10.95 El frontend del proyecto está ubicado en \TU/Li
-nLibertine(5)/m/n/10.95 webapp/custom-alsea-angular-front
+nLibertine(5)/m/n/10.95 webapp/custom-aesla-angular-front
  []
 
 LaTeX Font Info:    Font shape `TU/LinLibertine(5)/b/n' will be
@@ -2630,7 +2630,7 @@ Package rerunfilecheck Info: File `memoria_tfg.out' has not changed.
 Here is how much of TeX's memory you used:
  39781 strings out of 403197
  818182 string characters out of 5455936
- 1249851 words of memory out of 5000000
+ 1250851 words of memory out of 5000000
  67757 multiletter control sequences out of 15000+600000
  640212 words of font info for 139 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191

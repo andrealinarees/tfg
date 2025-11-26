@@ -10,7 +10,7 @@
 \def\nomedirectorA{Fernando Silva Coira}             
 \def\nomedirectorB{Ángel Fernández Formoso}             % duplica esta liña máis veces se o precisas, cambiando
                                                      % a letra final (A, B, C, D...): úsanse na portada.tex
-\def\titulo{Modernización del módulo Report Service en la plataforma BIC para el cliente ALSEA} 
+\def\titulo{Modernización del módulo Report Service en la plataforma BIC para el cliente AESLA} 
 \def\titulacion{gei}
 \def\mencion{SISTEMAS DE INFORMACIÓN}
 
@@ -64,13 +64,13 @@
 
 \section*{Resumen}
 \justifying
-En el contexto de la gestión de procesos empresariales y la generación automática de informes ejecutivos, este Trabajo de Fin de Grado presenta la modernización del módulo Report Service para ALSEA, desarrollado por GBTEC Software AG. El proyecto aborda la optimización del flujo de generación de informes en formato Excel, mediante la incorporación de almacenamiento histórico, procesamiento asíncrono, control de duplicidad y mejoras en la experiencia de usuario. Para ello, se aplicó una metodología ágil iterativa e incremental, utilizando tecnologías como Spring Batch, Flyway, PostgreSQL, Elasticsearch y Angular. Las mejoras contribuyen a aumentar la escalabilidad, robustez y calidad del servicio, alineándose con las necesidades operativas y analíticas de ALSEA.
+En el contexto de la gestión de procesos empresariales y la generación automática de informes ejecutivos, este Trabajo de Fin de Grado presenta la modernización del módulo Report Service para AESLA, desarrollado por GBTEC Software AG. El proyecto aborda la optimización del flujo de generación de informes en formato Excel, mediante la incorporación de almacenamiento histórico, procesamiento asíncrono, control de duplicidad y mejoras en la experiencia de usuario. Para ello, se aplicó una metodología ágil iterativa e incremental, utilizando tecnologías como Spring Batch, Flyway, PostgreSQL, Elasticsearch y Angular. Las mejoras contribuyen a aumentar la escalabilidad, robustez y calidad del servicio, alineándose con las necesidades operativas y analíticas de AESLA.
 
 \vspace{1cm}
 
 \section*{Abstract}
 \justifying
-Within the scope of business process management and automatic generation of executive reports, this undergraduate thesis presents the modernization of the Report Service module for ALSEA, developed by GBTEC Software AG. The project focuses on optimizing the report generation workflow in Excel format by incorporating historical storage, asynchronous processing, duplication control, and user experience improvements. An iterative and incremental agile methodology was applied, employing technologies such as Spring Batch, Flyway, PostgreSQL, Elasticsearch, and Angular. These enhancements contribute to increased scalability, robustness, and service quality, aligning with ALSEA's operational and analytical needs.
+Within the scope of business process management and automatic generation of executive reports, this undergraduate thesis presents the modernization of the Report Service module for AESLA, developed by GBTEC Software AG. The project focuses on optimizing the report generation workflow in Excel format by incorporating historical storage, asynchronous processing, duplication control, and user experience improvements. An iterative and incremental agile methodology was applied, employing technologies such as Spring Batch, Flyway, PostgreSQL, Elasticsearch, and Angular. These enhancements contribute to increased scalability, robustness, and service quality, aligning with AESLA's operational and analytical needs.
 
 \vspace{1cm}
 
@@ -125,20 +125,20 @@ Within the scope of business process management and automatic generation of exec
 
 \section{Motivación}
 
-ALSEA, S.A.B. de C.V., es una empresa multinacional mexicana dedicada a la operación de marcas de restauración franquiciadas. Con presencia en América Latina y Europa, se ha consolidado como uno de los principales operadores del sector, gestionando cadenas tan conocidas como Starbucks, Burger King, Domino’s Pizza, Vips o Foster’s Hollywood. En España, su actividad se articula a través de Food Service Project, que engloba establecimientos de restauración rápida, cafeterías y restaurantes de comida casual .\footnote{Fuente: página web oficial de ALSEA, disponible en \href{https://europe.alsea.net/alsea\#somos-alsea}{Alsea Europa}}
+AESLA, S.A.B. de C.V., es una empresa multinacional mexicana dedicada a la operación de marcas de restauración franquiciadas. Con presencia en América Latina y Europa, se ha consolidado como uno de los principales operadores del sector, gestionando cadenas tan conocidas como Starbucks, Burger King, Domino’s Pizza, Vips o Foster’s Hollywood. En España, su actividad se articula a través de Food Service Project, que engloba establecimientos de restauración rápida, cafeterías y restaurantes de comida casual .\footnote{Nota: El nombre del cliente ha sido modificado por motivos de confidencialidad.}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.7\textwidth]{img/presencia_internacional.png}
-  \caption{Mapa de presencia internacional de ALSEA (Food Service Project).}
+  \caption{Mapa de presencia internacional de AESLA (Food Service Project).}
   \label{fig:presencia-internacional}
 \end{figure}
 
-La magnitud de esta operación internacional hace que ALSEA maneje diariamente un volumen muy elevado de información relativa a ventas, operaciones, proyectos de innovación, indicadores de desempeño y actividades internas. En este contexto, disponer de datos fiables, centralizados y fácilmente accesibles resulta fundamental para evaluar el rendimiento de las franquicias, identificar posibles desviaciones y tomar decisiones estratégicas fundamentadas. Sin herramientas de análisis adecuadas, la gestión de este conocimiento se vuelve compleja y poco eficiente.\\
+La magnitud de esta operación internacional hace que AESLA maneje diariamente un volumen muy elevado de información relativa a ventas, operaciones, proyectos de innovación, indicadores de desempeño y actividades internas. En este contexto, disponer de datos fiables, centralizados y fácilmente accesibles resulta fundamental para evaluar el rendimiento de las franquicias, identificar posibles desviaciones y tomar decisiones estratégicas fundamentadas. Sin herramientas de análisis adecuadas, la gestión de este conocimiento se vuelve compleja y poco eficiente.\\
 
-Para dar respuesta a esta necesidad, GBTEC Software AG, compañía alemana especializada en soluciones de gestión de procesos de negocio (\acrshort{bpm}), arquitectura empresarial (\acrshort{eam}) y gobierno, riesgo y cumplimiento (\acrshort{grc}), ofrece la \textit{BIC Platform}, un ecosistema de software que permite modelar, ejecutar y analizar procesos empresariales. Dentro de este marco, se desarrolló para ALSEA un módulo específico denominado \textit{Report Service}, cuya finalidad es transformar los datos de la plataforma de Process Execution en informes ejecutivos descargables en formato Excel.\\
+Para dar respuesta a esta necesidad, GBTEC Software AG, compañía alemana especializada en soluciones de gestión de procesos de negocio (\acrshort{bpm}), arquitectura empresarial (\acrshort{eam}) y gobierno, riesgo y cumplimiento (\acrshort{grc}), ofrece la \textit{BIC Platform}, un ecosistema de software que permite modelar, ejecutar y analizar procesos empresariales. Dentro de este marco, se desarrolló para AESLA un módulo específico denominado \textit{Report Service}, cuya finalidad es transformar los datos de la plataforma de Process Execution en informes ejecutivos descargables en formato Excel.\\
 
-La \textit{BIC Platform} se despliega habitualmente en modalidad cloud (BIC Cloud) y está compuesta por varios módulos que cubren el ciclo de vida de los procesos: \textit{Process Design} para modelar procesos mediante diagramas BPMN, y \textit{Process Execution} para ejecutar y automatizar esos procesos, gestionando instancias, tareas y persistencia de variables. El \textit{Report Service} extrae información de \textit{Process Execution} (combinada con consultas a \gls{elasticsearch}) para componer informes Excel con \acrshort{kpi}, \gls{retroplanning}, \gls{heatmap} y otras métricas solicitadas por ALSEA.\\
+La \textit{BIC Platform} se despliega habitualmente en modalidad cloud (BIC Cloud) y está compuesta por varios módulos que cubren el ciclo de vida de los procesos: \textit{Process Design} para modelar procesos mediante diagramas BPMN, y \textit{Process Execution} para ejecutar y automatizar esos procesos, gestionando instancias, tareas y persistencia de variables. El \textit{Report Service} extrae información de \textit{Process Execution} (combinada con consultas a \gls{elasticsearch}) para componer informes Excel con \acrshort{kpi}, \gls{retroplanning}, \gls{heatmap} y otras métricas solicitadas por AESLA.\\
 
 \begin{figure}[H]
   \centering
@@ -169,15 +169,15 @@ La captura muestra la hoja del Requisito 1, que presenta un \gls{histograma} con
   \label{fig:product-innovation}
 \end{figure}
 
-La captura muestra la hoja del heatmap actual, que representa para cada marca el estado de sus proyectos junto con las actividades, responsables que las llevan a cabo y fechas previstas. En la parte inferior se pueden observar las pestañas de otras hojas del libro, incluyendo los retroplannings y una hoja de comparativa, que forman parte del conjunto de métricas y análisis solicitados por ALSEA.
+La captura muestra la hoja del heatmap actual, que representa para cada marca el estado de sus proyectos junto con las actividades, responsables que las llevan a cabo y fechas previstas. En la parte inferior se pueden observar las pestañas de otras hojas del libro, incluyendo los retroplannings y una hoja de comparativa, que forman parte del conjunto de métricas y análisis solicitados por AESLA.
 
-Estos ejemplos muestran la riqueza informativa y el nivel de personalización de los informes generados por el Report Service, diseñados para cubrir las necesidades analíticas específicas de ALSEA en la gestión de sus procesos de innovación y alternativa de producto.\\
+Estos ejemplos muestran la riqueza informativa y el nivel de personalización de los informes generados por el Report Service, diseñados para cubrir las necesidades analíticas específicas de AESLA en la gestión de sus procesos de innovación y alternativa de producto.\\
 
 Sin embargo, con el paso del tiempo surgieron limitaciones notables. El sistema carecía de un almacenamiento histórico de informes, lo que obligaba a los usuarios a regenerarlos cada vez que deseaban acceder a información pasada. Además, se detectaron problemas de duplicación de código en el backend, ausencia de procesamiento asíncrono (lo que generaba bloqueos en la interfaz durante la creación de los informes) y una experiencia de usuario que no reflejaba plenamente las necesidades de la organización. Estas carencias constituyeron la motivación principal para emprender un proceso de mejora y modernización del Report Service.
 
 \section{Objetivos}
 
-El presente Trabajo de Fin de Grado documenta, analiza y evalúa las mejoras introducidas en el Report Service de ALSEA durante mis prácticas en GBTEC. En concreto, se plantearon los siguientes objetivos:
+El presente Trabajo de Fin de Grado documenta, analiza y evalúa las mejoras introducidas en el Report Service de AESLA durante mis prácticas en GBTEC. En concreto, se plantearon los siguientes objetivos:
 
 \begin{itemize}
     \item Ampliar la funcionalidad del servicio con almacenamiento histórico en base de datos.
@@ -199,7 +199,7 @@ Con ello, se pretende transformar el Report Service en una solución completa qu
 
 \section{Estado del arte}
 
-Para la elaboración del estado del arte se han analizado distintas soluciones disponibles en el mercado relacionadas con la generación de informes empresariales y cuadros de mando, evaluando sus ventajas y limitaciones. El objetivo de este análisis es comprender cómo se abordan actualmente estas necesidades en el sector y en qué medida las herramientas existentes inspiran o contrastan con el desarrollo del módulo Report Service en ALSEA.\\
+Para la elaboración del estado del arte se han analizado distintas soluciones disponibles en el mercado relacionadas con la generación de informes empresariales y cuadros de mando, evaluando sus ventajas y limitaciones. El objetivo de este análisis es comprender cómo se abordan actualmente estas necesidades en el sector y en qué medida las herramientas existentes inspiran o contrastan con el desarrollo del módulo Report Service en AESLA.\\
 
 \textbf{Microsoft Power BI}\footnote{\url{https://www.microsoft.com/es-es/power-platform/products/power-bi}} es una de las plataformas líderes en el ámbito de la inteligencia de negocio. Destaca por su capacidad de conexión a múltiples fuentes de datos y por ofrecer cuadros de mando interactivos y actualizados en tiempo real. Su principal fortaleza es la flexibilidad de visualización y la posibilidad de integrar gráficos avanzados sin conocimientos de programación. No obstante, entre sus limitaciones se encuentra la complejidad de configuración inicial y la necesidad de licencias específicas para acceder a todas las funcionalidades.\\
 
@@ -209,7 +209,7 @@ Para la elaboración del estado del arte se han analizado distintas soluciones d
 
 Por otro lado, existen soluciones especializadas en automatización de informes Excel con plantillas predefinidas, aunque suelen carecer de personalización avanzada o integración con flujos de datos en tiempo real.\\
 
-El módulo Report Service de ALSEA surge para cubrir este hueco: generar de forma sencilla y automatizada informes Excel ajustados a requisitos específicos de negocio (retroplanning, heatmaps, KPIs de innovación y alternativas), combinando la estandarización documental con la integración directa de datos de ejecución de procesos.
+El módulo Report Service de AESLA surge para cubrir este hueco: generar de forma sencilla y automatizada informes Excel ajustados a requisitos específicos de negocio (retroplanning, heatmaps, KPIs de innovación y alternativas), combinando la estandarización documental con la integración directa de datos de ejecución de procesos.
 
 \section{Tecnologías utilizadas}
 
@@ -239,7 +239,7 @@ El desarrollo del Report Service se apoyó en un conjunto de tecnologías que ab
 
 \begin{itemize}
     \item \textbf{PostgreSQL}: sistema de gestión de bases de datos relacional, robusto y de código abierto, empleado para almacenar tanto la información de procesos como los informes generados.
-    \item \textbf{Flyway}: herramienta de migraciones que asegura el versionado y la coherencia del esquema de base de datos en todos los entornos (desarrollo, pruebas y producción). Se utilizó para crear y mantener el esquema \texttt{alsea\_reports} y su tabla principal \texttt{report}.
+    \item \textbf{Flyway}: herramienta de migraciones que asegura el versionado y la coherencia del esquema de base de datos en todos los entornos (desarrollo, pruebas y producción). Se utilizó para crear y mantener el esquema \texttt{aesla\_reports} y su tabla principal \texttt{report}.
     \item \textbf{Testcontainers}: framework de testing que permite levantar contenedores ligeros de \gls{postgresql} en memoria durante la ejecución de pruebas, garantizando un entorno controlado y reproducible.
 \end{itemize}
 
@@ -289,7 +289,7 @@ La incorporación al proyecto siguió una fase breve de formación, alineada con
 
 \begin{itemize}
   \item \textbf{Formación inicial}: cursos introductorios de Spring Batch, \gls{docker}, Patrones de Diseño en Java y Angular (priorizando primero backend) proporcionados por la suscripción mediante la empresa de la entidad emisora \acrshort{udemy}.
-  \item \textbf{Aterrizaje en Jira}: asignación al \acrshort{epic} "Improvements for ALSEA Project in 2025 Q3 \& Q4", con tareas tipificadas como Story, Task o Bug, cada una con subtareas y prioridad.
+  \item \textbf{Aterrizaje en Jira}: asignación al \acrshort{epic} "Improvements for AESLA Project in 2025 Q3 \& Q4", con tareas tipificadas como Story, Task o Bug, cada una con subtareas y prioridad.
   \item \textbf{Flujo de trabajo}:
     \begin{itemize}
       \item Rama por tarea (feature/fix branch) en Git.
@@ -303,7 +303,7 @@ El orden de adaptación técnica fue: backend → datos → frontend, permitiend
 
 \section{Planificación y seguimiento}
 
-El trabajo se desarrolló durante tres meses de prácticas:
+El trabajo se desarrolló durante tres meses:
 
 \begin{itemize}
   \item Julio: 7 h/día, 5 días/semana.
@@ -320,7 +320,7 @@ La dedicación horaria total del proyecto se muestra en la figura siguiente:
   \label{fig:horas-mes}
 \end{figure}
 
-Como se observa en la figura~\ref{fig:horas-mes}, la distribución del esfuerzo fue relativamente equilibrada a lo largo de los tres meses. Julio y agosto concentraron 7 horas diarias, mientras que en septiembre la dedicación se redujo a 6 horas diarias debido a las normativas de la organización de las prácticas, al tener que compaginar con el inicio del curso universitario.\\
+Como se observa en la figura~\ref{fig:horas-mes}, la distribución del esfuerzo fue relativamente equilibrada a lo largo de los tres meses. Julio y agosto concentraron 7 horas diarias, mientras que en septiembre la dedicación se redujo a 6 horas diarias, al tener que compaginar con el inicio del curso universitario.\\
 
 La planificación se estructuró en etapas en lugar de Sprints formales, dada la naturaleza continua del trabajo. A continuación se detalla la secuencia de tareas e hitos principales:
 
@@ -351,7 +351,7 @@ La planificación se estructuró en etapas en lugar de Sprints formales, dada la
 
   \item \textbf{Evolución backend (núcleo) (final de julio y agosto)}
     \begin{itemize}
-      \item Flyway: adición de esquema \texttt{alsea\_reports} y tabla \texttt{report}.
+      \item Flyway: adición de esquema \texttt{aesla\_reports} y tabla \texttt{report}.
       \item Persistencia de informes y endpoints de consulta/descarga.
       \item Spring Batch: implementación de la generación asíncrona de informes.
       \item Probe de duplicidad: comprobación del bloqueo de informes idénticos en menos de 5 min.
@@ -389,7 +389,7 @@ TODO: añadir diagrama de Gantt de tareas y fechas de previsto vs real
 En el sistema intervienen distintos actores y componentes que participan en la generación, almacenamiento y consulta de los informes ejecutivos:
 
 \begin{itemize}
-    \item \textbf{Usuario ALSEA}: empleado o analista encargado de generar y consultar los informes a través de la interfaz web. Puede lanzar nuevas generaciones, visualizar el historial y volver a descargar informes anteriores.
+    \item \textbf{Usuario AESLA}: empleado o analista encargado de generar y consultar los informes a través de la interfaz web. Puede lanzar nuevas generaciones, visualizar el historial y volver a descargar informes anteriores.
     \item \textbf{Aplicación web (Web Client)}: cliente desarrollado en Angular que permite la interacción del usuario con el sistema. Presenta formularios, mensajes de estado y botones de acción.
     \item \textbf{Servicio de reportes (Web Server)}: aplicación de servidor desarrollada con Spring Boot. Gestiona la lógica de negocio, coordina la generación asíncrona de informes, controla la duplicidad y persiste los resultados.
     \item \textbf{Origen de datos de procesos}: base de datos de ejecución de procesos de BIC (BIC Process Execution) y fuentes adicionales en \textit{Elasticsearch}, de donde se obtienen las variables necesarias para la composición de los informes.
@@ -536,7 +536,7 @@ El sistema sigue una arquitectura cliente-servidor de tres capas que separa clar
   \label{fig:arquitectura-detallada}
 \end{figure}
 
-La figura~\ref{fig:arquitectura-detallada} muestra la arquitectura completa del sistema a bajo nivel. En la capa de presentación, el usuario ALSEA interactúa con los componentes Angular (Report Generator y History) que se comunican con el backend mediante servicios HTTP/JSON. La capa de aplicación está construida con Spring Boot, exponiendo una API REST a través del ReportController que coordina la generación asíncrona mediante Spring Batch. El JobLauncher ejecuta el \gls{job} de generación, que contiene un \gls{step} responsable de leer los datos, generar el Excel con Aspose Cells y persistir el resultado en el ReportRepository. La capa de datos incluye PostgreSQL para almacenar los informes generados (esquema \texttt{alsea\_reports}), Elasticsearch para consultar variables de procesos, y la base de datos de BIC Process Execution. Finalmente, la infraestructura utiliza Flyway para gestionar migraciones del esquema, Docker para contenerización y AWX/Ansible para automatizar despliegues.\\
+La figura~\ref{fig:arquitectura-detallada} muestra la arquitectura completa del sistema a bajo nivel. En la capa de presentación, el usuario AESLA interactúa con los componentes Angular (Report Generator y History) que se comunican con el backend mediante servicios HTTP/JSON. La capa de aplicación está construida con Spring Boot, exponiendo una API REST a través del ReportController que coordina la generación asíncrona mediante Spring Batch. El JobLauncher ejecuta el \gls{job} de generación, que contiene un \gls{step} responsable de leer los datos, generar el Excel con Aspose Cells y persistir el resultado en el ReportRepository. La capa de datos incluye PostgreSQL para almacenar los informes generados (esquema \texttt{aesla\_reports}), Elasticsearch para consultar variables de procesos, y la base de datos de BIC Process Execution. Finalmente, la infraestructura utiliza Flyway para gestionar migraciones del esquema, Docker para contenerización y AWX/Ansible para automatizar despliegues.\\
 
 \subsection{Comunicación entre componentes}
 
@@ -584,7 +584,7 @@ El cliente web está estructurado siguiendo las mejores prácticas de Angular, o
 
 \subsubsection{Estructura de módulos y componentes}
 
-El frontend del proyecto está ubicado en \texttt{webapp/custom-alsea-angular-front} y sigue la estructura estándar de Angular. La organización del código dentro de \texttt{src/app} es la siguiente:
+El frontend del proyecto está ubicado en \texttt{webapp/custom-aesla-angular-front} y sigue la estructura estándar de Angular. La organización del código dentro de \texttt{src/app} es la siguiente:
 
 \begin{itemize}
   \item \textbf{\texttt{reports-generator}}: módulo que contiene el componente principal de generación de informes.
@@ -848,7 +848,7 @@ El modelo de datos está diseñado para soportar el almacenamiento eficiente de 
 
 \subsubsection{Modelo entidad-relación}
 
-El esquema \texttt{alsea\_reports} contiene una única tabla principal \texttt{report}, gestionada mediante migraciones de Flyway. La entidad JPA \texttt{ReportEntity} mapea esta tabla con los siguientes atributos:
+El esquema \texttt{aesla\_reports} contiene una única tabla principal \texttt{report}, gestionada mediante migraciones de Flyway. La entidad JPA \texttt{ReportEntity} mapea esta tabla con los siguientes atributos:
 
 \begin{itemize}
   \item \texttt{id} (UUID): clave primaria generada automáticamente.
@@ -864,7 +864,7 @@ El esquema \texttt{alsea\_reports} contiene una única tabla principal \texttt{r
 
 \subsubsection{Justificación del esquema y uso de Flyway}
 
-El uso de un esquema dedicado (\texttt{alsea\_reports}) aísla los datos del Report Service del resto de esquemas de BIC, evitando conflictos de nombres y facilitando migraciones independientes. Flyway se eligió por:
+El uso de un esquema dedicado (\texttt{aesla\_reports}) aísla los datos del Report Service del resto de esquemas de BIC, evitando conflictos de nombres y facilitando migraciones independientes. Flyway se eligió por:
 
 \begin{itemize}
   \item Versionado automático de cambios en el esquema mediante scripts \acrshort{sql} numerados.
@@ -880,7 +880,7 @@ El uso de un esquema dedicado (\texttt{alsea\_reports}) aísla los datos del Rep
 \rowcolors{3}{udcgray!08}{white}
 
 \begin{longtable}{@{} p{0.22\textwidth} p{0.28\textwidth} p{0.08\textwidth} p{0.42\textwidth} @{}}
-\caption{Atributos de la entidad \textit{Report} en \textit{alsea\_reports.report}.}
+\caption{Atributos de la entidad \textit{Report} en \textit{aesla\_reports.report}.}
 \label{tab:modelo-informe-design}\\
 
 \toprule
@@ -1011,7 +1011,7 @@ Los mensajes de error incluyen un campo \texttt{message} descriptivo y un códig
 
 \section{Tareas de mejora}
 
-Durante el desarrollo del proyecto, se abordaron diversas tareas de mejora que no solo añadieron nuevas funcionalidades, sino que también optimizaron la calidad, seguridad y mantenibilidad del código existente. Estas tareas se clasificaron en diferentes categorías según su naturaleza y prioridad, y se gestionaron a través del sistema de seguimiento Jira como parte del \acrshort{epic} "Improvements for ALSEA Project in 2025 Q3 \& Q4".\\
+Durante el desarrollo del proyecto, se abordaron diversas tareas de mejora que no solo añadieron nuevas funcionalidades, sino que también optimizaron la calidad, seguridad y mantenibilidad del código existente. Estas tareas se clasificaron en diferentes categorías según su naturaleza y prioridad, y se gestionaron a través del sistema de seguimiento Jira como parte del \acrshort{epic} "Improvements for AESLA Project in 2025 Q3 \& Q4".\\  
 
 Las tareas de mejora se distribuyeron a lo largo de los tres meses, abordando aspectos críticos como la seguridad de las dependencias, la cobertura de pruebas, la refactorización del código y la eliminación de duplicaciones. A continuación, se describen en detalle las principales categorías de tareas de mejora abordadas durante el proyecto.
 
@@ -1226,9 +1226,9 @@ Este proceso seguía las convenciones de Gitflow y las políticas de versionado 
   
   \item \textbf{Builds y validaciones finales}: se ejecutaban los pipelines de GitHub Actions para compilar el proyecto completo, ejecutar todas las pruebas (unitarias e integradas) y verificar las métricas de calidad en SonarCloud. Se realizaba una última ronda de validaciones manuales en el entorno de QA para confirmar que no existían regresiones.
   
-  \item \textbf{Creación del tag Git}: una vez aprobadas todas las validaciones, se creaba un tag Git con el número de versión (e.g., \texttt{v2.1.0}) apuntando al último commit de la rama RC. Este tag marcaba formalmente la versión publicable y permitía rastrear exactamente qué código se desplegó en producción.
-  
   \item \textbf{Merge a \texttt{main}}: se creaba un PR desde la rama RC hacia la rama \texttt{main}, que representaba el estado estable de producción. Tras la revisión final y aprobación por parte del equipo, se integraban los cambios mediante merge commit preservando el historial completo.
+  
+  \item \textbf{Creación del tag Git}: una vez completado el merge a \texttt{main}, se creaba un tag Git con el número de versión (e.g., \texttt{v2.1.0}) apuntando al commit de merge en la rama \texttt{main}. Este tag marcaba formalmente la versión publicable y permitía rastrear exactamente qué código se desplegó en producción.
   
   \item \textbf{Merge a \texttt{development}}: paralelamente, se integraban los cambios de la rama RC de vuelta a \texttt{development} para sincronizar cualquier ajuste realizado durante el proceso de release (como el version bump o correcciones de última hora), garantizando que \texttt{development} reflejara siempre el estado más actualizado.
   
@@ -1245,7 +1245,7 @@ Con este proceso, la nueva versión del Report Service quedó lista para su uso 
 
 \section{Conclusiones}
 
-Este Trabajo de Fin de Grado documenta la modernización del módulo Report Service en la plataforma BIC para ALSEA, desarrollado durante tres meses de prácticas en GBTEC Software AG. Los objetivos se cumplieron satisfactoriamente, transformando una herramienta funcional pero limitada en un sistema moderno y eficiente.\\
+Este Trabajo de Fin de Grado documenta la modernización del módulo Report Service en la plataforma BIC para AESLA, desarrollado durante tres meses de prácticas en GBTEC Software AG. Los objetivos se cumplieron satisfactoriamente, transformando una herramienta funcional pero limitada en un sistema moderno y eficiente.\\
 
 Entre los logros más significativos del proyecto destacan:
 
@@ -1267,7 +1267,7 @@ Desde el punto de vista del aprendizaje personal, este proyecto ha proporcionado
 
 Además, el proyecto ha puesto de manifiesto la importancia de equilibrar diferentes aspectos del desarrollo de software: funcionalidad, seguridad, rendimiento, mantenibilidad y experiencia de usuario. Las decisiones tomadas durante el proyecto, como priorizar la funcionalidad sobre la resolución de vulnerabilidades menores, ilustran el tipo de compromisos que se deben gestionar en entornos de desarrollo reales con limitaciones de tiempo y recursos.\\
 
-En conclusión, el Report Service modernizado representa una mejora sustancial sobre el sistema original, proporcionando a ALSEA una herramienta más potente, fiable y escalable para la generación y gestión de informes ejecutivos. El proyecto ha cumplido sus objetivos técnicos y formativos, dejando una base sólida para futuras ampliaciones y mejoras del sistema.
+En conclusión, el Report Service modernizado representa una mejora sustancial sobre el sistema original, proporcionando a AESLA una herramienta más potente, fiable y escalable para la generación y gestión de informes ejecutivos. El proyecto ha cumplido sus objetivos técnicos y formativos, dejando una base sólida para futuras ampliaciones y mejoras del sistema.
 
 \section{Posibles ampliaciones futuras}
 
@@ -1348,7 +1348,7 @@ Mirando más allá de las mejoras inmediatas, se podrían considerar funcionalid
     \item \textbf{Control de acceso granular}: implementar permisos específicos por usuario o rol para la generación y consulta de informes.
 \end{itemize}
 
-Estas ampliaciones futuras representan oportunidades para seguir evolucionando el Report Service hacia una herramienta cada vez más completa y alineada con las necesidades cambiantes de ALSEA.
+Estas ampliaciones futuras representan oportunidades para seguir evolucionando el Report Service hacia una herramienta cada vez más completa y alineada con las necesidades cambiantes de AESLA.
 
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

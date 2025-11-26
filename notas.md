@@ -11,11 +11,6 @@ Imágenes que faltan:
 -> Diagramas de Gantt de la planificación: mostrar a planificación inicial e outro co seguemento real, e así indicar que fases duraron máis do planificado
 
 Cosas que faltan:
--> Bibliografía con los links del resto de cosas, alsea, gbtec, documentación oficial de flyway, spring batch etc.
+-> Bibliografía con los links del resto de cosas, aesla, gbtec, documentación oficial de flyway, spring batch etc.
 -> Capítulo 6 en general con implementación y añadir fragmentos de código y demás.
 -> Revisar las citas del glosario y que salgan solo una vez? la primera vez que se les hace referencia.
-
-Consultar con Cibrán que responda Ángel:
--> Captura de pantalla de la BIC Platform alto nivel
--> Fragmentos de código puntuales de ejemplos de Batch.
--> Estructura general de paquetes del código (necesaria para el capítulo de diseño)
