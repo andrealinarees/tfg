@@ -59,7 +59,8 @@
  \dedicatoria{Dedicatoria} 
  \paxinaenbranco
  \begin{agradecementos}
- \blindtext                % substitúe este comando polo teu texto de agradecementos
+ Agradezco a GBTEC Software AG y a las personas que me acompañaron durante el
+ desarrollo de este proyecto por su apoyo, orientación y confianza.
  \end{agradecementos}
 
 \section*{Resumen}
@@ -86,7 +87,7 @@ Within the scope of business process management and automatic generation of exec
     \item Elasticsearch
     \item Angular
     \item Control de duplicidad
-    \item Migraciones de base de datos
+    \item Persistencia de informes
 \end{itemize}
 \end{minipage}
 \hfill
@@ -101,7 +102,7 @@ Within the scope of business process management and automatic generation of exec
     \item Elasticsearch
     \item Angular
     \item Duplication control
-    \item Database migrations
+    \item Report persistence
 \end{itemize}
 \end{minipage}
 
@@ -238,9 +239,9 @@ El desarrollo del Report Service se apoyó en un conjunto de tecnologías que ab
 \subsection{Database}
 
 \begin{itemize}
-    \item \textbf{PostgreSQL}: sistema de gestión de bases de datos relacional, robusto y de código abierto, empleado para almacenar tanto la información de procesos como los informes generados.
+    \item \textbf{PostgreSQL}: sistema de gestión de bases de datos relacional, robusto y de código abierto, empleado para almacenar los informes generados y sus metadatos.
     \item \textbf{Flyway}: herramienta de migraciones que asegura el versionado y la coherencia del esquema de base de datos en todos los entornos (desarrollo, pruebas y producción). Se utilizó para crear y mantener el esquema \texttt{aesla\_reports} y su tabla principal \texttt{report}.
-    \item \textbf{Testcontainers}: framework de testing que permite levantar contenedores ligeros de \gls{postgresql} en memoria durante la ejecución de pruebas, garantizando un entorno controlado y reproducible.
+    \item \textbf{Testcontainers}: framework de testing que permite levantar contenedores efímeros de \gls{postgresql} durante la ejecución de pruebas, garantizando un entorno controlado y reproducible.
 \end{itemize}
 
 \subsection{Infraestructura y Despliegue}
@@ -278,7 +279,7 @@ Las características principales del enfoque fueron:
 
 \begin{itemize}
   \item \textbf{Iterativo e incremental}~\cite{ScrumGuide}: cada conjunto de cambios (feature/refactor/fix/chore) se abordó como una tarjeta en el tablero, produciendo un incremento funcional verificable (código, tests y PR).
-  \item \textbf{Retroalimentación continua}: dailies diarias con el equipo para sincronizar prioridades, desbloquear tareas y validar entregables; revisión de PRs con comentarios técnicos.
+  \item \textbf{Retroalimentación continua}: reuniones diarias con el equipo para sincronizar prioridades, desbloquear tareas y validar entregables; revisión de PRs con comentarios técnicos.
   \item \textbf{Flexibilidad}: replanificación rápida en función de prioridades del \acrshort{epic} y de incidencias no previstas inicialmente que surgieron durante el desarrollo (p.\,ej., unificación de estructuras de peticiones entre tipos de informe, compatibilidad de parámetros opcionales como fechas nulas, detección de duplicidades), las cuales se integraron de manera ágil en las tareas correspondientes.
   \item \textbf{Calidad integrada}: pruebas unitarias e integradas, migraciones controladas con \gls{flyway}, y verificación manual desde \gls{postman}/Chrome antes de integrar los cambios en el frontend.
 \end{itemize}
@@ -289,17 +290,18 @@ La incorporación al proyecto siguió una fase breve de formación, alineada con
 
 \begin{itemize}
   \item \textbf{Formación inicial}: cursos introductorios de Spring Batch, \gls{docker}, Patrones de Diseño en Java y Angular (priorizando primero backend) proporcionados por la suscripción mediante la empresa de la entidad emisora \acrshort{udemy}.
-  \item \textbf{Aterrizaje en Jira}: asignación al \acrshort{epic} "Improvements for AESLA Project in 2025 Q3 \& Q4", con tareas tipificadas como Story, Task o Bug, cada una con subtareas y prioridad.
+  \item \textbf{Aterrizaje en Jira}: asignación al \acrshort{epic} \textit{Improvements for AESLA Project in 2025 Q3 \& Q4}, que agrupaba los work items relacionados con la evolución del Report Service. La mayoría se clasificaron como \textit{Task}, aunque también se gestionaron incidencias de tipo \textit{Bug} y una historia de usuario de mayor alcance para introducir la generación asíncrona.
   \item \textbf{Flujo de trabajo}:
     \begin{itemize}
       \item Rama por tarea (feature/fix branch) en Git.
       \item Commits atómicos y descriptivos.
       \item Pull Request hacia \texttt{development}, con code review y checks automáticos de SonarCloud y build de pull/push.
       \item Cierre de la tarea al completar \acrshort{pr} y \acrshort{qa}.
+      \item Uso de una misma \textit{fix version} del Report Service para agrupar los cambios que debían publicarse conjuntamente.
     \end{itemize}
 \end{itemize}
 
-El orden de adaptación técnica fue: backend → datos → frontend, permitiendo una integración progresiva.
+El orden de adaptación técnica fue: backend → datos → frontend, permitiendo una integración progresiva. Para cada work item se creó una rama independiente en Git, identificada con el número de la tarea, donde se realizaron los commits correspondientes. Una vez finalizado el desarrollo y superada la revisión de código y la validación de QA, se aprobaba el Pull Request y se integraban los cambios en la rama \texttt{development} del Report Service.
 
 \section{Planificación y seguimiento}
 
@@ -322,7 +324,7 @@ La dedicación horaria total del proyecto se muestra en la figura siguiente:
 
 Como se observa en la figura~\ref{fig:horas-mes}, la distribución del esfuerzo fue relativamente equilibrada a lo largo de los tres meses. Julio y agosto concentraron 7 horas diarias, mientras que en septiembre la dedicación se redujo a 6 horas diarias, al tener que compaginar con el inicio del curso universitario.\\
 
-La planificación se estructuró en etapas en lugar de Sprints formales, dada la naturaleza continua del trabajo. A continuación se detalla la secuencia de tareas e hitos principales:
+La planificación se estructuró en etapas en lugar de Sprints formales, dada la naturaleza continua del trabajo. Todas las tareas pertenecían al mismo EPIC de Jira y compartían la versión de corrección del Report Service, lo que permitió coordinar su publicación. A continuación se detalla la secuencia de tareas e hitos principales:
 
 \begin{itemize}
   \item \textbf{Onboarding y formación dirigida (principios de julio)}
@@ -336,6 +338,7 @@ La planificación se estructuró en etapas en lugar de Sprints formales, dada la
       \item Reducción de duplicidad de código (utils de Excel, fechas, estilos).
       \item Reorganización de paquetes y utilidades comunes.
       \item Mejora de tests unitarios en servicios clave y aumento del coverage del proyecto para llegar a los checks mínimos de la empresa en SonarCloud.
+      \item Incorporación de logs informativos en puntos relevantes de la generación de Excel y traslado de bloques \texttt{try-catch} para mejorar el diagnóstico de errores.
     \end{itemize}
 
     De esta manera, empezando con tareas de menor complejidad, se fue ganando confianza en el código base y las herramientas, preparando el terreno para las funcionalidades principales.
@@ -356,6 +359,7 @@ La planificación se estructuró en etapas en lugar de Sprints formales, dada la
       \item Spring Batch: implementación de la generación asíncrona de informes.
       \item Probe de duplicidad: comprobación del bloqueo de informes idénticos en menos de 5 min.
       \item Métricas de tiempos: registro para soporte y monitorización.
+      \item Corrección de la inicialización del esquema y de las tablas de Spring Batch mediante Flyway durante el arranque de la aplicación.
       \item Pruebas durante todo el desarrollo.
     \end{itemize}
 
@@ -365,6 +369,7 @@ La planificación se estructuró en etapas en lugar de Sprints formales, dada la
       \item Implementación de la página de Historial con re-descarga de informes.
       \item Ajustes en la página del generador con las validaciones pertinentes en cada comprobación.
       \item Paginación/navegación y metadatos (categoría, tipo, franquicias, fechas).
+      \item Integración de los mensajes de inicio, generación, descarga, ausencia de datos y detección de informes duplicados.
     \end{itemize}
 
   \item \textbf{Cierre, release y documentación (última semana de septiembre)}
@@ -374,8 +379,6 @@ La planificación se estructuró en etapas en lugar de Sprints formales, dada la
       \item Recopilación de evidencias (PRs, capturas, pruebas).
     \end{itemize}
 \end{itemize}
-
-TODO: añadir diagrama de Gantt de tareas y fechas de previsto vs real
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  % Capítulo   4                         %
@@ -416,7 +419,7 @@ Los requisitos funcionales definen el comportamiento observable del sistema y la
 
     \item \textbf{Descarga y re-descarga de informes}:
     \begin{itemize}
-        \item Al finalizar una generación válida, el informe debe descargarse automáticamente en el navegador del usuario.
+        \item Al finalizar una generación válida, el informe debe quedar disponible para su descarga desde la interfaz del usuario.
         \item El informe debe almacenarse en la base de datos para su consulta futura.
         \item El usuario podrá volver a descargar cualquier informe desde la pestaña \textit{Historial}.
     \end{itemize}
@@ -438,7 +441,7 @@ Los requisitos no funcionales garantizan la calidad y las propiedades del sistem
     \item \textbf{Confiabilidad}: almacenamiento persistente en base de datos; control de duplicidad para evitar sobrecarga.
     \item \textbf{Mantenibilidad}: estructura modular en capas (controladores, servicios, utilidades) y cobertura de pruebas unitarias e integradas.
     \item \textbf{Escalabilidad}: posibilidad de ejecutar múltiples trabajos de generación en paralelo mediante Spring Batch y Docker.
-    \item \textbf{Seguridad}: control de acceso a endpoints y protección del contenido de los informes.
+    \item \textbf{Seguridad}: integración con los mecanismos de autenticación y autorización proporcionados por la plataforma BIC, junto con la protección del contenido de los informes.
     \item \textbf{Observabilidad}: registro de métricas, logs estructurados y seguimiento de procesos.
     \item \textbf{Compatibilidad}: funcionamiento correcto en navegadores modernos y exportación a formatos Excel estándar.
 \end{itemize}
@@ -456,8 +459,8 @@ A continuación se detallan las principales historias de usuario definidas para 
     \item \textbf{HU03 – Control de duplicidad}: 
     Como usuario, quiero que el sistema detecte y bloquee la generación de informes idénticos para evitar duplicidades innecesarias.
 
-    \item \textbf{HU04 – Descarga automática}: 
-    Como usuario, quiero que el informe se descargue automáticamente una vez generado.
+    \item \textbf{HU04 – Descarga del informe}: 
+      Como usuario, quiero descargar el informe una vez que la generación haya finalizado.
 
     \item \textbf{HU05 – Historial de informes}: 
     Como usuario, quiero poder consultar un listado con todos los informes generados, ver su información.
@@ -543,12 +546,13 @@ La figura~\ref{fig:arquitectura-detallada} muestra la arquitectura completa del 
 La comunicación entre cliente y servidor se realiza mediante una \acrshort{api} \acrshort{rest} sobre \acrshort{http}, intercambiando datos en formato \acrshort{json}. Los principales endpoints implementados son:
 
 \begin{itemize}
-  \item \texttt{POST /api/reports/generate}: inicia la generación de un nuevo informe. Antes de lanzar el job, realiza validaciones síncronas: comprueba duplicidad y disponibilidad de datos mediante el \texttt{ReportDataProbeService}. Devuelve estados como \texttt{DUPLICATE}, \texttt{NO\_DATA} o \texttt{STARTED} según corresponda.
+  \item \texttt{POST /api/reports/generate}: solicita la generación de un nuevo informe. Antes de lanzar el job, realiza validaciones síncronas: comprueba duplicidad y disponibilidad de datos mediante el \texttt{ReportDataProbeService}. Si las validaciones son correctas, lanza el job mediante un executor asíncrono y devuelve el estado \texttt{STARTED}. En caso contrario, devuelve los estados \texttt{DUPLICATE} o \texttt{NO\_DATA}.
   \item \texttt{GET /api/reports/history}: devuelve el listado paginado de informes generados, ordenados de más reciente a más antiguo.
+  \item \texttt{GET /api/reports/latest}: devuelve el informe generado más recientemente, cuando existe.
   \item \texttt{GET /api/reports/\{id\}/download}: descarga un informe específico por su identificador \acrshort{uuid}.
 \end{itemize}
 
-El servidor responde con códigos \acrshort{http} estándar (200 OK, 201 Created, 400 Bad Request, 404 Not Found) y mensajes \acrshort{json} estructurados que incluyen estado, datos y mensajes de error cuando corresponde.
+El servidor responde con códigos \acrshort{http} estándar: 200 OK cuando la generación o descarga finaliza correctamente, 400 Bad Request para parámetros inválidos, 409 Conflict cuando se detecta un informe duplicado, 404 Not Found cuando el informe solicitado no existe y 500 Internal Server Error ante errores no controlados. Las respuestas JSON incluyen el estado, los datos y el mensaje de error cuando corresponde.
 
 \subsection{Justificación de la arquitectura elegida}
 
@@ -571,7 +575,7 @@ El stack tecnológico final adoptado es:
   \item \textbf{Almacenamiento}: PostgreSQL (informes) + Elasticsearch (variables de procesos).
   \item \textbf{Infraestructura}: Docker (contenedores) + Ansible (despliegue) + AWX (orquestación).
   \item \textbf{Migraciones}: Flyway para control de versiones del esquema de base de datos.
-  \item \textbf{Generación de Excel}: Aspose Cells para construcción y formato de workbooks..
+  \item \textbf{Generación de Excel}: Aspose Cells para construcción y formato de workbooks.
 \end{itemize}
 
 \section{Diseño de la aplicación}
@@ -665,7 +669,7 @@ El flujo típico de generación de un informe es:
     \end{itemize}
   \item El frontend muestra mensajes contextuales según el estado recibido: "Informe reciente disponible en Historial", "No hay datos para el informe solicitado" o "Generación iniciada".
   \item Si el estado es \texttt{STARTED}, el job se ejecuta asíncronamente.
-  \item Cuando el backend completa la generación, el servicio recibe el blob binario del Excel y lo descarga automáticamente al navegador del usuario.
+  \item Cuando el backend completa la generación, el informe queda disponible en el historial y el cliente puede solicitar su descarga mediante el endpoint correspondiente, recibiendo el fichero como blob binario.
   \item El usuario puede navegar al componente \texttt{ReportsHistoryComponent} para consultar todos los informes generados, donde el servicio \texttt{reports-history.service} obtiene el listado paginado y permite re-descargar cualquier informe mediante el método de \texttt{downloadReport(id)}.
 \end{enumerate}
 
@@ -776,6 +780,12 @@ El backend está ubicado en \texttt{main/java/com/gbtec/bic/cloud} y sigue una o
 
 Esta organización separa claramente las responsabilidades: la configuración global, el procesamiento batch, la lógica específica de cada tipo de informe (KPI/Producto) y categoría (Innovación/Alternativa), la detección de duplicados, el almacenamiento persistente y las utilidades de generación Excel.
 
+La parte del backend en la que se concentró principalmente el trabajo fue el paquete \texttt{processes}. Su organización separa la configuración de Spring Batch, los controladores REST, la preparación de parámetros, la ejecución del tasklet y las utilidades compartidas. Esta separación permite que el controlador coordine la solicitud sin contener la lógica específica de cada informe.
+
+En \texttt{config}, \texttt{BatchAsyncConfiguration} configura el executor asíncrono y el lanzador de trabajos, mientras que \texttt{ReportBatchConfig} define el \textit{Job} de generación y su \textit{Step}. El job se compone de un único step que delega la ejecución en \texttt{GenerateReportTasklet}. En \texttt{controller}, \texttt{ReportBatchController} centraliza las operaciones de lanzamiento, consulta del último informe y descarga. \texttt{FranchiseController} expone dos operaciones GET para obtener las franquicias disponibles de las categorías Alternativa e Innovación, utilizando respectivamente \texttt{AlternativeExportDataService} e \texttt{InnovationExportDataService}.
+
+El paquete \texttt{support} contiene \texttt{ReportParamService}, encargado de preparar los parámetros según el tipo de informe, y \texttt{ReportRequestDto}, que representa la petición de generación. Este DTO agrupa el tipo y la categoría del informe, las franquicias seleccionadas y las fechas inicial y final, que pueden ser opcionales.
+
 \subsubsection{Patrón de diseño y arquitectura}
 
 El backend aplica los siguientes patrones:
@@ -786,6 +796,27 @@ El backend aplica los siguientes patrones:
   \item \textbf{DTOs (Data Transfer Objects)}: los controladores reciben y devuelven DTOs en lugar de entidades JPA, evitando exponer detalles internos del modelo de dominio.
   \item \textbf{Builder pattern}: para construcción fluida de objetos complejos (parámetros de jobs, configuración de Excel).
 \end{itemize}
+
+\subsubsection{Organización de los generadores de informes}
+
+La lógica de generación se divide en dos ramas principales: \texttt{kpi\_reports} y \texttt{product\_reports}. Cada rama se organiza, a su vez, por categoría de proceso: \texttt{alternative} e \texttt{innovation}. Esta estructura refleja las diferencias existentes tanto en los datos de entrada como en las métricas y hojas que componen cada tipo de Excel.
+
+En los informes KPI, los servicios de cada categoría recuperan las instancias y proyectos necesarios, calculan las métricas y delegan la creación de las hojas en los servicios de generación de Excel. En los informes de Producto, la carpeta \texttt{datastorage} contiene los modelos y repositorios de acceso a los datos, mientras que la carpeta \texttt{report} agrupa la generación de los informes, incluidos los retroplannings, los informes diarios y los heatmaps. Las utilidades comunes de Excel se encargan de aplicar estilos, formatos y estructuras homogéneas al workbook.
+
+El tasklet selecciona la rama de ejecución a partir de los dos enumerados recibidos en \texttt{ReportRequestDto}. La decisión puede representarse de forma simplificada así:
+
+\begin{verbatim}
+if type == PRODUCT and category == ALTERNATIVE:
+  generate product alternative report
+else if type == PRODUCT and category == INNOVATION:
+  generate product innovation report
+else if type == KPI and category == ALTERNATIVE:
+  generate KPI alternative report
+else if type == KPI and category == INNOVATION:
+  generate KPI innovation report
+else:
+  reject invalid configuration
+\end{verbatim}
 
 \subsubsection{Flujo de generación de informes}
 
@@ -800,23 +831,67 @@ El flujo completo de generación de un informe es:
     \begin{itemize}
       \item \textbf{Comprobación de duplicidad}: calcula una firma única mediante \texttt{ReportDuplicateUtils} y busca en la base de datos si existe un informe idéntico generado en los últimos 5 minutos. Si existe, devuelve estado \texttt{DUPLICATE}.
       \item \textbf{Verificación de disponibilidad}: invoca \texttt{hasData()} del servicio \texttt{ReportDataProbeService} para comprobar rápidamente si habrá datos suficientes para generar el informe. Si no hay datos, devuelve estado \texttt{NO\_DATA}.
-      \item Si ambas validaciones son exitosas, devuelve estado \texttt{STARTED} y procede a lanzar el job.
+      \item Si ambas validaciones son exitosas, procede a lanzar el job y devuelve el estado \texttt{STARTED}.
     \end{itemize}
   
   \item Si el estado es \texttt{STARTED}, \texttt{ReportLaunchService} lanza un \texttt{Spring Batch Job} de forma asíncrona mediante \texttt{JobLauncher}.
   
   \item El Job de Spring Batch consta de un único \texttt{Step} que ejecuta \texttt{GenerateReportTasklet}:
     \begin{itemize}
-      \item Lee variables de procesos desde Elasticsearch mediante \texttt{ElasticsearchService} y desde PostgreSQL de BIC Process Execution.
+      \item Obtiene los datos de proceso mediante \texttt{ElasticsearchService} y los servicios especializados de las ramas KPI y Producto, que encapsulan el acceso a las fuentes correspondientes.
       \item Procesa los datos aplicando cálculos, agregaciones y transformaciones según el tipo de informe y la categoría.
       \item Genera el workbook Excel mediante utilidades de \texttt{utils} y \texttt{utils/heatmap} (que utilizan Aspose Cells para aplicar formatos, estilos, heatmaps, retroplannings, etc.).
       \item Persiste el informe en PostgreSQL mediante \texttt{ReportRepository}, almacenando metadatos y contenido binario en \texttt{ReportEntity}.
     \end{itemize}
   
-  \item Al finalizar el Job, se registran métricas de ejecución y tamaño del fichero.
+  \item Al finalizar el Job, se registran métricas de ejecución y tamaño del fichero, y el informe queda disponible en el almacenamiento histórico.
   
-  \item El controlador devuelve el informe generado al cliente como stream binario.
+  \item El cliente puede consultar el último informe o solicitar su descarga mediante los endpoints GET correspondientes.
 \end{enumerate}
+
+La lógica de decisión previa al lanzamiento se puede resumir mediante el siguiente pseudocódigo:
+
+\begin{verbatim}
+requestGeneration(request):
+  if existeInformeDuplicado(request):
+    return DUPLICATE
+
+  if not reportDataProbe.hasData(request):
+    return NO_DATA
+
+  try:
+    jobId = reportLaunchService.launch(request)
+    return STARTED(jobId)
+  catch error:
+    return FAILED(error)
+\end{verbatim}
+
+De este modo, \texttt{ReportLaunchService} actúa como punto de coordinación entre el controlador, la comprobación de datos, el control de duplicidad y \texttt{JobLauncher}. El controlador no decide cómo se construye cada informe, sino que delega esa responsabilidad en el job y en los servicios especializados.
+
+\subsubsection{Comprobación previa de disponibilidad de datos}
+
+Antes de iniciar un trabajo potencialmente costoso, \texttt{ReportDataProbeService} comprueba si existen datos suficientes para la combinación de parámetros solicitada. Su implementación, \texttt{ReportDataProbeServiceImpl}, selecciona la estrategia según el tipo y la categoría del informe.
+
+Para los informes de Producto, normaliza la cadena de franquicias y aplica las fechas por defecto mediante \texttt{ReportParamUtils}. En la categoría Alternativa llama a \texttt{AlternativeExportDataService.populateInitialData}; en Innovación obtiene primero los datos actuales y después completa la estructura inicial mediante \texttt{InnovationExportDataService}. El resultado se considera sin datos cuando todos los procesos recuperados carecen de tareas.
+
+Para los informes KPI, transforma la cadena de franquicias en una lista y llama a \texttt{KpiAlternativeInstanceService} o \texttt{KpiInnovationInstanceService}, según corresponda. En ambos casos se verifica si la colección resultante carece de proyectos con franquicia. Si el tipo o la categoría no son válidos, se lanza una excepción de argumento, evitando iniciar un job con una configuración inconsistente.
+
+Una representación simplificada de esta lógica es:
+
+\begin{verbatim}
+hasData(type, category, franchises, startDate, endDate):
+  if type == PRODUCT:
+    normalize parameters and dates
+    data = load PRODUCT data for category
+    return data contains at least one task
+
+  if type == KPI:
+    franchiseList = parse franchises
+    data = load KPI projects for category
+    return data contains at least one project
+
+  raise invalid report type
+\end{verbatim}
 
 \subsubsection{Diseño del Job y Step de Spring Batch}
 
@@ -826,7 +901,7 @@ El job de generación está configurado en \texttt{ReportBatchConfig} con:
   \item \textbf{Parámetros de entrada}: tipo de informe, categoría, franquicias, fechas, ID del informe a generar (gestionados por \texttt{ReportParamUtils} y \texttt{ReportParamService}).
   \item \textbf{Step único} que ejecuta el Tasklet \texttt{GenerateReportTasklet}:
     \begin{itemize}
-      \item \textbf{Reader}: no utiliza reader estándar; en su lugar, el Tasklet lee directamente de Elasticsearch mediante \texttt{ElasticsearchService} y de PostgreSQL.
+      \item \textbf{Reader}: no utiliza un reader estándar; el Tasklet delega la obtención de datos en \texttt{ElasticsearchService} y en los servicios especializados de cada tipo y categoría.
       \item \textbf{Processor}: lógica de transformación y cálculo de métricas (KPIs, distribuciones trimestrales, estados de proyectos) implementada en los servicios específicos de \texttt{kpi\_reports} y \texttt{product\_reports}.
       \item \textbf{Writer}: generación del Excel mediante utilidades de \texttt{utils} (como \texttt{CreateExcelFileUtils} y \texttt{ExcelCellStyleUtils}) usando Aspose.
     \end{itemize}
@@ -838,9 +913,13 @@ El uso de Spring Batch permite:
 
 \begin{itemize}
   \item Ejecución asíncrona sin bloquear el thread principal.
-  \item Reintentos automáticos en caso de fallos transitorios.
-  \item Trazabilidad completa de cada ejecución (timestamps, estado, parámetros).
+  \item Posibilidad de configurar reintentos ante fallos transitorios.
+  \item Registro del ciclo de vida de cada ejecución mediante listeners y logs.
 \end{itemize}
+
+En la implementación de \texttt{GenerateReportTasklet}, el método \texttt{execute} recibe los parámetros del job y selecciona el servicio de generación correspondiente. Para Producto distingue entre las categorías Alternativa e Innovación; para KPI aplica la misma selección sobre los servicios especializados de cada categoría. Cada servicio recupera los datos, construye las estructuras necesarias, genera el workbook con las utilidades de Excel y finalmente delega el almacenamiento en \texttt{ReportService}.
+
+El método de almacenamiento centraliza los pasos comunes a todas las variantes: recibe el workbook y sus metadatos, lo convierte a bytes, crea o completa la entidad de informe y la guarda mediante \texttt{ReportRepository}. Esta decisión evita repetir la serialización y la persistencia en cada generador de informes.
 
 \subsection{Capa de datos}
 
@@ -870,8 +949,18 @@ El uso de un esquema dedicado (\texttt{aesla\_reports}) aísla los datos del Rep
   \item Versionado automático de cambios en el esquema mediante scripts \acrshort{sql} numerados.
   \item Aplicación idempotente de migraciones (solo se ejecutan scripts nuevos).
   \item Trazabilidad completa en tabla de metadatos de Flyway (\texttt{flyway\_schema\_history}).
-  \item Integración nativa con Spring Boot mediante configuración en \texttt{application.properties}.
+  \item Integración nativa con Spring Boot mediante la configuración definida en \texttt{application.yaml}.
 \end{itemize}
+
+La creación de la base de datos se organizó mediante tres migraciones versionadas. La primera crea el esquema \texttt{aesla\_reports} si todavía no existe; la segunda crea la tabla \texttt{report} con sus columnas, tipos y restricciones; y la tercera crea las tablas de metadatos requeridas por Spring Batch para registrar las instancias, ejecuciones, parámetros y contextos de los jobs. Esta última migración se basó en el esquema de metadatos de Spring Batch para PostgreSQL y permite que el framework disponga de la infraestructura necesaria durante el arranque.
+
+La configuración de estas tecnologías se realizó en \texttt{application.yaml}. En ella se ajustaron las propiedades de JPA y de la conexión JDBC, se habilitó la ejecución de Flyway, se indicó el esquema inicial de la plataforma y se configuraron los esquemas y las ubicaciones de búsqueda de las migraciones. También se estableció la inicialización de la infraestructura JDBC de Spring Batch y el prefijo utilizado por sus tablas. Esta configuración garantiza que las migraciones se apliquen durante el arranque antes de que se intente ejecutar un job.
+
+Las tablas de metadatos de Spring Batch permiten conservar el estado de cada ejecución y sus parámetros. Entre las tablas creadas se encuentran \texttt{BATCH\_JOB\_INSTANCE}, \texttt{BATCH\_JOB\_EXECUTION}, \texttt{BATCH\_JOB\_EXECUTION\_PARAMS}, \texttt{BATCH\_STEP\_EXECUTION}, \texttt{BATCH\_JOB\_EXECUTION\_CONTEXT} y \texttt{BATCH\_STEP\_EXECUTION\_CONTEXT}. De esta forma, Spring Batch puede identificar cada instancia, registrar sus ejecuciones, almacenar los parámetros utilizados y conservar el contexto de los steps.
+
+La entidad \texttt{ReportEntity} representa la tabla \texttt{report} mediante JPA. Además del identificador UUID, contiene el nombre del fichero, el tipo y la categoría del informe, las fechas solicitadas, las franquicias, el tamaño y el contenido binario del workbook. \texttt{ReportRepository} extiende \texttt{JpaRepository} y concentra las consultas para recuperar informes por identificador, por filtros y por fecha de creación. Sobre este repositorio, \texttt{ReportService} implementa las operaciones de negocio: construye la entidad, convierte el workbook a bytes, la persiste mediante \texttt{save} y recupera los informes o lanza la excepción correspondiente cuando no existe el identificador solicitado.
+
+El método de almacenamiento recibe el workbook generado, el nombre del fichero, el tipo, la categoría, las franquicias y las fechas. El workbook se serializa a un arreglo de bytes antes de crear la entidad, de modo que el contenido pueda guardarse en la columna \texttt{bytea} de PostgreSQL y recuperarse posteriormente para la descarga.
 
 \setlength{\tabcolsep}{6pt}%
 \renewcommand{\arraystretch}{1.15}%
@@ -935,7 +1024,7 @@ La API expone los siguientes endpoints principales:
 \begin{itemize}
   \item \textbf{POST /api/reports/generate}
     \begin{itemize}
-      \item \textbf{Descripción}: inicia la generación de un nuevo informe.
+      \item \textbf{Descripción}: valida la solicitud e inicia la generación asíncrona de un nuevo informe.
       \item \textbf{Request body} (JSON):
       \begin{verbatim}
 {
@@ -946,7 +1035,7 @@ La API expone los siguientes endpoints principales:
   "endDate": "2024-12-31"     // opcional
 }
       \end{verbatim}
-      \item \textbf{Response}: stream binario del Excel (200 OK) o mensaje de error/duplicado (400 Bad Request).
+      \item \textbf{Response}: respuesta JSON con el estado \texttt{STARTED}, \texttt{NO\_DATA} o \texttt{DUPLICATE}. El fichero se descarga posteriormente mediante el endpoint de descarga.
     \end{itemize}
   
   \item \textbf{GET /api/reports/history?page=0\&size=5}
@@ -974,6 +1063,8 @@ La API expone los siguientes endpoints principales:
       \end{verbatim}
     \end{itemize}
   
+  \item \textbf{GET /api/reports/latest}: devuelve el informe generado más recientemente, cuando existe.
+
   \item \textbf{GET /api/reports/\{id\}/download}
     \begin{itemize}
       \item \textbf{Descripción}: descarga un informe por su ID.
@@ -987,7 +1078,6 @@ El backend devuelve códigos \acrshort{http} estándar y mensajes estructurados:
 
 \begin{itemize}
   \item \textbf{200 OK}: operación exitosa.
-  \item \textbf{201 Created}: informe generado correctamente.
   \item \textbf{400 Bad Request}: parámetros inválidos (fechas incorrectas, campos obligatorios ausentes).
   \item \textbf{404 Not Found}: informe solicitado no existe.
   \item \textbf{500 Internal Server Error}: error no controlado en el servidor.
@@ -1013,7 +1103,21 @@ Los mensajes de error incluyen un campo \texttt{message} descriptivo y un códig
 
 Durante el desarrollo del proyecto, se abordaron diversas tareas de mejora que no solo añadieron nuevas funcionalidades, sino que también optimizaron la calidad, seguridad y mantenibilidad del código existente. Estas tareas se clasificaron en diferentes categorías según su naturaleza y prioridad, y se gestionaron a través del sistema de seguimiento Jira como parte del \acrshort{epic} "Improvements for AESLA Project in 2025 Q3 \& Q4".\\  
 
-Las tareas de mejora se distribuyeron a lo largo de los tres meses, abordando aspectos críticos como la seguridad de las dependencias, la cobertura de pruebas, la refactorización del código y la eliminación de duplicaciones. A continuación, se describen en detalle las principales categorías de tareas de mejora abordadas durante el proyecto.
+Las tareas de mejora se distribuyeron a lo largo de los tres meses, abordando aspectos críticos como la seguridad de las dependencias, la cobertura de pruebas, la refactorización del código, la observabilidad y la incorporación de nuevas funcionalidades. A continuación, se describen en detalle las principales categorías de tareas de mejora abordadas durante el proyecto.
+
+\subsection{Organización de los work items}
+
+El trabajo se organizó en Jira mediante el EPIC \textit{Improvements for AESLA Project in 2025 Q3 \& Q4}. Este elemento actuó como padre común de los work items relacionados con la evolución del Report Service. La mayoría fueron tareas técnicas, aunque también se registraron incidencias de tipo \textit{Bug} y una historia de usuario de prioridad alta que concentró la introducción del procesamiento asíncrono con Spring Batch.
+
+Cada work item se desarrolló en una rama independiente identificada con su número. En ella se realizaron los commits y, al finalizar, se abrió un Pull Request hacia \texttt{development}. El cambio se integraba después de superar la revisión de código y las comprobaciones de calidad y QA. Todos los elementos compartían la misma \textit{fix version} del Report Service, facilitando la trazabilidad de los cambios incluidos en la publicación.
+
+Entre los trabajos realizados se incluyeron la reducción de duplicación, el aumento de cobertura, la persistencia y consulta de informes, la generación asíncrona, la incorporación de logs, la mejora de las páginas de generación e historial y la resolución de problemas de inicialización de Spring Batch.
+
+\subsection{Persistencia y consulta de informes}
+
+Una de las tareas principales consistió en permitir que los informes generados se almacenaran en la base de datos y pudieran descargarse posteriormente desde el historial. Aunque se gestionó como una tarea técnica, se especificó mediante una historia de usuario: un usuario debía poder acceder a la página de historial, consultar los informes generados y descargar de nuevo cualquiera de ellos.
+
+La implementación se dividió en varias subtareas: creación del esquema de base de datos, integración de su gestión mediante Flyway, creación del repositorio para recuperar el contenido y los metadatos, y refactorización del tratamiento de franquicias y fechas en los informes de Producto y KPI para utilizar una aproximación común. La información almacenada incluye la fecha y hora de generación, el nombre y tamaño del fichero, su contenido y los datos necesarios para identificar la configuración utilizada.
 
 \subsection{Vulnerabilidades}
 
@@ -1039,7 +1143,7 @@ Para abordar esta situación, se implementó una estrategia sistemática de mejo
   \item \textbf{Identificación de código sin cobertura}: se analizaron los informes de SonarCloud para identificar las clases, métodos y ramas lógicas que carecían de pruebas unitarias.
   \item \textbf{Priorización de componentes críticos}: se priorizaron los servicios de negocio (\texttt{ReportService}, \texttt{BatchService}), repositorios (\texttt{ReportRepository}) y utilidades de generación Excel (\texttt{ExcelGenerator}).
   \item \textbf{Implementación de tests unitarios}: se escribieron nuevos tests utilizando JUnit 5 y Mockito para simular dependencias externas, cubriendo casos normales, casos límite y situaciones de error.
-  \item \textbf{Tests de integración con Testcontainers}: se añadieron tests de integración que levantan contenedores PostgreSQL en memoria para validar el comportamiento completo del repositorio y las migraciones Flyway.
+  \item \textbf{Tests de integración con Testcontainers}: se añadieron tests de integración que levantan contenedores efímeros de PostgreSQL para validar el comportamiento del repositorio y las migraciones Flyway.
 \end{itemize}
 
 \begin{figure}[H]
@@ -1061,9 +1165,11 @@ La figura~\ref{fig:coverage-before} muestra el estado inicial de la cobertura de
 Tras la implementación de las mejoras, la cobertura aumentó del 17.7\% al 25.7\%, como se observa en la figura~\ref{fig:coverage-after}. Este incremento de 8 puntos porcentuales no solo cumplió con los requisitos de calidad de la empresa, sino que proporcionó mayor confianza en la estabilidad del código y facilitó la detección temprana de regresiones durante el desarrollo de nuevas funcionalidades.
 
 \subsection{Refactorización}
+La refactorización se centró en extraer utilidades comunes, homogeneizar la gestión de parámetros y reducir la lógica repetida entre los distintos tipos y categorías de informe. Estas modificaciones facilitaron la incorporación de nuevas funcionalidades y mejoraron la mantenibilidad del código.
 \subsection{Duplicación}
 
-Otra métrica crítica de calidad de código es el porcentaje de \gls{duplicacion}, que mide la cantidad de código repetido en el proyecto. El código duplicado aumenta la deuda técnica, dificulta el mantenimiento y puede introducir inconsistencias cuando se realizan cambios que deben aplicarse en múltiples lugares.\\n
+Otra métrica crítica de calidad de código es el porcentaje de \gls{duplicacion}, que mide la cantidad de código repetido en el proyecto. El código duplicado aumenta la deuda técnica, dificulta el mantenimiento y puede introducir inconsistencias cuando se realizan cambios que deben aplicarse en múltiples lugares.\\
+
 Al inicio del proyecto, el análisis de SonarCloud reveló un 15.8\% de duplicación en el código del Report Service. Este nivel de duplicación se debía principalmente a:
 
 \begin{itemize}
@@ -1100,10 +1206,30 @@ La figura~\ref{fig:duplications-before} muestra el nivel inicial de duplicación
 \end{figure}
 
 Como resultado de las tareas de refactorización, la duplicación se redujo del 15.8\% al 10.0\%, como se aprecia en la figura~\ref{fig:duplications-after}. Esta reducción de 5.8 puntos porcentuales representa una mejora significativa en la mantenibilidad del código, facilitando futuras evoluciones del sistema y reduciendo el riesgo de introducir bugs al modificar lógica compartida.
-\section{Spring Batch discussion dificultades técnicas}
+
+\subsection{Generación asíncrona con Spring Batch}
+
+La historia de usuario de mayor alcance, y de prioridad alta, tuvo como objetivo que el usuario pudiera solicitar un informe sin tener que permanecer esperando activamente durante toda la descarga. Para ello, se implementó la lógica de generación mediante Spring Batch, se adaptó la API REST y se incorporaron notificaciones para informar de que el proceso había comenzado y de los posibles resultados.
+
+La generación se ejecuta en segundo plano y el informe se almacena en el esquema \texttt{aesla\_reports}. Una vez disponible, el cliente puede iniciar su descarga, mientras que los casos de ausencia de datos, errores de red y duplicidad se comunican mediante mensajes específicos. También se ajustó la petición del informe para admitir un tiempo de espera de hasta cinco segundos en la comunicación inicial, evitando mantener bloqueada la interfaz durante la generación completa.
+
+\subsection{Observabilidad y soporte}
+
+Para facilitar el soporte al cliente se incorporaron logs informativos en puntos relevantes del proceso de exportación a Excel. Estos registros permiten identificar el avance de la generación y localizar con mayor rapidez posibles fallos en los servicios. Como parte de una mejora menor adicional, se reubicó un bloque \texttt{try-catch} en dos servicios y se añadió el registro correspondiente a nivel informativo.
+
+\subsection{Mejoras de la interfaz}
+
+Se desarrollaron y ajustaron las páginas de generación e historial. La primera incorpora la configuración de los parámetros, las validaciones y las notificaciones asociadas al proceso. La segunda permite consultar los informes almacenados, visualizar su fecha de generación, nombre, tamaño y contenido disponible, y descargarlos posteriormente.
+
+\subsection{Incidencias y trabajo no realizado}
+
+Durante la integración de Spring Batch se detectó una incidencia relacionada con la inicialización del esquema y de las tablas de Spring Batch. La configuración inicial no creaba correctamente estos elementos mediante Flyway durante el arranque, lo que provocaba fallos al iniciar o ejecutar el procesamiento. La incidencia se resolvió ajustando la configuración de las migraciones para que las tablas necesarias estuvieran disponibles antes de lanzar los trabajos.
+
+También se planteó una historia de usuario para permitir la eliminación de informes desde el historial. Esta funcionalidad no llegó a implementarse dentro del alcance del proyecto y, por tanto, se mantiene como una ampliación futura.
+
 \section{Pruebas}
-\subsection{Testing unitario}
-\subsection{Testing de integración}
+
+Las pruebas se organizaron en tres niveles: pruebas unitarias de la lógica de negocio y las utilidades, pruebas de integración de la persistencia y las migraciones, y pruebas manuales de los flujos completos en el entorno de QA.
 \subsection{Pruebas manuales y entorno de QA}
 
 Para cada tarea asignada en Jira, se seguía un flujo de validación manual en un entorno de pruebas controlado antes de integrar los cambios en las ramas principales. El proceso de QA se apoyaba en la infraestructura de Ansible gestionada mediante AWX y el registry de imágenes Quay.\\
@@ -1132,7 +1258,7 @@ Este enfoque garantizaba que cada cambio se validara en un entorno realista ante
 \chapter{Solución desarrollada}
 \section{Introducción}
 
-En este capítulo se describe la solución desarrollada durante el proyecto, enfocada en la modernización y mejora de la interfaz de usuario del Report Service. A diferencia del sistema original, que ofrecía únicamente una pantalla básica de generación de informes, la nueva solución incorpora funcionalidades avanzadas que mejoran significativamente la experiencia del usuario y las capacidades del sistema.\\
+En este capítulo se describe la solución desarrollada durante el proyecto, que comprende la modernización del backend, la persistencia de informes, el procesamiento asíncrono y la mejora de la interfaz de usuario del Report Service. A diferencia del sistema original, que ofrecía únicamente una pantalla básica de generación de informes, la solución final incorpora funcionalidades que mejoran la experiencia del usuario y las capacidades del sistema.\\
 
 Las principales mejoras implementadas incluyen:
 
@@ -1156,7 +1282,7 @@ En una primera fase de diseño, se había planteado la existencia de tres interf
 \begin{itemize}
   \item Permite configurar los parámetros del informe.
   \item Muestra notificaciones en tiempo real del estado de la generación.
-  \item Descarga automática del informe al finalizar.
+  \item Descarga del informe una vez finalizada la generación.
   \item Incluye un botón para navegar al historial.
 \end{itemize}
 
@@ -1182,7 +1308,7 @@ El flujo de trabajo implementado en la página de generación garantiza una expe
   \label{fig:flujo-generador}
 \end{figure}
 
-Como se observa en la figura~\ref{fig:flujo-generador}, el proceso comienza cuando el usuario selecciona los parámetros del informe y pulsa el botón \textit{Generar}. En ese momento, el sistema realiza una comprobación de duplicidad para verificar si existe un informe idéntico generado en los últimos 5 minutos. Si se detecta un duplicado, el sistema muestra un aviso informando al usuario de que el informe ya está disponible en el historial, evitando así una regeneración innecesaria. En caso contrario, el proceso continúa con la descarga local del Excel generado y el almacenamiento del informe en la base de datos. Finalmente, el usuario puede acceder en cualquier momento a la página de historial para re-descargar el informe sin necesidad de volver a generarlo.
+Como se observa en la figura~\ref{fig:flujo-generador}, el proceso comienza cuando el usuario selecciona los parámetros del informe y pulsa el botón \textit{Generar}. En ese momento, el sistema realiza una comprobación de duplicidad para verificar si existe un informe idéntico generado en los últimos 5 minutos. Si se detecta un duplicado, el sistema muestra un aviso informando al usuario de que el informe ya está disponible en el historial, evitando así una regeneración innecesaria. En caso contrario, se inicia el job asíncrono y se informa al usuario de que la generación ha comenzado. Cuando el informe termina y queda almacenado en la base de datos, puede descargarse desde el historial sin necesidad de volver a generarlo.
 
 \section{Página de Historial}
 
@@ -1278,8 +1404,8 @@ Aunque el proyecto ha logrado cumplir con los objetivos planteados, existen dive
 Como se mencionó en el apartado de vulnerabilidades, una de las principales mejoras pendientes es la actualización de Angular de la versión 15 a una versión más reciente. Esta actualización permitiría:
 
 \begin{itemize}
-    \item Eliminar el bloque de \texttt{resolutions} del \texttt{package.json}, permitiendo que las dependencias se actualicen automáticamente a versiones seguras.
-    \item Resolver las tres vulnerabilidades restantes que no pudieron mitigarse sin cambiar de versión mayor.
+    \item Reevaluar las dependencias y reducir, cuando sea posible, el bloque de \texttt{resolutions} del \texttt{package.json}.
+    \item Analizar de nuevo las tres vulnerabilidades restantes tras la actualización y aplicar las correcciones disponibles.
     \item Aprovechar las nuevas funcionalidades y mejoras de rendimiento de versiones más recientes de Angular.
     \item Reducir los avisos de incompatibilidad que actualmente genera el uso de \texttt{resolutions}.
 \end{itemize}
@@ -1292,7 +1418,7 @@ Una de las funcionalidades más solicitadas para futuras versiones es la ampliac
 
 \subsubsection{Eliminación de informes}
 
-Actualmente, todos los informes generados se almacenan indefinidamente en la base de datos. Sería deseable permitir a los usuarios eliminar informes que ya no necesiten, liberando espacio de almacenamiento y facilitando la gestión del historial.\\
+Actualmente, todos los informes generados se almacenan indefinidamente en la base de datos, sin una política de retención explícita. Sería deseable permitir a los usuarios eliminar informes que ya no necesiten, liberando espacio de almacenamiento y facilitando la gestión del historial.\\
 
 El diseño preliminar de esta funcionalidad incluiría:
 
